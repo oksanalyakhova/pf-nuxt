@@ -1,15 +1,23 @@
 <template lang="pug">
   client-only
     .app
+      Header
       Nuxt
 </template>
 
 <script lang="ts">
-  import { Component, Mixins } from 'vue-property-decorator';
+  import Component from 'vue-class-component';
+  import { Mixins } from 'vue-property-decorator';
   import Mixin from '@/mixins/global';
+  import Header from '~/components/header/Header.vue';
+
   import '@/assets/styles/common.sass';
 
-  @Component
+  @Component({
+    components: {
+      Header
+    }
+  })
   export default class Project extends Mixins(Mixin) {}
 </script>
 
