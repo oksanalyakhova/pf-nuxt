@@ -7,6 +7,7 @@
 <script lang="ts">
   import { Component, Mixins } from 'vue-property-decorator';
   import Mixin from '@/mixins/global';
+  import '@/assets/styles/common.sass';
 
   @Component
   export default class Project extends Mixins(Mixin) {}
