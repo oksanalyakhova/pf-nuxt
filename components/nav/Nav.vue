@@ -29,7 +29,7 @@ export default class Nav extends Vue {
   // nav?: any;
   //
   // async asyncData({ $axios, req, params, error }) {
-  //   const data = await $axios.get(process.env.baseURL + '../../static/data/data.json').then(res => res.data)
+  //   const data = await $axios.get(process.env.baseURL + '../../static/data/nav.json').then(res => res.data)
   //   return {
   //     nav: data.nav
   //   }
