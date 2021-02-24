@@ -20,7 +20,12 @@ import NavItem from '~/components/helpers/nav-item/NavItem.vue';
   }
 })
 export default class Nav extends Vue {
-  // items: Array<object>;
+  items: Array<object> = [];
+  async fetch() {
+    this.items = await fetch('https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/nav.json').then(res => res.json())
+  }
+  fetchOnServer: false
+
   // nav?: any;
   //
   // async asyncData({ $axios, req, params, error }) {
@@ -33,19 +38,19 @@ export default class Nav extends Vue {
   // mounted() {
   //   console.log(nav)
   // }
-  items: Array<object> = [
-    {
-      href: "#",
-      isActive: true,
-      text: 'text 1'
-    },
-    {
-      href: "#",
-      isActive: false,
-      text: 'text 2'
-    },
-
-  ]
+  // items: Array<object> = [
+  //   {
+  //     href: "#",
+  //     isActive: true,
+  //     text: 'text 1'
+  //   },
+  //   {
+  //     href: "#",
+  //     isActive: false,
+  //     text: 'text 2'
+  //   },
+  //
+  // ]
 
 
 }
