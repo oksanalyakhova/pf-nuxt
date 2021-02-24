@@ -20,6 +20,19 @@ import NavItem from '~/components/helpers/nav-item/NavItem.vue';
   }
 })
 export default class Nav extends Vue {
+  // items: Array<object>;
+  // nav?: any;
+  //
+  // async asyncData({ $axios, req, params, error }) {
+  //   const data = await $axios.get(process.env.baseURL + '../../static/data/data.json').then(res => res.data)
+  //   return {
+  //     nav: data.nav
+  //   }
+  // }
+  //
+  // mounted() {
+  //   console.log(nav)
+  // }
   items: Array<object> = [
     {
       href: "#",
@@ -33,6 +46,8 @@ export default class Nav extends Vue {
     },
 
   ]
+
+
 }
 </script>
 
