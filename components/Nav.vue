@@ -21,7 +21,15 @@ import NavItem from '~/components/helpers/NavItem.vue';
 })
 
 export default class Nav extends Vue {
+  items = []
 
+  created() {
+    fetch('https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/nav.json')
+      .then(res => res.json())
+      .then(items => {
+        this.items = items
+      })
+  }
 }
 </script>
 

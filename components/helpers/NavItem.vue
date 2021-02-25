@@ -4,7 +4,7 @@
       :href="href"
       target="_self"
       :class="{ 'is-active': isActive }"
-      ) {{ text }}
+      ) {{ text }}/>
 </template>
 
 <script>
