@@ -19,17 +19,17 @@
     span {{logoEnd}}
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
 @Component
 export default class Logo extends Vue {
-  private logoStart: string = '<';
-  private logoEnd: string = '/>'
+  logoStart = '<';
+  logoEnd = '/>'
 }
 </script>
 
 <style scoped lang="sass">
-  @import "logo"
+
 </style>

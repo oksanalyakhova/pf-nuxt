@@ -7,25 +7,30 @@
       ) {{ text }}
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
 
 @Component({
+  props: {
+    href: {
+      type: String,
+      default: ''
+    },
+    isActive: {
+      type: Boolean,
+      default: false
+    },
+    text: {
+      type: String,
+      default: ''
+    }
+  }
 })
-export default class NavItem extends Vue {
-  @Prop({ type: String, default: '' })
-  href!: string
 
-  @Prop({ type: Boolean, default: false })
-  isActive!: boolean
-
-  @Prop({ type: String, default: '' })
-  text!: string
-}
+export default class NavItem extends Vue {}
 </script>
 
 <style scoped lang="sass">
-  @import "nav-item"
+
 </style>

@@ -5,11 +5,11 @@
       Nuxt
 </template>
 
-<script lang="ts">
+<script>
   import Component from 'vue-class-component';
   import { Mixins } from 'vue-property-decorator';
   import Mixin from '@/mixins/global';
-  import Header from '~/components/header/Header.vue';
+  import Header from '@/components/Header.vue';
 
   import '@/assets/styles/common.sass';
 

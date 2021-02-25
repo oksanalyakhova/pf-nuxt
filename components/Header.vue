@@ -5,11 +5,11 @@
     Burger
 </template>
 
-<script lang="ts">
+<script>
 import { Component, Vue } from 'vue-property-decorator';
-import Logo from '~/components/helpers/logo/Logo.vue';
-import Nav from '~/components/nav/Nav.vue';
-import Burger from '~/components/helpers/burger/Burger.vue';
+import Logo from '~/components/helpers/Logo.vue';
+import Nav from '~/components/Nav.vue';
+import Burger from '~/components/helpers/Burger.vue';
 
 @Component({
   components: {
@@ -22,5 +22,5 @@ export default class Header extends Vue {}
 </script>
 
 <style scoped lang="sass">
-  @import "header"
+
 </style>
