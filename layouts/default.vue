@@ -1,7 +1,6 @@
 <template lang="pug">
   client-only
     .app
-      Header
       Nuxt
 </template>
 

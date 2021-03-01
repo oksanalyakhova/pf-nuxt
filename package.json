@@ -16,6 +16,7 @@
     "fs": "^0.0.1-security",
     "imagesloaded": "^4.1.4",
     "nuxt": "^2.14.12",
+    "vue": "^2.6.12",
     "vue-property-decorator": "^9.1.2"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "pug-plain-loader": "^1.0.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "vue-class-component": "^7.2.6"
   }
 }
