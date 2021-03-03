@@ -1,22 +1,27 @@
 <template lang="pug">
   .section.section_first.section-first
-    FirstPreview
-    FirstHello
-    FirstHelloDouble
+    FirstBlock.section-first__item
+      img.img(
+        :src="`img/o.png`"
+        ref="image"
+      )
+    FirstBlock.section-first__item(
+      theme="light"
+    )
+      Splitting(
+        :text="`Oksana`"
+        theme="uppercase"
+        )
 </template>
 
 <script>
 import Vue from 'vue'
-import FirstPreview from '../helpers/FirstPreview'
-import FirstHello from '../helpers/FirstHello'
-import FirstHelloDouble from '../helpers/FirstHelloDouble'
+import FirstBlock from '../helpers/FirstBlock'
 import Component from 'vue-class-component'
 
 @Component({
   components: {
-    FirstPreview,
-    FirstHello,
-    FirstHelloDouble
+    FirstBlock,
   }
 })
 
@@ -26,5 +31,8 @@ export default class First extends Vue {}
 <style lang="sass">
 .section_first
   font-size: clamp(5.5rem, 25vw, 150rem)
+
+  img
+    width: 30vw
 
 </style>
