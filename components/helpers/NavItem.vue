@@ -4,7 +4,7 @@
       :href="href"
       target="_self"
       :class="{ 'is-active': isActive }"
-      ) {{ text }}/>
+    ) {{ text }}/>
 </template>
 
 <script>
@@ -28,7 +28,8 @@ import Component from 'vue-class-component';
   }
 })
 
-export default class NavItem extends Vue {}
+export default class NavItem extends Vue {
+}
 </script>
 
 <style scoped lang="sass">

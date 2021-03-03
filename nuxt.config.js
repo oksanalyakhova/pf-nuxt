@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: '<OLyakhova />',
+    title: 'OLyakhova',
     htmlAttrs: {
       lang: 'en'
     },
@@ -46,6 +46,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['three']
   },
 
   env: {

@@ -4,8 +4,11 @@
 
 <script>
 import Vue from 'vue'
+import {Component} from 'vue-property-decorator'
 
-export default class FirstHello extends Vue {}
+@Component
+export default class FirstHello extends Vue {
+}
 </script>
 
 <style>
