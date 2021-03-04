@@ -1,5 +1,5 @@
 <template lang="pug">
-  .text-letters(
+  .text.text-letters(
     ref="textLetters"
     :class="classObject"
     ) {{text}}
@@ -17,15 +17,14 @@ import {Component} from 'vue-property-decorator';
     },
     theme: {
       type: String,
-      default: 'lowercase'
+      default: ''
     },
   }
 })
 export default class Splitting extends Vue {
   get classObject() {
     return {
-      'is-lowercase': this.theme === 'lowercase',
-      'is-uppercase': this.theme === 'uppercase'
+      'text_uppercase': this.theme === 'uppercase'
     }
   }
   mounted() {
@@ -39,9 +38,6 @@ export default class Splitting extends Vue {
 
 <style lang="sass">
 .text-letters
-  &.is-uppercase
-    text-transform: uppercase
-
   .letter-wrap
     overflow: hidden
 
