@@ -18,7 +18,7 @@ import {Component} from 'vue-property-decorator';
     theme: {
       type: String,
       default: ''
-    },
+    }
   }
 })
 export default class Splitting extends Vue {
@@ -38,13 +38,10 @@ export default class Splitting extends Vue {
 
 <style lang="sass">
 .text-letters
-  .letter-wrap
-    overflow: hidden
+  span
+    display: inline-block
 
-    .letter
-      position: relative
-      transform: translateX(0)
-      transition: transform 1s cubic-bezier(1, .15, .25, 1)
-      transition-delay: 0s
-      will-change: transform
+  .letter
+    position: relative
+    will-change: transform
 </style>

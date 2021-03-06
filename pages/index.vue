@@ -1,16 +1,16 @@
 <template lang="pug">
   main.main
-    First
+    Preview
 </template>
 
 <script>
 import Vue from 'vue'
-import First from '../components/index/First'
+import Preview from '../components/index/Preview'
 import {Component} from 'vue-property-decorator';
 
 @Component({
   components: {
-    First
+    Preview
   }
 })
 export default class index extends Vue {}

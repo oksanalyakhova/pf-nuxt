@@ -21,18 +21,19 @@ import {Component} from 'vue-property-decorator';
     },
   }
 })
-export default class FirstBlock extends Vue {
+export default class IntViewportHeight extends Vue {
   get classObject() {
     return {
       'is-dark': this.theme === 'dark',
-      'is-light': this.theme === 'light'
+      'is-light': this.theme === 'light',
+      'is-transparent': this.theme === 'transparent'
     }
   }
 }
 </script>
 
 <style lang="sass">
-@import './assets/styles/setup'
+@import '../../../assets/styles/setup'
 
 .intViewportHeight
   width: 100vw
@@ -46,7 +47,11 @@ export default class FirstBlock extends Vue {
   &.is-dark
     color: $c-grey
     background-color: $c-black
+
   &.is-light
     color: $c-black
     background-color: $c-grey
+
+  &.is-transparent
+    background-color: transparent
 </style>
