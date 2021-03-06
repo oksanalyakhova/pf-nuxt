@@ -62,7 +62,7 @@ export default class Preview extends Vue {
 
     console.log(letters)
 
-    const action = gsap.timeline({
+    const actionStart = gsap.timeline({
       scrollTrigger: {
         trigger: this.$refs.firstSection,
         pin: true,
@@ -88,17 +88,24 @@ export default class Preview extends Vue {
         duration: 3,
         ease: "none"
       }, "spin -=4")
-
-      .from(this.$refs.positionTop, {
-        xPercent: 300,
-        duration: 3,
-        ease: "none"
-      }, "spin -=4")
-      .from(this.$refs.positionBottom, {
-        xPercent: -300,
-        duration: 3,
-        ease: "none"
-      }, "spin -=4")
+      .fromTo(this.$refs.positionTop, {
+        xPercent: 300
+      },
+        {
+          xPercent: -300,
+          duration: 10,
+          ease: "none"
+        },
+        "spin -=4")
+      .fromTo(this.$refs.positionBottom, {
+        xPercent: -300
+      },
+        {
+          xPercent: 300,
+          duration: 10,
+          ease: "none"
+        },
+        "spin -=4")
       .to({},{duration: 1})
   }
 }
@@ -128,10 +135,10 @@ export default class Preview extends Vue {
         font-size: clamp(4.25rem, 50vw, 400rem)
 
         &:nth-child(1)
-          transform: translateX(43%) rotate(-90deg)
+          transform: translateX(44%) rotate(-90deg)
 
         &:nth-child(2)
-          transform: translateX(-37%) rotate(-90deg)
+          transform: translateX(-34%) rotate(-90deg)
 
 
 
