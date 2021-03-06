@@ -1,7 +1,9 @@
 <template lang="pug">
   .preview
     .section.section_first.section-first(ref="firstSection")
-      IntViewportHeight.section-first__item(ref="firstBlock")
+      IntViewportHeight.section-first__item(
+        ref="firstBlock"
+        )
         img.img(
           :src="`img/o.png`"
           ref="image"
@@ -15,18 +17,20 @@
           :text="`Oksana`"
           )
 
-      IntViewportHeight.section-first__item.from-right.is-large(
+      IntViewportHeight.section-first__item.from-right(
         ref="secondItem"
         theme="transparent"
       )
-        .text.text_light Lyakhova
+        .text.text_light(ref="lastname") Lyakhova
 
-      IntViewportHeight.section-first__item.from-right(
+      IntViewportHeight.section-first__item.from-right.is-large(
         ref="thirdItem"
         theme="dark"
       )
-        .text Frontend
-        .text Developer
+        .text.text_light
+          .vertical(ref="positionTop") Frontend
+        .text.text_light
+          .vertical(ref="positionBottom") Developer
 
     .section.section_second.section-second(ref="secondSection")
       IntViewportHeight
@@ -79,23 +83,39 @@ export default class Preview extends Vue {
         ease: "circ",
         stagger: 0.25
       }, "spin")
+      .to(this.$refs.lastname, {
+        xPercent: -100,
+        duration: 3,
+        ease: "none"
+      }, "spin -=4")
+
+      .from(this.$refs.positionTop, {
+        xPercent: 300,
+        duration: 3,
+        ease: "none"
+      }, "spin -=4")
+      .from(this.$refs.positionBottom, {
+        xPercent: -300,
+        duration: 3,
+        ease: "none"
+      }, "spin -=4")
       .to({},{duration: 1})
   }
 }
 </script>
 
 <style lang="sass">
-.preview
-  overflow: hidden
+@import '../../assets/styles/setup'
 
-  .section
-    position: relative
-    width: 100%
-    height: 100vh
-    height: calc(var(--vh, 1vh) * 100)
-    font-size: clamp(4.25rem, 20vw, 150rem)
+.section-first
+  position: relative
+  width: 100%
+  height: 100vh
+  height: calc(var(--vh, 1vh) * 100)
+  font-size: clamp(4.25rem, 20vw, 150rem)
 
-    .from-right
+  &__item
+    &.from-right
       position: absolute
       top: 0
       left: 100%
@@ -103,9 +123,20 @@ export default class Preview extends Vue {
       height: 100%
       overflow: hidden
 
-      &.is-large
-        padding-right: 60%
-        width: 200%
+    &.is-large
+      .text
+        font-size: clamp(4.25rem, 50vw, 400rem)
+
+        &:nth-child(1)
+          transform: translateX(43%) rotate(-90deg)
+
+        &:nth-child(2)
+          transform: translateX(-37%) rotate(-90deg)
+
+
+
+
+
 
   img
     width: 30vw
