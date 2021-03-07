@@ -1,5 +1,5 @@
 <template lang="pug">
-  .preview
+  .preview(ref="preview")
     .section.section_first.section-first(ref="firstSection")
       IntViewportHeight.section-first__item(
         ref="firstBlock"
@@ -32,8 +32,8 @@
         .text.text_light
           .vertical(ref="positionBottom") Developer
 
-    .section.section_second.section-second(ref="secondSection")
-      IntViewportHeight
+    //.section.section_second.section-second(ref="secondSection")
+    //  IntViewportHeight
 </template>
 
 <script>
@@ -53,14 +53,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default class Preview extends Vue {
   mounted() {
-    console.log(this.$refs.secondItem)
+    this.imageWidth();
     this.scrollAnim();
-  }
-  scrollAnim() {
-    const slides = [...document.querySelectorAll('.from-right')];
-    const letters = [...document.querySelectorAll('.from-right__letters .letter')];
 
-    console.log(letters)
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.imageWidth);
+    })
+  }
+
+  destroyed() {
+    window.removeEventListener('resize', this.imageWidth);
+  }
+
+  imageWidth() {
+    const firstLetter = this.$refs.preview.querySelectorAll('.from-right__letters .letter')[0];
+    this.$refs.image.style.width = firstLetter.clientWidth + 'px';
+  }
+
+  scrollAnim() {
+    const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
+    const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
 
     const actionStart = gsap.timeline({
       scrollTrigger: {
@@ -78,8 +90,8 @@ export default class Preview extends Vue {
         stagger: 3
       }, "spin")
       .from(letters, {
-        x: 1000,
-        duration: 2.5,
+        x: 2000,
+        duration: 2,
         ease: "circ",
         stagger: 0.25
       }, "spin")
@@ -87,26 +99,28 @@ export default class Preview extends Vue {
         xPercent: -100,
         duration: 3,
         ease: "none"
-      }, "spin -=4")
+      }, "spin -=3.5")
       .fromTo(this.$refs.positionTop, {
-        xPercent: 300
+        xPercent: 150
       },
         {
-          xPercent: -300,
+          xPercent: -100,
           duration: 10,
           ease: "none"
         },
-        "spin -=4")
+        "spin -=4.15")
       .fromTo(this.$refs.positionBottom, {
-        xPercent: -300
+        xPercent: -150
       },
         {
-          xPercent: 300,
+          xPercent: 100,
           duration: 10,
           ease: "none"
         },
-        "spin -=4")
+        "spin -=4.15")
       .to({},{duration: 1})
+
+    window.addEventListener('resize', actionStart.update);
   }
 }
 </script>
@@ -119,7 +133,7 @@ export default class Preview extends Vue {
   width: 100%
   height: 100vh
   height: calc(var(--vh, 1vh) * 100)
-  font-size: clamp(4.25rem, 20vw, 150rem)
+  font-size: clamp(4.25rem, 22vw, 200rem)
 
   &__item
     &.from-right
@@ -139,12 +153,4 @@ export default class Preview extends Vue {
 
         &:nth-child(2)
           transform: translateX(-34%) rotate(-90deg)
-
-
-
-
-
-
-  img
-    width: 30vw
 </style>
