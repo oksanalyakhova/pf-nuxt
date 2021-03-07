@@ -13,6 +13,9 @@
         ref="firstItem"
         theme="light"
       )
+
+        .text.text_light.is-letter.is-letter_first(ref="firstO") O
+        //.text.is-letter.is-letter_second(ref="secondO") O
         Splitting.from-right__letters(
           :text="`Oksana`"
           )
@@ -31,9 +34,6 @@
           .vertical(ref="positionTop") Frontend
         .text.text_light
           .vertical(ref="positionBottom") Developer
-
-    //.section.section_second.section-second(ref="secondSection")
-    //  IntViewportHeight
 </template>
 
 <script>
@@ -72,7 +72,10 @@ export default class Preview extends Vue {
 
   scrollAnim() {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
-    const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
+    const firstLetter = this.$refs.preview.querySelectorAll('.from-right__letters .letter')[0];
+    const letters = gsap.utils.toArray(
+      this.$refs.preview.querySelectorAll('.from-right__letters .letter:not(:first-child)')
+    );
 
     const actionStart = gsap.timeline({
       scrollTrigger: {
@@ -83,6 +86,12 @@ export default class Preview extends Vue {
         end: "+=3000"
       }
     })
+      .to(this.$refs.firstO, {
+        xPercent: 375,
+        autoAlpha: 0,
+        duration: 2.75,
+        ease: "circ"
+      }, "spin")
       .to(slides, {
         xPercent: -100,
         duration: 3,
@@ -91,6 +100,12 @@ export default class Preview extends Vue {
       }, "spin")
       .from(letters, {
         x: 2000,
+        duration: 2,
+        ease: "circ",
+        stagger: 0.25
+      }, "spin")
+      .from(firstLetter, {
+        x: -2000,
         duration: 2,
         ease: "circ",
         stagger: 0.25
@@ -153,4 +168,15 @@ export default class Preview extends Vue {
 
         &:nth-child(2)
           transform: translateX(-34%) rotate(-90deg)
+
+    .is-letter
+      @include center(both)
+      left: -50%
+      //
+      //&_second
+      //  opacity: 0
+
+    img
+      @include center(both)
+      display: none
 </style>

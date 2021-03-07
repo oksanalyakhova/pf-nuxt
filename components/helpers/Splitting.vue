@@ -30,7 +30,7 @@ export default class Splitting extends Vue {
   mounted() {
     const words = this.$refs.textLetters;
     words.innerHTML = words.innerText
-      .replace(/./g, "<span class='letter-wrap'><span class='letter' data-letter='$&'>$&</span></span>")
+      .replace(/./g, "<span class='letter' data-letter='$&'>$&</span>")
       .replace(/\s/g, " ");
   }
 }
