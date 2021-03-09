@@ -14,7 +14,10 @@
         theme="light"
       )
 
-        .text.is-letter(ref="o") O
+        .text.is-letter(
+          ref="o"
+          :style="{ transform: 'translateX('+ -translate +'px)'}"
+          ) O
         Splitting.from-right__letters(
           :text="`ksana`"
           )
@@ -47,26 +50,29 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
+  },
+  data() {
+    return {
+      translate: 0
+    }
   }
 })
 
 export default class Preview extends Vue {
   mounted() {
-    this.imageWidth();
     this.scrollAnim();
-
+    this.setStyles();
     this.$nextTick(() => {
-      window.addEventListener('resize', this.imageWidth);
+      window.addEventListener('resize', this.setStyles);
     })
   }
 
   destroyed() {
-    window.removeEventListener('resize', this.imageWidth);
+    window.removeEventListener('resize', this.setStyles);
   }
 
-  imageWidth() {
-    const firstLetter = this.$refs.preview.querySelectorAll('.from-right__letters .letter')[0];
-    this.$refs.image.style.width = firstLetter.clientWidth + 'px';
+  setStyles() {
+    this.translate = window.innerWidth * 0.01 * 68.3;
   }
 
   scrollAnim() {
@@ -82,12 +88,12 @@ export default class Preview extends Vue {
         end: "+=3000",
       }
     })
-      .to(this.$refs.firstO, {
-        xPercent: 375,
-        autoAlpha: 0,
-        duration: 2.75,
-        ease: "power1.inOut"
-      }, "spin")
+      // .to(this.$refs.firstO, {
+      //   xPercent: 375,
+      //   autoAlpha: 0,
+      //   duration: 2.75,
+      //   ease: "power1.inOut"
+      // }, "spin")
       .to(slides, {
         xPercent: -100,
         duration: 3,
@@ -102,7 +108,7 @@ export default class Preview extends Vue {
       }, "spin")
       .to(this.$refs.o, {
         x: 0,
-        duration: 2,
+        duration: 3,
         ease: "circ"
       }, "spin")
       .to(this.$refs.lastname, {
