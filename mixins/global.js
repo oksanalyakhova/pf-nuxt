@@ -8,10 +8,6 @@ export default class Mixin extends Vue {
 
   mounted() {
     this.deviseDetector();
-    this.sizesTrick();
-    this.$nextTick(() => {
-      window.addEventListener('resize', this.sizesTrick);
-    })
 
     this.preloadImages().then(() => {
       document.body.classList.remove('loading');
@@ -27,20 +23,9 @@ export default class Mixin extends Vue {
     // this.$gsap.config({nullTargetWarn:false});
   }
 
-  destroyed() {
-    window.removeEventListener('resize', this.sizesTrick);
-  }
-
   deviseDetector() {
     this.isMobile = 'ontouchstart' in window || navigator.maxTouchPoints;
     this.isMobile ? document.body.classList.add('mobile') : document.body.classList.add('desktop');
-  }
-
-  sizesTrick() {
-    const vh = window.innerHeight * 0.01;
-    const vw = window.innerWidth * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    document.documentElement.style.setProperty('--vw', `${vw}px`);
   }
 
   preloadImages() {

@@ -16,7 +16,7 @@
 
         .text.is-letter(
           ref="o"
-          :style="{ transform: 'translateX('+ -translate +'px)'}"
+          :style="{ transform: 'translateX('+ -translate + 'px)'}"
           ) O
         Splitting.from-right__letters(
           :text="`ksana`"
@@ -61,18 +61,19 @@ gsap.registerPlugin(ScrollTrigger);
 export default class Preview extends Vue {
   mounted() {
     this.scrollAnim();
-    this.setStyles();
-    this.$nextTick(() => {
-      window.addEventListener('resize', this.setStyles);
-    })
+    // this.setStyles();
+    // this.$nextTick(() => {
+    //   window.addEventListener('resize', this.setStyles);
+    // })
   }
 
   destroyed() {
-    window.removeEventListener('resize', this.setStyles);
+    // window.removeEventListener('resize', this.setStyles);
   }
 
   setStyles() {
     this.translate = window.innerWidth * 0.01 * 68.3;
+    console.log(this.translate)
   }
 
   scrollAnim() {
@@ -88,12 +89,6 @@ export default class Preview extends Vue {
         end: "+=3000",
       }
     })
-      // .to(this.$refs.firstO, {
-      //   xPercent: 375,
-      //   autoAlpha: 0,
-      //   duration: 2.75,
-      //   ease: "power1.inOut"
-      // }, "spin")
       .to(slides, {
         xPercent: -100,
         duration: 3,
@@ -108,7 +103,7 @@ export default class Preview extends Vue {
       }, "spin")
       .to(this.$refs.o, {
         x: 0,
-        duration: 3,
+        duration: 2,
         ease: "circ"
       }, "spin")
       .to(this.$refs.lastname, {
@@ -172,7 +167,6 @@ export default class Preview extends Vue {
     .is-letter
       color: $c-grey
       mix-blend-mode: difference
-      transform: translateX(-68.3vw)
 
     img
       @include center(both)
