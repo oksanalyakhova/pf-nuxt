@@ -53,7 +53,7 @@ gsap.registerPlugin(ScrollTrigger);
   },
   data() {
     return {
-      translate: 0
+      translate: window.innerWidth * 0.683
     }
   }
 })
@@ -61,21 +61,17 @@ gsap.registerPlugin(ScrollTrigger);
 export default class Preview extends Vue {
   mounted() {
     this.scrollAnim();
-    // this.setStyles();
-    // this.$nextTick(() => {
-    //   window.addEventListener('resize', this.setStyles);
-    // })
-  }
 
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.setStyles);
+    })
+  }
   destroyed() {
-    // window.removeEventListener('resize', this.setStyles);
+    window.removeEventListener('resize', this.setStyles);
   }
-
   setStyles() {
-    this.translate = window.innerWidth * 0.01 * 68.3;
-    console.log(this.translate)
+    this.translate = window.innerWidth * 0.638;
   }
-
   scrollAnim() {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
     const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
