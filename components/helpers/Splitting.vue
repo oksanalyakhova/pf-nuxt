@@ -38,10 +38,9 @@ export default class Splitting extends Vue {
 
 <style lang="sass">
 .text-letters
-  span
-    display: inline-block
-
   .letter
     position: relative
+    display: inline-block
+    text-rendering: geometricPrecision
     will-change: transform
 </style>

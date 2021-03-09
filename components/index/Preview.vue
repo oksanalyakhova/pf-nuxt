@@ -14,10 +14,9 @@
         theme="light"
       )
 
-        .text.text_light.is-letter.is-letter_first(ref="firstO") O
-        //.text.is-letter.is-letter_second(ref="secondO") O
+        .text.is-letter(ref="o") O
         Splitting.from-right__letters(
-          :text="`Oksana`"
+          :text="`ksana`"
           )
 
       IntViewportHeight.section-first__item.from-right(
@@ -72,10 +71,7 @@ export default class Preview extends Vue {
 
   scrollAnim() {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
-    const firstLetter = this.$refs.preview.querySelectorAll('.from-right__letters .letter')[0];
-    const letters = gsap.utils.toArray(
-      this.$refs.preview.querySelectorAll('.from-right__letters .letter:not(:first-child)')
-    );
+    const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
 
     const actionStart = gsap.timeline({
       scrollTrigger: {
@@ -83,14 +79,14 @@ export default class Preview extends Vue {
         pin: true,
         scrub: 0.3,
         start: "top top",
-        end: "+=3000"
+        end: "+=3000",
       }
     })
       .to(this.$refs.firstO, {
         xPercent: 375,
         autoAlpha: 0,
         duration: 2.75,
-        ease: "circ"
+        ease: "power1.inOut"
       }, "spin")
       .to(slides, {
         xPercent: -100,
@@ -104,11 +100,10 @@ export default class Preview extends Vue {
         ease: "circ",
         stagger: 0.25
       }, "spin")
-      .from(firstLetter, {
-        x: -2000,
+      .to(this.$refs.o, {
+        x: 0,
         duration: 2,
-        ease: "circ",
-        stagger: 0.25
+        ease: "circ"
       }, "spin")
       .to(this.$refs.lastname, {
         xPercent: -100,
@@ -157,7 +152,6 @@ export default class Preview extends Vue {
       left: 100%
       width: 100%
       height: 100%
-      overflow: hidden
 
     &.is-large
       .text
@@ -170,11 +164,9 @@ export default class Preview extends Vue {
           transform: translateX(-34%) rotate(-90deg)
 
     .is-letter
-      @include center(both)
-      left: -50%
-      //
-      //&_second
-      //  opacity: 0
+      color: $c-grey
+      mix-blend-mode: difference
+      transform: translateX(-68.3vw)
 
     img
       @include center(both)
