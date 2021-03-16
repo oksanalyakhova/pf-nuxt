@@ -29,6 +29,13 @@ import {Component} from 'vue-property-decorator';
   }
 })
 export default class IntViewportHeight extends Vue {
+  get classObject() {
+    return {
+      'is-dark': this.theme === 'dark',
+      'is-light': this.theme === 'light',
+      'is-transparent': this.theme === 'transparent'
+    }
+  }
   created() {
     this.setSizes();
   }
@@ -43,13 +50,6 @@ export default class IntViewportHeight extends Vue {
   setSizes() {
     this.vw = window.innerWidth;
     this.vh = window.innerHeight;
-  }
-  get classObject() {
-    return {
-      'is-dark': this.theme === 'dark',
-      'is-light': this.theme === 'light',
-      'is-transparent': this.theme === 'transparent'
-    }
   }
 }
 </script>

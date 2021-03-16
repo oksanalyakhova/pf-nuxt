@@ -17,10 +17,10 @@
     "gsap": "^3.6.0",
     "imagesloaded": "^4.1.4",
     "nuxt": "^2.14.12",
+    "ogl": "^0.0.65",
     "three": "^0.126.0",
     "vue": "^2.6.12",
-    "vue-property-decorator": "^9.1.2",
-    "vue-window-size": "^1.0.3"
+    "vue-property-decorator": "^9.1.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",

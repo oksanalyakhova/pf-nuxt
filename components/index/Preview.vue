@@ -4,10 +4,11 @@
       IntViewportHeight.section-first__item(
         ref="firstBlock"
         )
-        img.img(
-          :src="`img/o.png`"
-          ref="image"
-        )
+        //img.img(
+        //  :src="`img/o.png`"
+        //  ref="image"
+        //)
+        FlowMap
 
       IntViewportHeight.section-first__item.from-right(
         ref="firstItem"
@@ -43,7 +44,8 @@
 
 <script>
 import Vue from 'vue';
-import IntViewportHeight from './parts/IntViewportHeight';
+import IntViewportHeight from './partials/IntViewportHeight';
+import FlowMap from './partials/FlowMap';
 import Component from 'vue-class-component';
 import {gsap} from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
@@ -53,6 +55,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
+    FlowMap
   },
   data() {
     return {
