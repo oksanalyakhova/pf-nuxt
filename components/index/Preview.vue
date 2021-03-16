@@ -16,7 +16,7 @@
 
         .text.is-letter(
           ref="o"
-          :style="{ transform: 'translateX('+ -translate + 'px)'}"
+          :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
         Splitting.from-right__letters(
           :text="`ksana`"
@@ -33,9 +33,12 @@
         theme="dark"
       )
         .text.text_light
-          .vertical(ref="positionTop") Frontend
+          .vertical(ref="top") Frontend
         .text.text_light
-          .vertical(ref="positionBottom") Developer
+          .vertical(ref="bottom") Developer
+      IntViewportHeight.section-first__item(
+        theme="dark"
+      )
 </template>
 
 <script>
@@ -53,24 +56,30 @@ gsap.registerPlugin(ScrollTrigger);
   },
   data() {
     return {
-      translate: window.innerWidth * 0.683
+      vw: window.innerWidth
     }
   }
 })
 
 export default class Preview extends Vue {
+  created() {
+    this.setSizes();
+  }
   mounted() {
     this.scrollAnim();
 
     this.$nextTick(() => {
-      window.addEventListener('resize', this.setStyles);
+      window.addEventListener('resize', this.setSizes);
     })
   }
   destroyed() {
-    window.removeEventListener('resize', this.setStyles);
+    window.removeEventListener('resize', this.setSizes);
   }
-  setStyles() {
-    this.translate = window.innerWidth * 0.638;
+  setSizes() {
+    this.vw = window.innerWidth;
+  }
+  get translate() {
+    return `${ -(this.vw  * 0.699) }`
   }
   scrollAnim() {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
@@ -83,6 +92,7 @@ export default class Preview extends Vue {
         scrub: 0.3,
         start: "top top",
         end: "+=3000",
+        invalidateOnRefresh: true
       }
     })
       .to(slides, {
@@ -91,43 +101,45 @@ export default class Preview extends Vue {
         ease: "none",
         stagger: 3
       }, "spin")
-      .from(letters, {
-        x: 2000,
+      .fromTo(letters, {
+        x: 2000
+      }, {
+        x: 0,
         duration: 2,
         ease: "circ",
-        stagger: 0.25
+        stagger: 0.3
       }, "spin")
       .to(this.$refs.o, {
         x: 0,
-        duration: 2,
-        ease: "circ"
+        duration: 1.5,
+        ease: "none"
       }, "spin")
       .to(this.$refs.lastname, {
         xPercent: -100,
         duration: 3,
         ease: "none"
       }, "spin -=3.5")
-      .fromTo(this.$refs.positionTop, {
+      .fromTo(this.$refs.top, {
         xPercent: 150
-      },
-        {
-          xPercent: -100,
+      }, {
+          xPercent: -150,
           duration: 10,
           ease: "none"
         },
         "spin -=4.15")
-      .fromTo(this.$refs.positionBottom, {
+      .fromTo(this.$refs.bottom, {
         xPercent: -150
-      },
-        {
-          xPercent: 100,
+      }, {
+          xPercent: 150,
           duration: 10,
           ease: "none"
         },
         "spin -=4.15")
       .to({},{duration: 1})
 
-    window.addEventListener('resize', actionStart.update);
+    window.addEventListener('resize', () => {
+      ScrollTrigger.refresh()
+    });
   }
 }
 </script>

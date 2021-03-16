@@ -19,7 +19,8 @@
     "nuxt": "^2.14.12",
     "three": "^0.126.0",
     "vue": "^2.6.12",
-    "vue-property-decorator": "^9.1.2"
+    "vue-property-decorator": "^9.1.2",
+    "vue-window-size": "^1.0.3"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
