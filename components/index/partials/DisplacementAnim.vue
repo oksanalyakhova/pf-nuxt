@@ -67,22 +67,7 @@ export default class DisplacementAnim extends Vue {
     });
 
     // gsap
-    gsap.set(displacementFilter.scale,{x: 50,y: 40});
-    //
-    // gsap.to(displacementFilter.scale,{
-    //   x: 40,
-    //   y: 10,
-    //   duration: 2,
-    //   ease: "none",
-    //   scrollTrigger: {
-    //     trigger: refSectionFirst.current,
-    //     pin: true,
-    //     scrub: 0.3,
-    //     start: "top top",
-    //     end: "+=3000"
-    //   }
-    // });
-
+    gsap.set(displacementFilter.scale,{x: 50,y: 20});
 
     return () => {
       application.destroy(true);
