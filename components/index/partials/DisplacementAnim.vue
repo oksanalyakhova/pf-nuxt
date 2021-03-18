@@ -1,5 +1,4 @@
 <template lang="pug">
-  //:style="{width: `${cw}px`, height: `${ch}px`}"
   .canvas-wrap(
     ref="canvasWrap"
   )
@@ -15,40 +14,12 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-@Component({
-  props: {
-    width: {
-      type: Number,
-      default: 0
-    },
-    height: {
-      type: Number,
-      default: 0
-    },
-  },
-  data() {
-    return {
-      cw: this.width,
-      ch: this.height
-    }
-  }
-})
-
+@Component
 export default class DisplacementAnim extends Vue {
   mounted() {
     this.$nextTick(() => {
-      this.setSizes();
       this.runPixi();
-
-      window.addEventListener('resize', this.setSizes);
     })
-  }
-  destroyed() {
-    window.removeEventListener('resize', this.setSizes);
-  }
-  setSizes() {
-    this.cw = this.width;
-    this.ch = this.height;
   }
 
   runPixi() {
@@ -96,7 +67,7 @@ export default class DisplacementAnim extends Vue {
     });
 
     // gsap
-    // gsap.set(displacementFilter.scale,{x: 100,y: 200});
+    gsap.set(displacementFilter.scale,{x: 50,y: 40});
     //
     // gsap.to(displacementFilter.scale,{
     //   x: 40,

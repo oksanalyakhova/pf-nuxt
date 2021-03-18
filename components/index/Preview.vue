@@ -13,11 +13,7 @@
           ref="o"
           :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
-          DisplacementAnim(
-            ref="canvas"
-            :width="ow"
-            :height="oh"
-          )
+          DisplacementAnim
         Splitting.from-right__letters(
           :text="`ksana`"
           )
@@ -60,41 +56,30 @@ if (typeof window !== 'undefined') {
   },
   data() {
     return {
-      vw: window.innerWidth,
-      ow: 0,
-      oh: 0
+      vw: window.innerWidth
     }
   }
 })
 
 export default class Preview extends Vue {
-  get translate() {
-    return `${ -(this.vw  * 0.699) }`
-  }
   created() {
     this.setWindowSizes();
   }
   mounted() {
     this.scrollAnim();
-    this.setOSizes();
-    window.addEventListener('resize', this.setOSizes);
 
     this.$nextTick(() => {
       window.addEventListener('resize', this.setWindowSizes);
     })
   }
   destroyed() {
-    window.removeEventListener('resize', () => {
-      this.setWindowSizes();
-      this.setOSizes();
-    });
+    window.removeEventListener('resize', this.setWindowSizes);
   }
   setWindowSizes() {
     this.vw = window.innerWidth;
   }
-  setOSizes() {
-    this.ow = this.$refs.o.clientWidth;
-    this.oh = this.$refs.o.clientHeight;
+  get translate() {
+    return `${ -(this.vw  * 0.699) }`
   }
   scrollAnim() {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
