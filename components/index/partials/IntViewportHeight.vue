@@ -11,12 +11,6 @@ import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 
 @Component({
-  data() {
-    return {
-      vw: window.innerWidth,
-      vh: window.innerHeight
-    }
-  },
   props: {
     className: {
       type: String,
@@ -26,6 +20,12 @@ import {Component} from 'vue-property-decorator';
       type: String,
       default: 'dark'
     },
+  },
+  data() {
+    return {
+      vw: window.innerWidth,
+      vh: window.innerHeight
+    }
   }
 })
 export default class IntViewportHeight extends Vue {

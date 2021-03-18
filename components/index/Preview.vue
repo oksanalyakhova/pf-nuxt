@@ -2,18 +2,22 @@
   .preview(ref="preview")
     .section.section_first.section-first(ref="firstSection")
       IntViewportHeight.section-first__item(
-        ref="firstBlock"
+          ref="firstBlock"
         )
 
       IntViewportHeight.section-first__item.from-right(
         ref="firstItem"
         theme="light"
       )
-
         .text.is-letter(
           ref="o"
           :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
+          DisplacementAnim(
+            ref="canvas"
+            :width="ow"
+            :height="oh"
+          )
         Splitting.from-right__letters(
           :text="`ksana`"
           )
@@ -40,44 +44,57 @@
 <script>
 import Vue from 'vue';
 import IntViewportHeight from './partials/IntViewportHeight';
-import FlowMap from './partials/FlowMap';
+import DisplacementAnim from './partials/DisplacementAnim';
 import Component from 'vue-class-component';
 import {gsap} from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 @Component({
   components: {
     IntViewportHeight,
-    FlowMap
+    DisplacementAnim
   },
   data() {
     return {
-      vw: window.innerWidth
+      vw: window.innerWidth,
+      ow: 0,
+      oh: 0
     }
   }
 })
 
 export default class Preview extends Vue {
+  get translate() {
+    return `${ -(this.vw  * 0.699) }`
+  }
   created() {
     this.setWindowSizes();
   }
   mounted() {
     this.scrollAnim();
+    this.setOSizes();
+    window.addEventListener('resize', this.setOSizes);
 
     this.$nextTick(() => {
       window.addEventListener('resize', this.setWindowSizes);
     })
   }
   destroyed() {
-    window.removeEventListener('resize', this.setWindowSizes);
+    window.removeEventListener('resize', () => {
+      this.setWindowSizes();
+      this.setOSizes();
+    });
   }
   setWindowSizes() {
     this.vw = window.innerWidth;
   }
-  get translate() {
-    return `${ -(this.vw  * 0.699) }`
+  setOSizes() {
+    this.ow = this.$refs.o.clientWidth;
+    this.oh = this.$refs.o.clientHeight;
   }
   scrollAnim() {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
@@ -171,10 +188,6 @@ export default class Preview extends Vue {
           transform: translateX(-34%) rotate(-90deg)
 
     .is-letter
-      color: $c-grey
+      color: transparent
       mix-blend-mode: difference
-
-    img
-      @include center(both)
-      display: none
 </style>
