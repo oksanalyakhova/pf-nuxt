@@ -4,7 +4,6 @@
       IntViewportHeight.section-first__item(
         ref="firstBlock"
         )
-        FlowMap
 
       IntViewportHeight.section-first__item.from-right(
         ref="firstItem"

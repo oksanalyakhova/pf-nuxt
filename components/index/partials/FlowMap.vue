@@ -10,17 +10,17 @@
 
 <script>
 import Vue from 'vue';
-import {mapState} from 'vuex';
-import {Component, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import {
   Renderer,
-  Program,
+  Camera,
+  Transform,
+  Geometry,
   Texture,
+  Program,
   Mesh,
-  Vec2,
-  Vec4,
-  Flowmap,
-  Geometry
+  Orbit,
+  Text
 } from 'ogl/src/index.mjs';
 
 @Component({
@@ -55,181 +55,127 @@ export default class FlowMap extends Vue {
     let _this = this;
 
     const vertex = `
-					attribute vec2 uv;
-					attribute vec2 position;
-					varying vec2 vUv;
-					void main() {
-							vUv = uv;
-							gl_Position = vec4(position, 0, 1);
-					}
-			`;
+                attribute vec2 uv;
+                attribute vec3 position;
+                uniform mat4 modelViewMatrix;
+                uniform mat4 projectionMatrix;
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `;
+
     const fragment = `
-					precision highp float;
-					precision highp int;
-					uniform sampler2D tWater;
-					uniform sampler2D tFlow;
-					uniform float uTime;
-					varying vec2 vUv;
-					uniform vec4 res;
-					void main() {
-							// R and G values are velocity in the x and y direction
-							// B value is the velocity length
-							vec3 flow = texture2D(tFlow, vUv).rgb;
-              vec2 uv = .5 * gl_FragCoord.xy / res.xy ;
-              vec2 myUV = (uv - vec2(0.5))*res.zw + vec2(0.5);
-              myUV -= flow.xy * (0.15 * 0.5);
-              vec3 tex = texture2D(tWater, myUV).rgb;
-              gl_FragColor.rgb = vec3(tex.r, tex.g, tex.b);
-              gl_FragColor.a = tex.r;
-					}
-			`;
+                uniform sampler2D tMap;
+                varying vec2 vUv;
+                void main() {
+                    vec3 tex = texture2D(tMap, vUv).rgb;
+                    float signedDist = max(min(tex.r, tex.g), min(max(tex.r, tex.g), tex.b)) - 0.5;
+                    float d = fwidth(signedDist);
+                    float alpha = smoothstep(-d, d, signedDist);
+                    if (alpha < 0.01) discard;
+                    gl_FragColor.rgb = vec3(0.0);
+                    gl_FragColor.a = alpha;
+                }
+            `;
+
+    const vertex100 = `
+            ` + vertex;
+
+    const fragment100 =
+      `#extension GL_OES_standard_derivatives : enable
+                precision highp float;
+            ` + fragment;
+
+    const vertex300 =
+      `#version 300 es
+                #define attribute in
+                #define varying out
+            ` + vertex;
+
+    const fragment300 =
+      `#version 300 es
+                precision highp float;
+                #define varying in
+                #define texture2D texture
+                #define gl_FragColor FragColor
+                out vec4 FragColor;
+            ` + fragment;
+
     {
-      const renderer = new Renderer({
-        dpr: 2,
-        alpha: true,
-        premultipliedAlpha: true
-      });
+      const renderer = new Renderer({ dpr: 2 });
       const gl = renderer.gl;
-      _this.$refs.frame.appendChild(gl.canvas);
+      document.body.appendChild(gl.canvas);
+      gl.clearColor(1, 1, 1, 1);
 
-      const isTouchCapable = "ontouchstart" in window;
+      const camera = new Camera(gl, { fov: 45 });
+      camera.position.set(0, 0, 7);
 
-      // Variable inputs to control flowmap
-      let aspect = 1;
-      const mouse = new Vec2(-1);
-      const velocity = new Vec2();
+      const controls = new Orbit(camera);
+
       function resize() {
-        let a1, a2;
-        var imageAspect = _this.imgSize[1] / _this.imgSize[0];
-
-        if (_this.vh / _this.vw < imageAspect) {
-          a1 = 1;
-          a2 = _this.vh / _this.vw / imageAspect;
-        } else {
-          a1 = (_this.vw / _this.vh) * imageAspect;
-          a2 = 1;
-        }
-        mesh.program.uniforms.res.value = new Vec4(
-          _this.vw,
-          _this.vh,
-          a1,
-          a2
-        );
-
-        renderer.setSize(_this.vw, _this.vh);
-        aspect = _this.vw / _this.vh;
+        renderer.setSize(300, 200);
+        camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
       }
-      const flowmap = new Flowmap(gl, { falloff: 0.2, dissipation: 0.9 });
-      // Triangle that includes -1 to 1 range for 'position', and 0 to 1 range for 'uv'.
-      const geometry = new Geometry(gl, {
-        position: {
-          size: 2,
-          data: new Float32Array([-1, -1, 3, -1, -1, 3])
-        },
-        uv: { size: 2, data: new Float32Array([0, 0, 2, 0, 0, 2]) }
-      });
+      window.addEventListener('resize', resize, false);
+      resize();
+
+      const scene = new Transform();
+
       const texture = new Texture(gl, {
-        minFilter: gl.LINEAR,
-        magFilter: gl.LINEAR,
-        premultiplyAlpha: true
+        generateMipmaps: false,
       });
       const img = new Image();
       img.onload = () => (texture.image = img);
-      img.crossOrigin = "Anonymous";
-      img.src = "img/o.png";
-
-      let a1, a2;
-      var imageAspect = _this.imgSize[1] / _this.imgSize[0];
-      if (_this.vh / _this.vw < imageAspect) {
-        a1 = 1;
-        a2 = _this.vh / _this.vw / imageAspect;
-      } else {
-        a1 = (_this.vw / _this.vh) * imageAspect;
-        a2 = 1;
-      }
+      img.src = 'NeueMontreal-Bold.png';
 
       const program = new Program(gl, {
-        vertex,
-        fragment,
+        // Get fallback shader for WebGL1 - needed for OES_standard_derivatives ext
+        vertex: renderer.isWebgl2 ? vertex300 : vertex100,
+        fragment: renderer.isWebgl2 ? fragment300 : fragment100,
         uniforms: {
-          uTime: { value: 0 },
-          tWater: { value: texture },
-          res: {
-            value: new Vec4(_this.vw, _this.vh, a1, a2)
-          },
-          img: { value: new Vec2(_this.imgSize[0], _this.imgSize[1]) },
-          // Note that the uniform is applied without using an object and value property
-          // This is because the class alternates this texture between two render targets
-          // and updates the value property after each render.
-          tFlow: flowmap.uniform
-        }
+          tMap: { value: texture },
+        },
+        transparent: true,
+        cullFace: null,
+        depthWrite: false,
       });
-      const mesh = new Mesh(gl, { geometry, program });
 
-      window.addEventListener("resize", resize, false);
-      resize();
+      loadText();
+      async function loadText() {
+        const font = await (await fetch('NeueMontreal-Bold-msdf.json')).json();
 
-      // Create handlers to get mouse position and velocity
-      // const isTouchCapable = "ontouchstart" in window;
-      if (isTouchCapable) {
-        window.addEventListener("touchstart", updateMouse, false);
-        window.addEventListener("touchmove", updateMouse, { passive: false });
-      } else {
-        window.addEventListener("mousemove", updateMouse, false);
+        const text = new Text({
+          font,
+          text: "O",
+          width: 4,
+          align: 'center',
+          size: 6.2,
+          lineHeight: 1.1,
+        });
+
+        // Pass the generated buffers into a geometry
+        const geometry = new Geometry(gl, {
+          position: { size: 3, data: text.buffers.position },
+          uv: { size: 2, data: text.buffers.uv },
+          id: { size: 1, data: text.buffers.id },
+          index: { data: text.buffers.index },
+        });
+
+        const mesh = new Mesh(gl, { geometry, program });
+
+        // Use the height value to position text vertically. Here it is centered.
+        mesh.position.y = text.height * 0.5;
+        mesh.setParent(scene);
       }
-      let lastTime;
-      const lastMouse = new Vec2();
-      function updateMouse(e) {
-        e.preventDefault();
-        if (e.changedTouches && e.changedTouches.length) {
-          e.x = e.changedTouches[0].pageX;
-          e.y = e.changedTouches[0].pageY;
-        }
-        if (e.x === undefined) {
-          e.x = e.pageX;
-          e.y = e.pageY;
-        }
-        // Get mouse value in 0 to 1 range, with y flipped
-        mouse.set(e.x / gl.renderer.width, 1.0 - e.y / gl.renderer.height);
-        // Calculate velocity
-        if (!lastTime) {
-          // First frame
-          lastTime = performance.now();
-          lastMouse.set(e.x, e.y);
-        }
 
-        const deltaX = e.x - lastMouse.x;
-        const deltaY = e.y - lastMouse.y;
-
-        lastMouse.set(e.x, e.y);
-
-        let time = performance.now();
-
-        // Avoid dividing by 0
-        let delta = Math.max(10.4, time - lastTime);
-        lastTime = time;
-        velocity.x = deltaX / delta;
-        velocity.y = deltaY / delta;
-        // Flag update to prevent hanging velocity values when not moving
-        velocity.needsUpdate = true;
-      }
       requestAnimationFrame(update);
       function update(t) {
         requestAnimationFrame(update);
-        // Reset velocity when mouse not moving
-        if (!velocity.needsUpdate) {
-          mouse.set(-1);
-          velocity.set(0);
-        }
-        velocity.needsUpdate = false;
-        // Update flowmap inputs
-        flowmap.aspect = aspect;
-        flowmap.mouse.copy(mouse);
-        // Ease velocity input, slower when fading out
-        flowmap.velocity.lerp(velocity, velocity.len ? 0.15 : 0.1);
-        flowmap.update();
-        program.uniforms.uTime.value = t * 0.01;
-        renderer.render({ scene: mesh });
+        controls.update();
+        renderer.render({ scene, camera });
       }
     }
   }
@@ -237,5 +183,9 @@ export default class FlowMap extends Vue {
 </script>
 
 <style lang="sass">
-
+  canvas
+    position: fixed
+    top: 0
+    left: 0
+    pointer-events: none
 </style>
