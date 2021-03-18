@@ -2,15 +2,16 @@
   .frame(
     ref="frame"
   )
-    //img.img(
-    //  :src="`img/o.png`"
-    //  ref="image"
-    //)
+    img.img(
+      :src="`img/o.png`"
+      ref="image"
+    )
 </template>
 
 <script>
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {mapState} from 'vuex';
+import {Component, Watch} from 'vue-property-decorator';
 import {
   Renderer,
   Program,
@@ -20,17 +21,38 @@ import {
   Vec4,
   Flowmap,
   Geometry
-} from 'ogl';
+} from 'ogl/src/index.mjs';
 
 @Component({
-
+  data() {
+    return {
+      vw: window.innerWidth,
+      vh: window.innerHeight,
+      imgSize: [516, 542]
+    }
+  }
 })
 export default class FlowMap extends Vue {
+  created() {
+    this.setSizes();
+  }
   mounted() {
-    this.runWebGL();
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.setSizes();
+      });
+      this.runWebGL();
+    })
+  }
+  destroyed() {
+    window.removeEventListener('resize', this.setSizes);
+  }
+  setSizes() {
+    this.vw = window.innerWidth;
+    this.vh = window.innerHeight;
   }
   runWebGL() {
-    let imgSize = [1600, 1200];
+    let _this = this;
 
     const vertex = `
 					attribute vec2 uv;
@@ -68,9 +90,7 @@ export default class FlowMap extends Vue {
         premultipliedAlpha: true
       });
       const gl = renderer.gl;
-      gl.canvas.classList.add("demo3");
-      console.log(this.$refs.frame)
-      this.$refs.frame.appendChild(gl.canvas);
+      _this.$refs.frame.appendChild(gl.canvas);
 
       const isTouchCapable = "ontouchstart" in window;
 
@@ -80,23 +100,24 @@ export default class FlowMap extends Vue {
       const velocity = new Vec2();
       function resize() {
         let a1, a2;
-        var imageAspect = imgSize[1] / imgSize[0];
-        if (window.innerHeight / window.innerWidth < imageAspect) {
+        var imageAspect = _this.imgSize[1] / _this.imgSize[0];
+
+        if (_this.vh / _this.vw < imageAspect) {
           a1 = 1;
-          a2 = window.innerHeight / window.innerWidth / imageAspect;
+          a2 = _this.vh / _this.vw / imageAspect;
         } else {
-          a1 = (window.innerWidth / window.innerHeight) * imageAspect;
+          a1 = (_this.vw / _this.vh) * imageAspect;
           a2 = 1;
         }
         mesh.program.uniforms.res.value = new Vec4(
-          window.innerWidth,
-          window.innerHeight,
+          _this.vw,
+          _this.vh,
           a1,
           a2
         );
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        aspect = window.innerWidth / window.innerHeight;
+        renderer.setSize(_this.vw, _this.vh);
+        aspect = _this.vw / _this.vh;
       }
       const flowmap = new Flowmap(gl, { falloff: 0.2, dissipation: 0.9 });
       // Triangle that includes -1 to 1 range for 'position', and 0 to 1 range for 'uv'.
@@ -115,22 +136,15 @@ export default class FlowMap extends Vue {
       const img = new Image();
       img.onload = () => (texture.image = img);
       img.crossOrigin = "Anonymous";
-
-      if (isTouchCapable) {
-        img.src = "img/o.png";
-
-        imgSize = [800, 1000];
-      } else {
-        img.src = "img/o.png";
-      }
+      img.src = "img/o.png";
 
       let a1, a2;
-      var imageAspect = imgSize[1] / imgSize[0];
-      if (window.innerHeight / window.innerWidth < imageAspect) {
+      var imageAspect = _this.imgSize[1] / _this.imgSize[0];
+      if (_this.vh / _this.vw < imageAspect) {
         a1 = 1;
-        a2 = window.innerHeight / window.innerWidth / imageAspect;
+        a2 = _this.vh / _this.vw / imageAspect;
       } else {
-        a1 = (window.innerWidth / window.innerHeight) * imageAspect;
+        a1 = (_this.vw / _this.vh) * imageAspect;
         a2 = 1;
       }
 
@@ -141,9 +155,9 @@ export default class FlowMap extends Vue {
           uTime: { value: 0 },
           tWater: { value: texture },
           res: {
-            value: new Vec4(window.innerWidth, window.innerHeight, a1, a2)
+            value: new Vec4(_this.vw, _this.vh, a1, a2)
           },
-          img: { value: new Vec2(imgSize[0], imgSize[1]) },
+          img: { value: new Vec2(_this.imgSize[0], _this.imgSize[1]) },
           // Note that the uniform is applied without using an object and value property
           // This is because the class alternates this texture between two render targets
           // and updates the value property after each render.

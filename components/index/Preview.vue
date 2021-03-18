@@ -4,10 +4,6 @@
       IntViewportHeight.section-first__item(
         ref="firstBlock"
         )
-        //img.img(
-        //  :src="`img/o.png`"
-        //  ref="image"
-        //)
         FlowMap
 
       IntViewportHeight.section-first__item.from-right(
@@ -66,19 +62,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default class Preview extends Vue {
   created() {
-    this.setSizes();
+    this.setWindowSizes();
   }
   mounted() {
     this.scrollAnim();
 
     this.$nextTick(() => {
-      window.addEventListener('resize', this.setSizes);
+      window.addEventListener('resize', this.setWindowSizes);
     })
   }
   destroyed() {
-    window.removeEventListener('resize', this.setSizes);
+    window.removeEventListener('resize', this.setWindowSizes);
   }
-  setSizes() {
+  setWindowSizes() {
     this.vw = window.innerWidth;
   }
   get translate() {
