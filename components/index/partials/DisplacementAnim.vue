@@ -111,6 +111,7 @@ export default class DisplacementAnim extends Vue {
     // window on load
     window.addEventListener('load', this.load(displacementFilter.scale));
 
+    // mouse actions
     this.mouse(application.stage, displacementFilter.scale);
 
     return () => {
