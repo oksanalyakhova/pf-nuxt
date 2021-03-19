@@ -1,11 +1,13 @@
 <template lang="pug">
   .projects
     ul.projects-list
-      ProjectItem(
-        :project="project"
+      li.project(
         v-for="project in projects"
         :key="project.label"
       )
+        ProjectItem(
+          :project="project"
+        )
 </template>
 
 <script>
@@ -34,4 +36,10 @@ export default class Projects extends Vue {}
   padding: 0 6.25vw 50vh
   background-color: $c-grey
 
+  .project
+    margin: 0 0 5vw
+    user-select: none
+
+    +rmin(1024)
+      margin: 0 0 100px
 </style>

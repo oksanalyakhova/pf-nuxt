@@ -145,7 +145,7 @@ export default class Preview extends Vue {
           duration: 2,
           ease: "none"
         },
-        "spin +=2.85")
+        "spin +=3.25")
 
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()

@@ -1,20 +1,19 @@
 <template lang="pug">
-  li.project__item
-    a.project__link(
-      :href="project.href"
-      target="_blank"
-      rel="nofollow"
-      @mouseenter="Enter"
-      @mouseleave="Leave"
-    )
-      h2.project-title(
-        :data-project="project.label"
-      ) {{project.titleStart}}
-        span.stroke {{project.titleEnd}}
-        span.fill(
-          ref="fill"
-        ) {{project.titleEnd}}
-      .project-info {{project.info}}
+  a.project__link(
+    :href="project.href"
+    target="_blank"
+    rel="nofollow"
+    @mouseenter="Enter"
+    @mouseleave="Leave"
+  )
+    h2.project-title(
+      :data-project="project.label"
+    ) {{project.titleStart}}
+      span.stroke {{project.titleEnd}}
+      span.fill(
+        ref="fill"
+      ) {{project.titleEnd}}
+    .project-info {{project.info}}
 </template>
 
 <script>
@@ -75,13 +74,6 @@ export default class ProjectItem extends Vue {
 @import '../../../assets/styles/setup'
 
 .project
-  &__item
-    margin: 0 0 5vw
-    user-select: none
-
-    +rmin(1024)
-      margin: 0 0 100px
-
   &__link
     position: relative
     width: fit-content
@@ -92,14 +84,11 @@ export default class ProjectItem extends Vue {
       position: relative
       display: inline-block
       font-weight: normal
-      font-size: 5.2083vw
+      font-size: clamp(2.25rem, 6vw, 60rem)
       line-height: 1.25
       letter-spacing: .05em
       -webkit-text-stroke-width: 1px
       -webkit-text-stroke-color: $c-black
-
-      +rmin(1024)
-        font-size: 50px
 
       .stroke
         color: transparent
