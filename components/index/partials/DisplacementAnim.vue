@@ -20,20 +20,48 @@ export default class DisplacementAnim extends Vue {
     })
   }
 
-  load(target) {
+  load(animTarget) {
     const loadingStart = gsap.timeline()
       .to(this.$refs.mask, {
         scaleY: 0,
         duration: 2,
         ease: "none",
       })
-      .to(target, {
+      .to(animTarget, {
         x: 50,
         y: 30,
         duration: 5,
         delay: 0.5,
         ease: "none",
       })
+  }
+
+  mouse(target, animTarget) {
+    let mouseIn = false;
+    target.on('mouseover', (e) => {
+      mouseIn = true;
+    })
+    target.on('mouseout', (e) => {
+      mouseIn = false;
+
+      gsap.to(animTarget, {
+        x: 50,
+        y: 30,
+        ease: "none",
+      })
+    })
+    target.on('mousemove', (e) => {
+      if (mouseIn) {
+        let x = e.data.global.x;
+        let y = e.data.global.y;
+
+        gsap.to(animTarget, {
+          x: x / 5,
+          y: y / 5,
+          ease: "none",
+        })
+      }
+    })
   }
 
   runPixi() {
@@ -82,6 +110,8 @@ export default class DisplacementAnim extends Vue {
 
     // window on load
     window.addEventListener('load', this.load(displacementFilter.scale));
+
+    this.mouse(application.stage, displacementFilter.scale);
 
     return () => {
       application.destroy(true);
