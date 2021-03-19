@@ -2,29 +2,41 @@
   {
     "href": "#",
     "label": "nicole",
-    "titleStart": "Jewelry",
-    "titleEnd": "House",
-    "preview": "img/projects/nicole.gif"
+    "titleStart": "Nic",
+    "titleEnd": "ole",
+    "preview": "img/projects/nicole.gif",
+    "info": "Jewellery store"
   },
   {
     "href": "#",
     "label": "mdc",
-    "titleStart": "Medical",
-    "titleEnd": "Centre",
-    "preview": "img/projects/mdc.png"
+    "titleStart": "MD",
+    "titleEnd": "C",
+    "preview": "img/projects/mdc.png",
+    "info": "Medical Centre website"
   },
   {
     "href": "#",
     "label": "jeep",
-    "titleStart": "Auto",
-    "titleEnd": "Dealer",
-    "preview": "img/projects/jeep.gif"
+    "titleStart": "Je",
+    "titleEnd": "ep",
+    "preview": "img/projects/jeep.gif",
+    "info": "Jeep Official Ukraine website"
   },
   {
     "href": "#",
     "label": "nico",
-    "titleStart": "Jewelry",
-    "titleEnd": "House",
-    "preview": "img/projects/nico.png"
+    "titleStart": "Nico",
+    "titleEnd": "Juliany",
+    "preview": "img/projects/nico.png",
+    "info": "Jewellery store"
+  },
+  {
+    "href": "#",
+    "label": "latexfauna",
+    "titleStart": "Latex",
+    "titleEnd": "fauna",
+    "preview": "img/projects/latex.png",
+    "info": "Musical Band website"
   }
 ]

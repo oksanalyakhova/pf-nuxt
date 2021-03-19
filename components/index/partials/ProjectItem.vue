@@ -23,20 +23,53 @@ import {Component} from 'vue-property-decorator';
       type: Object,
       default: () => {}
     }
-  },
-  data() {
-    return {
-
-    }
   }
 })
-export default class ProjectItem extends Vue {
-
-}
+export default class ProjectItem extends Vue {}
 </script>
 
 <style lang="sass">
 @import '../../../assets/styles/setup'
 
+.project
+  &__link
+    color: $c-black
+
+    .project-title
+      margin: 0
+      position: relative
+      display: inline-block
+      font-weight: normal
+      font-size: 5.2083vw
+      line-height: 1.25
+      letter-spacing: .025em
+      -webkit-text-stroke-width: 1px
+      -webkit-text-stroke-color: $c-black
+
+      +rmin(1024)
+        font-size: 50px
+
+      .stroke
+        padding-left: .3em
+        color: transparent
+        -webkit-text-fill-color: transparent
+        -webkit-text-stroke-width: 1px
+        -webkit-text-stroke-color: $c-black
+
+      .fill
+        position: absolute
+        top: 0
+        right: 0
+
+    .project-info
+      position: absolute
+      left: 0
+      top: 100%
+      opacity: 0
+      user-select: none
+      font-weight: bold
+      font-size: 12px
+      line-height: 1.6667
+      text-transform: uppercase
 
 </style>
