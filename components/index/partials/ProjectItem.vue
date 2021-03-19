@@ -50,11 +50,8 @@ export default class ProjectItem extends Vue {}
         font-size: 50px
 
       .stroke
-        padding-left: .3em
         color: transparent
         -webkit-text-fill-color: transparent
-        -webkit-text-stroke-width: 1px
-        -webkit-text-stroke-color: $c-black
 
       .fill
         position: absolute
