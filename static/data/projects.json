@@ -1,0 +1,30 @@
+[
+  {
+    "href": "#",
+    "label": "nicole",
+    "titleStart": "Jewelry",
+    "titleEnd": "House",
+    "preview": "img/projects/nicole.gif"
+  },
+  {
+    "href": "#",
+    "label": "mdc",
+    "titleStart": "Medical",
+    "titleEnd": "Centre",
+    "preview": "img/projects/mdc.png"
+  },
+  {
+    "href": "#",
+    "label": "jeep",
+    "titleStart": "Auto",
+    "titleEnd": "Dealer",
+    "preview": "img/projects/jeep.gif"
+  },
+  {
+    "href": "#",
+    "label": "nico",
+    "titleStart": "Jewelry",
+    "titleEnd": "House",
+    "preview": "img/projects/nico.png"
+  }
+]

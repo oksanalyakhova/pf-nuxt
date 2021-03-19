@@ -9,9 +9,9 @@
         ref="firstItem"
         theme="light"
       )
-        //:style="{transform: 'translateX('+ translate + 'px)'}"
         .text.is-letter(
           ref="o"
+          :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
           DisplacementAnim
         Splitting.from-right__letters(
@@ -75,7 +75,6 @@ export default class Preview extends Vue {
   }
   setWindowSizes() {
     this.vw = window.innerWidth;
-
   }
   get translate() {
     return `${ -(this.vw  * 0.699) }`
@@ -84,7 +83,7 @@ export default class Preview extends Vue {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
     const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
 
-    gsap.set(this.$refs.o,{x: this.translate});
+    // gsap.set(this.$refs.o,{x: this.translate});
 
     const actionStart = gsap.timeline({
       scrollTrigger: {
@@ -136,7 +135,6 @@ export default class Preview extends Vue {
           ease: "none"
         },
         "spin -=4.15")
-      .to({},{duration: 1})
 
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()
