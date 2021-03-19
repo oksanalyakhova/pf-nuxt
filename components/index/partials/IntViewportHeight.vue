@@ -59,7 +59,9 @@ export default class IntViewportHeight extends Vue {
 
 .intViewportHeight
   width: 100vw
+  width: calc(var(--vw, 1vw) * 100)
   height: 100vh
+  height: calc(var(--vh, 1vh) * 100)
   display: flex
   justify-content: center
   align-items: center

@@ -6,7 +6,7 @@
       rel="nofollow"
     )
       h2.project-title(
-        data-project="project.label"
+        :data-project="project.label"
       ) {{project.titleStart}}
         span.stroke {{project.titleEnd}}
         span.fill {{project.titleEnd}}
@@ -21,7 +21,7 @@ import {Component} from 'vue-property-decorator';
   props: {
     project: {
       type: Object,
-      default: {}
+      default: () => {}
     }
   },
   data() {

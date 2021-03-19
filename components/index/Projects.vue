@@ -2,8 +2,9 @@
   .projects
     ul.projects-list
       ProjectItem(
+        :project="project"
         v-for="project in projects"
-        :key="project.id"
+        :key="project.label"
       )
 </template>
 
@@ -17,42 +18,20 @@ import ProjectItem from './partials/ProjectItem';
     ProjectItem
   },
   props: {
-    // className: {
-    //   type: String,
-    //   default: ''
-    // },
-    // theme: {
-    //   type: String,
-    //   default: 'dark'
-    // },
-  },
-  data() {
-    return {
-      // vw: window.innerWidth,
-      // vh: window.innerHeight
-    }
+    projects: {
+      type: Array,
+      default: () => []
+    },
   }
 })
-export default class Projects extends Vue {
-  // get classObject() {
-  //   return {
-  //     'is-dark': this.theme === 'dark',
-  //     'is-light': this.theme === 'light',
-  //     'is-transparent': this.theme === 'transparent'
-  //   }
-  // }
-  // created() {
-  //
-  // mounted() {
-  //
-  // }
-
-
-}
+export default class Projects extends Vue {}
 </script>
 
 <style lang="sass">
 @import '../../assets/styles/setup'
 
+.projects
+  padding: 0 6.25vw 50vh
+  background-color: $c-grey
 
 </style>

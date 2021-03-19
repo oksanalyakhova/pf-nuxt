@@ -28,12 +28,17 @@
         ref="thirdItem"
         theme="dark"
       )
+
         .text.text_light
           .vertical(ref="top") Frontend
         .text.text_light
           .vertical(ref="bottom") Developer
       IntViewportHeight.section-first__item(
         theme="dark"
+      )
+
+      .pseudo(
+        ref="pseudo"
       )
 </template>
 
@@ -83,8 +88,6 @@ export default class Preview extends Vue {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
     const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
 
-    // gsap.set(this.$refs.o,{x: this.translate});
-
     const actionStart = gsap.timeline({
       scrollTrigger: {
         trigger: this.$refs.firstSection,
@@ -120,21 +123,29 @@ export default class Preview extends Vue {
         ease: "none"
       }, "spin -=3.5")
       .fromTo(this.$refs.top, {
-        xPercent: 150
+        xPercent: 100
       }, {
           xPercent: -150,
+          skewX: -5,
           duration: 10,
           ease: "none"
         },
-        "spin -=4.15")
+        "spin -=2.15")
       .fromTo(this.$refs.bottom, {
         xPercent: -150
       }, {
           xPercent: 150,
+          skewX: -5,
           duration: 10,
           ease: "none"
         },
-        "spin -=4.15")
+        "spin -=3.15")
+      .to(this.$refs.pseudo, {
+          top: 0,
+          duration: 2,
+          ease: "none"
+        },
+        "spin +=2.85")
 
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()
@@ -146,32 +157,45 @@ export default class Preview extends Vue {
 <style lang="sass">
 @import '../../assets/styles/setup'
 
-.section-first
-  position: relative
-  width: 100%
-  height: 100vh
-  height: calc(var(--vh, 1vh) * 100)
-  font-size: clamp(4.25rem, 22vw, 200rem)
+.preview
+  overflow: hidden
 
-  &__item
-    &.from-right
+  .section-first
+    position: relative
+    width: 100%
+    height: 100vh
+    height: calc(var(--vh, 1vh) * 100)
+    font-size: clamp(4.25rem, 22vw, 200rem)
+
+    &__item
+      &.from-right
+        position: absolute
+        top: 0
+        left: 100%
+        width: 100%
+        height: 100%
+
+      &.is-large
+        .text
+          font-size: clamp(4.25rem, 50vw, 400rem)
+
+          &:nth-child(1)
+            transform: translateX(44%) rotate(-90deg)
+
+          &:nth-child(2)
+            transform: translateX(-34%) rotate(-90deg)
+
+      .is-letter
+        color: transparent
+        mix-blend-mode: difference
+
+    .pseudo
       position: absolute
-      top: 0
-      left: 100%
-      width: 100%
-      height: 100%
-
-    &.is-large
-      .text
-        font-size: clamp(4.25rem, 50vw, 400rem)
-
-        &:nth-child(1)
-          transform: translateX(44%) rotate(-90deg)
-
-        &:nth-child(2)
-          transform: translateX(-34%) rotate(-90deg)
-
-    .is-letter
-      color: transparent
-      mix-blend-mode: difference
+      top: 100%
+      left: 0
+      width: 100vw
+      width: calc(var(--vw, 1vw) * 100)
+      height: 100vh
+      height: calc(var(--vh, 1vh) * 100)
+      background-color: $c-grey
 </style>
