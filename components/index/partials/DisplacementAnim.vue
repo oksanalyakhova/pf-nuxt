@@ -2,17 +2,15 @@
   .canvas-wrap(
     ref="canvasWrap"
   )
+    .mask(
+      ref="mask"
+    )
 </template>
 
 <script>
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import {gsap} from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 @Component
 export default class DisplacementAnim extends Vue {
@@ -20,6 +18,22 @@ export default class DisplacementAnim extends Vue {
     this.$nextTick(() => {
       this.runPixi();
     })
+  }
+
+  load(target) {
+    const loadingStart = gsap.timeline()
+      .to(this.$refs.mask, {
+        scaleY: 0,
+        duration: 2,
+        ease: "none",
+      })
+      .to(target, {
+        x: 50,
+        y: 30,
+        duration: 5,
+        delay: 0.5,
+        ease: "none",
+      })
   }
 
   runPixi() {
@@ -66,8 +80,8 @@ export default class DisplacementAnim extends Vue {
       if (displacementSprite.x > displacementSprite.width) { displacementSprite.x = 0; }
     });
 
-    // gsap
-    gsap.set(displacementFilter.scale,{x: 50,y: 20});
+    // window on load
+    window.addEventListener('load', this.load(displacementFilter.scale));
 
     return () => {
       application.destroy(true);
@@ -88,4 +102,14 @@ export default class DisplacementAnim extends Vue {
   display: flex
   justify-content: center
   align-items: center
+
+  .mask
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: $c-black
+    transform: scaleY(1)
+    transform-origin: 0 0
 </style>

@@ -9,9 +9,9 @@
         ref="firstItem"
         theme="light"
       )
+        //:style="{transform: 'translateX('+ translate + 'px)'}"
         .text.is-letter(
           ref="o"
-          :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
           DisplacementAnim
         Splitting.from-right__letters(
@@ -45,9 +45,7 @@ import Component from 'vue-class-component';
 import {gsap} from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   components: {
@@ -77,6 +75,7 @@ export default class Preview extends Vue {
   }
   setWindowSizes() {
     this.vw = window.innerWidth;
+
   }
   get translate() {
     return `${ -(this.vw  * 0.699) }`
@@ -84,6 +83,8 @@ export default class Preview extends Vue {
   scrollAnim() {
     const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
     const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
+
+    gsap.set(this.$refs.o,{x: this.translate});
 
     const actionStart = gsap.timeline({
       scrollTrigger: {
