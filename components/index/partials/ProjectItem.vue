@@ -32,7 +32,14 @@ export default class ProjectItem extends Vue {}
 @import '../../../assets/styles/setup'
 
 .project
+  &__item
+    margin: 0 0 5vw
+
+    +rmin(1024)
+      margin: 0 0 100px
+
   &__link
+    position: relative
     color: $c-black
 
     .project-title
@@ -42,7 +49,7 @@ export default class ProjectItem extends Vue {}
       font-weight: normal
       font-size: 5.2083vw
       line-height: 1.25
-      letter-spacing: .025em
+      letter-spacing: .05em
       -webkit-text-stroke-width: 1px
       -webkit-text-stroke-color: $c-black
 
