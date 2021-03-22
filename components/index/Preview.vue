@@ -93,59 +93,56 @@ export default class Preview extends Vue {
         trigger: this.$refs.firstSection,
         pin: true,
         scrub: 0.3,
-        start: "top top",
-        end: "+=3000",
+        start: 'top top',
+        end: '+=3000',
         invalidateOnRefresh: true
       }
     })
       .to(slides, {
         xPercent: -100,
         duration: 3,
-        ease: "none",
+        ease: 'none',
         stagger: 3
-      }, "spin")
+      }, 'spin')
       .fromTo(letters, {
         x: 2000
       }, {
         x: 0,
         duration: 2,
-        ease: "circ",
+        ease: 'circ',
         stagger: 0.3
-      }, "spin")
+      }, 'spin')
       .to(this.$refs.o, {
         x: 0,
         duration: 1.5,
-        ease: "none"
-      }, "spin")
+        ease: 'none'
+      }, 'spin')
       .to(this.$refs.lastname, {
         xPercent: -100,
         duration: 3,
-        ease: "none"
-      }, "spin -=3.5")
+        ease: 'none'
+      }, 'spin -=3.5')
       .fromTo(this.$refs.top, {
         xPercent: 100
       }, {
           xPercent: -150,
           skewX: -5,
           duration: 10,
-          ease: "none"
-        },
-        "spin -=2.15")
+          ease: 'none'
+        }, 'spin -=2.15')
       .fromTo(this.$refs.bottom, {
         xPercent: -150
       }, {
           xPercent: 150,
           skewX: -5,
           duration: 10,
-          ease: "none"
-        },
-        "spin -=3.15")
+          ease: 'none'
+        }, 'spin -=3.15')
       .to(this.$refs.pseudo, {
           top: 0,
           duration: 2,
-          ease: "none"
-        },
-        "spin +=3.25")
+          ease: 'none'
+        }, 'spin +=3.25')
 
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()

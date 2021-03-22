@@ -57,25 +57,22 @@ export default class Projects extends Vue {
   }
   setWindowSizes() {
     this.vh = window.innerHeight;
-    console.log("+=" + this.vh)
   }
   scrollAnim() {
-
-
     const actionStart = gsap.timeline({
       scrollTrigger: {
         trigger: this.$refs.projectsTrigger,
         pin: true,
         scrub: 0.3,
         start: "top top",
-        end: "+=" + this.vh,
+        end: '+=' + this.vh,
         invalidateOnRefresh: true
       }
     })
       .to(this.$refs.projects, {
         y: -this.vh * 2,
         duration: 1,
-        ease: "none"
+        ease: 'none'
       })
 
     window.addEventListener('resize', () => {
@@ -94,12 +91,11 @@ export default class Projects extends Vue {
   background-color: $c-grey
 
   .projects-trigger
-    position: absolute
+    position: fixed
     left: 0
     top: -100vw
     width: 100%
     height: 2px
-    background-color: red
 
   .project
     margin: 0 0 5vw

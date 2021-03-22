@@ -53,11 +53,10 @@ export default class DisplacementAnim extends Vue {
     target.on('mousemove', (e) => {
       if (mouseIn) {
         let x = e.data.global.x;
-        let y = e.data.global.y;
 
         gsap.to(animTarget, {
-          x: x / 5,
-          y: y / 5,
+          x: x / 4,
+          y: 30,
           ease: "none",
         })
       }
