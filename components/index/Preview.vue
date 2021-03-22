@@ -1,5 +1,5 @@
 <template lang="pug">
-  .preview(ref="preview")
+  #preview.preview(ref="preview")
     .section.section_first.section-first(ref="firstSection")
       IntViewportHeight.section-first__item(
           ref="firstBlock"
