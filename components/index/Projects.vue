@@ -46,9 +46,8 @@ export default class Projects extends Vue {
     this.setWindowSizes();
   }
   mounted() {
-    this.scrollAnim();
-
     this.$nextTick(() => {
+      this.scrollAnim();
       window.addEventListener('resize', this.setWindowSizes);
     })
   }
@@ -59,25 +58,25 @@ export default class Projects extends Vue {
     this.vh = window.innerHeight;
   }
   scrollAnim() {
-    const actionStart = gsap.timeline({
-      scrollTrigger: {
-        trigger: this.$refs.projectsTrigger,
-        pin: true,
-        scrub: 0.3,
-        start: "top top",
-        end: '+=' + this.vh,
-        invalidateOnRefresh: true
-      }
-    })
-      .to(this.$refs.projects, {
-        y: -this.vh * 2,
-        duration: 1,
-        ease: 'none'
-      })
-
-    window.addEventListener('resize', () => {
-      ScrollTrigger.refresh()
-    });
+    // const actionStart = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: this.$refs.projectsTrigger,
+    //     pin: true,
+    //     scrub: 0.3,
+    //     start: "top 25%",
+    //     end: '+=' + this.vh,
+    //     invalidateOnRefresh: true
+    //   }
+    // })
+    //   .to(this.$refs.projects, {
+    //     y: -100,
+    //     duration: 1,
+    //     ease: 'none'
+    //   }, 'spin')
+    //
+    // window.addEventListener('resize', () => {
+    //   ScrollTrigger.refresh()
+    // });
   }
 }
 </script>
@@ -87,18 +86,19 @@ export default class Projects extends Vue {
 
 .projects
   position: relative
-  padding: 0 6.25vw 50vh
+  padding: 30vh 6.25vw
   background-color: $c-grey
 
   .projects-trigger
-    position: fixed
+    position: absolute
     left: 0
-    top: -100vw
+    top: -200vh
     width: 100%
     height: 2px
+    background-color: red
 
   .project
-    margin: 0 0 5vw
+    margin: 0 0 10vw
     user-select: none
 
     +rmin(1024)

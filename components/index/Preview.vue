@@ -1,5 +1,5 @@
 <template lang="pug">
-  #preview.preview(ref="preview")
+  .preview(ref="preview")
     .section.section_first.section-first(ref="firstSection")
       IntViewportHeight.section-first__item(
           ref="firstBlock"
@@ -35,10 +35,6 @@
           .vertical(ref="bottom") Developer
       IntViewportHeight.section-first__item(
         theme="dark"
-      )
-
-      .pseudo(
-        ref="pseudo"
       )
 </template>
 
@@ -95,7 +91,7 @@ export default class Preview extends Vue {
         scrub: 0.3,
         start: 'top top',
         end: '+=3000',
-        invalidateOnRefresh: true
+        invalidateOnRefresh: true,
       }
     })
       .to(slides, {
@@ -138,11 +134,11 @@ export default class Preview extends Vue {
           duration: 10,
           ease: 'none'
         }, 'spin -=3.15')
-      .to(this.$refs.pseudo, {
-          top: 0,
-          duration: 2,
+      .to(this.$refs.preview, {
+          height: 0,
+          duration: 5,
           ease: 'none'
-        }, 'spin +=3.25')
+        }, '-=5.15')
 
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()
@@ -185,14 +181,4 @@ export default class Preview extends Vue {
       .is-letter
         color: transparent
         mix-blend-mode: difference
-
-    .pseudo
-      position: absolute
-      top: 100%
-      left: 0
-      width: 100vw
-      width: calc(var(--vw, 1vw) * 100)
-      height: 100vh
-      height: calc(var(--vh, 1vh) * 100)
-      background-color: $c-grey
 </style>
