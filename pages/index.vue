@@ -11,7 +11,7 @@
 import Vue from 'vue';
 import Preview from '../components/index/Preview';
 import Projects from '../components/index/Projects';
-import {Component} from 'vue-property-decorator';
+import Component from 'vue-class-component'
 
 @Component({
   components: {

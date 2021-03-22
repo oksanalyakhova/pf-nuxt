@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import Component, {mixins} from 'vue-class-component';
 import {gsap} from 'gsap/dist/gsap';
+import deviceDetector from '@/mixins/deviceDetector';
 
 @Component({
   props: {
@@ -29,7 +29,7 @@ import {gsap} from 'gsap/dist/gsap';
     }
   }
 })
-export default class ProjectItem extends Vue {
+export default class ProjectItem extends mixins(deviceDetector) {
   mounted() {
     this.setStyles();
   }
@@ -40,32 +40,36 @@ export default class ProjectItem extends Vue {
     })
   }
   Enter(e) {
-    const enterStart = gsap.timeline()
-      .to(e.target.querySelector('.fill'), {
-        webkitClipPath: 'inset(0% 0% 0% 0%)',
-        clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 0.45,
-        ease: "none"
-      }, "spin")
-      .to(e.target.querySelector('.project-info'), {
-        autoAlpha: 1,
-        duration: 0.15,
-        ease: "none"
-      }, "spin")
+    if (!this.isMobile) {
+      const enterStart = gsap.timeline()
+        .to(e.target.querySelector('.fill'), {
+          webkitClipPath: 'inset(0% 0% 0% 0%)',
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 0.45,
+          ease: "none"
+        }, "spin")
+        .to(e.target.querySelector('.project-info'), {
+          autoAlpha: 1,
+          duration: 0.15,
+          ease: "none"
+        }, "spin")
+    }
   }
   Leave(e) {
-    const enterEnd = gsap.timeline()
-      .to(e.target.querySelector('.fill'), {
-        webkitClipPath: 'inset(0% 100% 0% 0%)',
-        clipPath: 'inset(0% 100% 0% 0%)',
-        duration: 0.45,
-        ease: "none"
-      }, "spin")
-      .to(e.target.querySelector('.project-info'), {
-        autoAlpha: 0,
-        duration: 0.15,
-        ease: "none"
-      }, "spin")
+    if (!this.isMobile) {
+      const enterEnd = gsap.timeline()
+        .to(e.target.querySelector('.fill'), {
+          webkitClipPath: 'inset(0% 100% 0% 0%)',
+          clipPath: 'inset(0% 100% 0% 0%)',
+          duration: 0.45,
+          ease: "none"
+        }, "spin")
+        .to(e.target.querySelector('.project-info'), {
+          autoAlpha: 0,
+          duration: 0.15,
+          ease: "none"
+        }, "spin")
+    }
   }
 }
 </script>

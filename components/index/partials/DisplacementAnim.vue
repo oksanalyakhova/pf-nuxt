@@ -6,7 +6,7 @@
 
 <script>
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import Component from 'vue-class-component'
 import {gsap} from 'gsap';
 
 @Component

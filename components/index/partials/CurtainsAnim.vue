@@ -15,7 +15,7 @@
 
 <script>
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import Component from 'vue-class-component'
 import {Fragment} from 'vue-fragment'
 import {Curtains, Plane} from 'curtainsjs';
 import {gsap} from 'gsap';
