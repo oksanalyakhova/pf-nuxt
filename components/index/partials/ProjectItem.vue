@@ -13,7 +13,9 @@
       span.fill(
         ref="fill"
       ) {{project.titleEnd}}
-    .project-info {{project.info}}
+    .project-info(
+      ref="projectInfo"
+    ) {{project.info}}
 </template>
 
 <script>
@@ -38,6 +40,12 @@ export default class ProjectItem extends mixins(deviceDetector) {
       webkitClipPath: 'inset(0% 100% 0% 0%)',
       clipPath: 'inset(0% 100% 0% 0%)'
     })
+
+    if (this.isMobile) {
+      gsap.set(this.$refs.projectInfo, {
+        autoAlpha: 1
+      })
+    }
   }
   Enter(e) {
     if (!this.isMobile) {
@@ -46,13 +54,13 @@ export default class ProjectItem extends mixins(deviceDetector) {
           webkitClipPath: 'inset(0% 0% 0% 0%)',
           clipPath: 'inset(0% 0% 0% 0%)',
           duration: 0.45,
-          ease: "none"
-        }, "spin")
+          ease: 'none'
+        }, 'spin')
         .to(e.target.querySelector('.project-info'), {
           autoAlpha: 1,
           duration: 0.15,
-          ease: "none"
-        }, "spin")
+          ease: 'none'
+        }, 'spin')
     }
   }
   Leave(e) {
@@ -62,13 +70,13 @@ export default class ProjectItem extends mixins(deviceDetector) {
           webkitClipPath: 'inset(0% 100% 0% 0%)',
           clipPath: 'inset(0% 100% 0% 0%)',
           duration: 0.45,
-          ease: "none"
-        }, "spin")
+          ease: 'none'
+        }, 'spin')
         .to(e.target.querySelector('.project-info'), {
           autoAlpha: 0,
           duration: 0.15,
-          ease: "none"
-        }, "spin")
+          ease: 'none'
+        }, 'spin')
     }
   }
 }
@@ -114,5 +122,4 @@ export default class ProjectItem extends mixins(deviceDetector) {
       line-height: 1.6667
       text-transform: uppercase
       white-space: nowrap
-
 </style>
