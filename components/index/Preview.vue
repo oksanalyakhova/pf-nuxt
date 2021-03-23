@@ -121,24 +121,19 @@ export default class Preview extends Vue {
       .fromTo(this.$refs.top, {
         xPercent: 100
       }, {
-          xPercent: -150,
-          skewX: -5,
-          duration: 10,
-          ease: 'none'
-        }, 'spin -=2.15')
-      .fromTo(this.$refs.bottom, {
-        xPercent: -150
-      }, {
-          xPercent: 150,
+          xPercent: -50,
           skewX: -5,
           duration: 10,
           ease: 'none'
         }, 'spin -=3.15')
-      // .to(this.$refs.preview, {
-      //     height: 0,
-      //     duration: 5,
-      //     ease: 'none'
-      //   }, '-=5.15')
+      .fromTo(this.$refs.bottom, {
+        xPercent: -150
+      }, {
+          xPercent: 50,
+          skewX: -5,
+          duration: 10,
+          ease: 'none'
+        }, 'spin -=3.15')
 
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()
