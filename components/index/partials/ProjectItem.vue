@@ -1,7 +1,6 @@
 <template lang="pug">
   a.project__link(
     :href="project.href"
-    :data-img="project.preview"
     target="_blank"
     rel="nofollow"
     @mouseenter="Enter"
@@ -23,7 +22,6 @@
 import Component, {mixins} from 'vue-class-component';
 import {gsap} from 'gsap/dist/gsap';
 import deviceDetector from '@/mixins/deviceDetector';
-import utils from '@/mixins/utils';
 
 @Component({
   props: {
@@ -33,21 +31,7 @@ import utils from '@/mixins/utils';
     }
   }
 })
-export default class ProjectItem extends mixins(deviceDetector, utils) {
-  images = [
-    'img/projects/1.png',
-    'img/projects/2.png',
-    'img/projects/3.png',
-    'img/projects/4.png',
-    'img/projects/5.png'
-  ];
-  mousepos = {x: 0, y: 0};
-  mousePosCache = this.mousepos;
-  direction = {x: this.mousePosCache.x-this.mousepos.x, y: this.mousePosCache.y-this.mousepos.y};
-  reveal = document.createElement('div');
-  revealInner = document.createElement('div');
-  revealImage = document.createElement('div');
-  bounds = {}
+export default class ProjectItem extends mixins(deviceDetector) {
   mounted() {
     this.setStyles();
   }
@@ -72,7 +56,6 @@ export default class ProjectItem extends mixins(deviceDetector, utils) {
         1
       )
     }
-    console.log(e.fromElement.children)
   }
   Leave(e) {
     if (!this.isMobile) {
@@ -97,88 +80,6 @@ export default class ProjectItem extends mixins(deviceDetector, utils) {
         duration: 0.15,
         ease: 'none'
       }, 'spin')
-  }
-  layout(img) {
-    this.reveal.className = 'hover-reveal';
-    this.revealInner.className = 'hover-reveal__inner';
-    this.revealImage.className = 'hover-reveal__img';
-    this.revealImage.style.backgroundImage = `url(img/projects/ + ${img} + png)`;
-
-    this.revealInner.appendChild(this.revealImage);
-    this.reveal.appendChild(this.revealInner);
-    document.el.appendChild(this.reveal);
-  }
-  // calcBounds() {
-  //   this.bounds = {
-  //     el: document.el.getBoundingClientRect(),
-  //     reveal: this.reveal.getBoundingClientRect()
-  //   }
-  // }
-  // initEvents() {
-  //   this.mouseenterFn = (ev) => {
-  //     this.showImage();
-  //     this.firstRAFCycle = true;
-  //     this.loopRender();
-  //   };
-  //   this.mouseleaveFn = () => {
-  //     this.stopRendering();
-  //     this.hideImage();
-  //   };
-  //
-  //   document.el.addEventListener('mouseenter', this.mouseenterFn);
-  //   document.el.addEventListener('mouseleave', this.mouseleaveFn);
-  // }
-  //
-
-  showImage() {
-    gsap.killTweensOf(this.revealInner);
-    gsap.killTweensOf(this.revealImage);
-
-    const show = gsap.timeline({
-      onStart: () => {
-        this.reveal.style.opacity = 1;
-        gsap.set(document.el, {zIndex: this.images.length});
-      }
-    })
-      .to(this.revealInner, {
-        duration: 0.2,
-        ease: 'none',
-        startAt: {
-          x: this.direction.x < 0 ? '-100%' : '100%'
-        },
-        x: '0%'
-      })
-      .to(this.revealImage, {
-        duration: 0.2,
-        ease: 'none',
-        startAt: {
-          x: this.direction.x < 0 ? '100%': '-100%'
-        },
-        x: '0%'
-      }, 0);
-  }
-  hideImage() {
-    gsap.killTweensOf(this.revealInner);
-    gsap.killTweensOf(this.revealImage);
-
-    const hide = gsap.timeline({
-      onStart: () => {
-        gsap.set(document.el, {zIndex: 1});
-      },
-      onComplete: () => {
-        gsap.set(this.reveal, {opacity: 0});
-      }
-    })
-      .to(this.revealInner, {
-        duration: 0.2,
-        ease: 'none',
-        x: this.direction.x < 0 ? '100%' : '-100%'
-      })
-      .to(this.revealImage, {
-        duration: 0.2,
-        ease: 'none',
-        x: this.direction.x < 0 ? '-100%' : '100%'
-      }, 0);
   }
 }
 </script>

@@ -134,11 +134,11 @@ export default class Preview extends Vue {
           duration: 10,
           ease: 'none'
         }, 'spin -=3.15')
-      .to(this.$refs.preview, {
-          height: 0,
-          duration: 5,
-          ease: 'none'
-        }, '-=5.15')
+      // .to(this.$refs.preview, {
+      //     height: 0,
+      //     duration: 5,
+      //     ease: 'none'
+      //   }, '-=5.15')
 
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()
