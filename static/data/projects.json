@@ -4,7 +4,7 @@
     "label": "nicole",
     "titleStart": "Nic",
     "titleEnd": "ole",
-    "preview": "img/projects/nicole.gif",
+    "preview": "img/projects/1.png",
     "info": "Jewellery store"
   },
   {
@@ -12,7 +12,7 @@
     "label": "mdc",
     "titleStart": "MD",
     "titleEnd": "C",
-    "preview": "img/projects/mdc.png",
+    "preview": "img/projects/2.png",
     "info": "Medical Centre website"
   },
   {
@@ -20,7 +20,7 @@
     "label": "jeep",
     "titleStart": "Je",
     "titleEnd": "ep",
-    "preview": "img/projects/jeep.gif",
+    "preview": "img/projects/3.png",
     "info": "Jeep Official Ukraine website"
   },
   {
@@ -28,7 +28,7 @@
     "label": "nico",
     "titleStart": "Nico Ju",
     "titleEnd": "liany",
-    "preview": "img/projects/nico.png",
+    "preview": "img/projects/4.png",
     "info": "Jewellery store"
   },
   {
@@ -36,7 +36,7 @@
     "label": "latexfauna",
     "titleStart": "Latex",
     "titleEnd": "fauna",
-    "preview": "img/projects/latex.png",
+    "preview": "img/projects/5.png",
     "info": "Musical Band website"
   }
 ]

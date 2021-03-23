@@ -11,6 +11,8 @@ import {gsap} from 'gsap';
 
 @Component
 export default class DisplacementAnim extends Vue {
+  img = 'img/o.png';
+  displacement = 'img/displacement.jpg';
   mounted() {
     this.$nextTick(() => {
       this.runPixi();
@@ -56,8 +58,6 @@ export default class DisplacementAnim extends Vue {
   }
 
   runPixi() {
-    const img = 'img/o.png';
-    const displacement = 'img/displacement.jpg';
     const w = 516;
     const h = 542;
 
@@ -79,12 +79,12 @@ export default class DisplacementAnim extends Vue {
     const container = new PIXI.Container();
     application.stage.addChild(container);
 
-    const helloImg = PIXI.Sprite.from(img);
+    const helloImg = PIXI.Sprite.from(this.img);
     container.addChild(helloImg);
     helloImg.x = 0;
     helloImg.y = 0;
 
-    const displacementSprite = PIXI.Sprite.from(displacement);
+    const displacementSprite = PIXI.Sprite.from(this.displacement);
     displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
     const displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
     displacementFilter.padding = 10;
