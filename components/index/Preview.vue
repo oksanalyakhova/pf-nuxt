@@ -13,7 +13,8 @@
           ref="o"
           :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
-          DisplacementAnim
+          Motion
+          //DisplacementAnim
         Splitting.from-right__letters(
           :text="`ksana`"
           )
@@ -40,9 +41,10 @@
 
 <script>
 import Vue from 'vue';
+import Component from 'vue-class-component';
 import IntViewportHeight from './partials/IntViewportHeight';
 import DisplacementAnim from './partials/DisplacementAnim';
-import Component from 'vue-class-component';
+import Motion from './partials/Motion';
 import {gsap} from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 
@@ -51,7 +53,8 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
-    DisplacementAnim
+    DisplacementAnim,
+    Motion
   },
   data() {
     return {

@@ -64,7 +64,7 @@ export default class Reveal extends mixins(utils) {
         duration: 0.3,
         ease: 'none',
         x: this.mousePos.x - this.$refs.reveal.clientWidth,
-        y: this.y
+        y: this.y - this.$refs.revealInner.clientHeight * 0.25
       })
   }
   hideImage() {

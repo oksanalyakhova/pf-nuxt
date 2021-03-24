@@ -44,9 +44,6 @@ import deviceDetector from '@/mixins/deviceDetector';
   }
 })
 export default class Projects extends mixins(deviceDetector) {
-  mounted() {
-
-  }
   Enter(e) {
     if (!this.isMobile) {
       this.image = e.target.dataset.img;
