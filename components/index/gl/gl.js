@@ -3,67 +3,26 @@ import Component from 'vue-class-component';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import glsl from 'glslify';
+import {vertexShader} from './vertex';
+import {fragmentShader} from './fragment';
 import {gsap} from 'gsap';
 
-const vertexShader = `
-    precision mediump float;
-
-    varying vec2 vUv;
-    varying float vWave;
-    uniform float uTime;
-    uniform float uProg;
-
-    // #pragma glslify: noise = require(glsl-noise/simplex/3d)
-
-    void main() {
-      vec3 pos = position;
-
-      // pos.z += noise(vec3(pos.x * 4. + uTime, pos.y, 0.)) * uProg;
-      vWave = pos.z;
-      pos.z *= 3.;
-
-      vUv = uv;
-
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
+@Component({
+  data() {
+    return {
+      loader: {},
+      scene: {},
+      camera: {},
+      renderer: {},
+      clock: {},
+      controls: {},
+      texture: {},
+      mesh: {}
     }
-  `
-
-const fragmentShader = `
-    precision mediump float;
-
-    varying vec2 vUv;
-    varying float vWave;
-    uniform sampler2D uTexture;
-    uniform float uTime;
-    uniform float uProg;
-
-    void main() {
-      vec2 uv = vUv;
-      vec2 dUv = vec2(uv.x, uv.y);
-      // vec3 texture;
-
-      float w = vWave;
-      float r = texture2D(uTexture, dUv + vec2(0., 0.) + uProg * w * 0.05).r;
-      float g = texture2D(uTexture, dUv + vec2(0., 0.) + uProg * w * 0.0).g;
-      float b = texture2D(uTexture, dUv + vec2(0., 0.) + uProg * w * -0.02).b;
-      vec3 texture = vec3(r, g, b);
-      gl_FragColor = vec4(texture, 1.);
-    }
-
-  `
-
-@Component
+  }
+})
 export default class Gl extends Vue {
   img = 'img/o.png';
-
-  loader = {};
-  scene = {};
-  camera = {};
-  renderer = {};
-  clock = {};
-  controls = {};
-  texture = {};
-  mesh = {};
 
   mounted() {
     this.scene = new THREE.Scene();
@@ -81,11 +40,16 @@ export default class Gl extends Vue {
     this.clock = new THREE.Clock();
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
-    this.geometry = new THREE.PlaneBufferGeometry(1, 1, 32, 32);
+    this.geometry = new THREE.PlaneBufferGeometry(0.7, 0.74, 1, 1);
     this.material = new THREE.ShaderMaterial({
       vertexShader: glsl(vertexShader),
       fragmentShader: glsl(fragmentShader),
     });
+    this.material.uniforms = {
+      uTexture: { value: 0 },
+      uTime: { value: 0 },
+      uProg: { value: 0 }
+    }
     this.loader = new THREE.TextureLoader();
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     // this.camera = new THREE.PerspectiveCamera(
@@ -110,6 +74,8 @@ export default class Gl extends Vue {
   }
 
   init() {
+    const img = document.querySelector('.is-letter-img');
+
     this.camera.position.z = 1;
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setClearColor(0x000000, 1);
@@ -120,7 +86,7 @@ export default class Gl extends Vue {
       uProg: { value: 0 },
     }
 
-    this.texture = this.loader.load(this.img, (texture) => {
+    this.texture = this.loader.load(img.src, (texture) => {
       texture.minFilter = THREE.LinearFilter;
       texture.generateMipmaps = false;
 

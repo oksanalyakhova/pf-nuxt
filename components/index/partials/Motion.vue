@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import Component from 'vue-class-component';
 import Gl from '../gl/gl';
 
@@ -13,5 +12,4 @@ export default class Motion extends Gl {}
 
 <style lang="sass">
 @import '../../../assets/styles/setup'
-
 </style>

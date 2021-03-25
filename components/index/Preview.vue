@@ -13,10 +13,12 @@
           ref="o"
           :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
-          Motion
           //DisplacementAnim
+          img.is-letter-img(
+            src="img/o.png"
+          )
         Splitting.from-right__letters(
-          :text="`ksana`"
+          :text="`Oksana`"
           )
 
       IntViewportHeight.section-first__item.from-right(
@@ -177,6 +179,7 @@ export default class Preview extends Vue {
             transform: translateX(-34%) rotate(-90deg)
 
       .is-letter
+        position: relative
         color: transparent
         mix-blend-mode: difference
 </style>
