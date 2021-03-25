@@ -14,9 +14,8 @@
     .preview(
       ref="preview"
     )
-      svg.preview-svg
+      svg.preview-svg(ref="img")
         image(
-          ref="img"
           x="0"
           y="0"
           width="100%"
@@ -163,11 +162,10 @@ export default class Projects extends mixins(deviceDetector) {
     pointer-events: none
 
     .preview-svg
-      svg
-        width: 32.8587vw
-        height: auto
-        transform: scale(1.05)
-        opacity: 0
+      width: 42.8587vw
+      height: auto
+      transform: scale(1.05)
+      opacity: 0
 
     .filter-svg
       position: absolute

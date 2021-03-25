@@ -124,15 +124,15 @@ export default class Preview extends Vue {
       .fromTo(this.$refs.top, {
         xPercent: 100
       }, {
-          xPercent: -50,
+          xPercent: -70,
           skewX: -5,
           duration: 10,
           ease: 'none'
         }, 'spin -=3.15')
       .fromTo(this.$refs.bottom, {
-        xPercent: -150
+        xPercent: -80
       }, {
-          xPercent: 50,
+          xPercent: 45,
           skewX: -5,
           duration: 10,
           ease: 'none'
