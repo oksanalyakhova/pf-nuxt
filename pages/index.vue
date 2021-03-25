@@ -6,21 +6,21 @@
       v-if="projects"
     )
 
-    Motion
+    //Motion
 </template>
 
 <script>
 import Vue from 'vue';
 import Preview from '../components/index/Preview';
 import Projects from '../components/index/Projects';
-import Motion from '../components/index/partials/Motion';
+// import Motion from '../components/index/partials/Motion';
 import Component from 'vue-class-component'
 
 @Component({
   components: {
     Preview,
     Projects,
-    Motion
+    // Motion
   }
 })
 export default class index extends Vue {

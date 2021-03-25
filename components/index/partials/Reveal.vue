@@ -13,7 +13,7 @@
 
 <script>
 import Component, {mixins} from 'vue-class-component';
-import {gsap} from 'gsap/dist/gsap';
+import gsap from 'gsap';
 import utils from '@/mixins/utils';
 
 @Component({

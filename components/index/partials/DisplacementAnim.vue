@@ -7,7 +7,7 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import {gsap} from 'gsap';
+import gsap from 'gsap';
 
 @Component
 export default class DisplacementAnim extends Vue {
@@ -26,7 +26,7 @@ export default class DisplacementAnim extends Vue {
         y: 30,
         duration: 5,
         delay: 0.5,
-        ease: "none",
+        ease: 'none',
       })
   }
 
@@ -41,7 +41,7 @@ export default class DisplacementAnim extends Vue {
       gsap.to(animTarget, {
         x: 50,
         y: 30,
-        ease: "none",
+        ease: 'none',
       })
     })
     target.on('mousemove', (e) => {
@@ -51,7 +51,7 @@ export default class DisplacementAnim extends Vue {
         gsap.to(animTarget, {
           x: x / 4,
           y: 30,
-          ease: "none",
+          ease: 'none',
         })
       }
     })

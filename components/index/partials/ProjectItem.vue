@@ -20,7 +20,7 @@
 
 <script>
 import Component, {mixins} from 'vue-class-component';
-import {gsap} from 'gsap/dist/gsap';
+import gsap from 'gsap';
 import deviceDetector from '@/mixins/deviceDetector';
 
 @Component({

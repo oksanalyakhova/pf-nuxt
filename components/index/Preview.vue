@@ -13,12 +13,12 @@
           ref="o"
           :style="{transform: 'translateX('+ translate + 'px)'}"
           ) O
-          //DisplacementAnim
-          img.is-letter-img(
-            src="img/o.png"
-          )
+          DisplacementAnim
+          //img.is-letter-img(
+          //  src="img/o.png"
+          //)
         Splitting.from-right__letters(
-          :text="`Oksana`"
+          :text="`ksana`"
           )
 
       IntViewportHeight.section-first__item.from-right(
@@ -46,8 +46,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import IntViewportHeight from './partials/IntViewportHeight';
 import DisplacementAnim from './partials/DisplacementAnim';
-import Motion from './partials/Motion';
-import {gsap} from 'gsap/dist/gsap';
+import gsap from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,8 +54,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
-    DisplacementAnim,
-    Motion
+    DisplacementAnim
   },
   data() {
     return {

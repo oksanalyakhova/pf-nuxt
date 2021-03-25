@@ -3,11 +3,12 @@
 </template>
 
 <script>
+import Vue from "vue";
 import Component from 'vue-class-component';
-import Gl from '../gl/gl';
+// import Index from '../gl';
 
 @Component
-export default class Motion extends Gl {}
+export default class Motion extends Vue {}
 </script>
 
 <style lang="sass">
