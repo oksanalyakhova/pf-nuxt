@@ -9,37 +9,37 @@
     "generate": "nuxt-ts generate"
   },
   "dependencies": {
-    "@nuxt/typescript-runtime": "^2.0.1",
     "@nuxtjs/axios": "^5.13.1",
     "@types/imagesloaded": "^4.1.2",
     "@types/pixi.js": "^5.0.0",
-    "core-js": "^3.8.3",
-    "curtainsjs": "^8.1.0",
     "fs": "^0.0.1-security",
+    "glsl-noise": "0.0.0",
     "gsap": "^3.6.0",
     "imagesloaded": "^4.1.4",
     "lodash": "^4.17.21",
-    "nuxt": "^2.14.12",
     "pixi-projection": "^0.3.15",
     "pixi.js": "^6.0.0",
     "pixi.js-legacy": "^6.0.0",
     "three": "^0.126.1",
-    "tiny-emitter": "^2.1.0",
-    "vue": "^2.6.12",
-    "vue-fragment": "^1.5.2",
-    "vue-property-decorator": "^9.1.2"
+    "tiny-emitter": "^2.1.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
     "@nuxt/typescript-build": "^2.0.4",
+    "@nuxt/typescript-runtime": "^2.0.1",
+    "core-js": "^3.8.3",
     "file-loader": "^6.2.0",
     "glsl-noise": "0.0.0",
     "glslify": "^7.0.0",
+    "nuxt": "^2.14.12",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "url-loader": "^4.1.1",
-    "vue-class-component": "^7.2.6"
+    "vue": "^2.6.12",
+    "vue-class-component": "^7.2.6",
+    "vue-fragment": "^1.5.2",
+    "vue-property-decorator": "^9.1.2"
   }
 }
