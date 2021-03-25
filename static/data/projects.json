@@ -4,39 +4,39 @@
     "label": "nicole",
     "titleStart": "Nic",
     "titleEnd": "ole",
-    "preview": "img/projects/1.png",
+    "preview": "img/projects/1.svg",
     "info": "Jewellery store"
   },
   {
     "href": "#",
-    "label": "mdc",
-    "titleStart": "MD",
-    "titleEnd": "C",
-    "preview": "img/projects/2.png",
-    "info": "Medical Centre website"
+    "label": "dezzign",
+    "titleStart": "Dez",
+    "titleEnd": "zign",
+    "preview": "img/projects/2.svg",
+    "info": "Architecture and design studio"
   },
   {
-    "href": "#",
+    "href": "https://kyiv.jeep-official.com.ua/",
     "label": "jeep",
     "titleStart": "Je",
     "titleEnd": "ep",
-    "preview": "img/projects/3.png",
+    "preview": "img/projects/3.svg",
     "info": "Jeep Official Ukraine website"
   },
   {
-    "href": "#",
+    "href": "https://oksanalyakhova.github.io/NJ/",
     "label": "nico",
     "titleStart": "Nico Ju",
     "titleEnd": "liany",
-    "preview": "img/projects/4.png",
+    "preview": "img/projects/4.svg",
     "info": "Jewellery store"
   },
   {
-    "href": "#",
+    "href": "https://oksanalyakhova.github.io/LF/",
     "label": "latexfauna",
     "titleStart": "Latex",
     "titleEnd": "fauna",
-    "preview": "img/projects/5.png",
+    "preview": "img/projects/5.svg",
     "info": "Musical Band website"
   }
 ]
