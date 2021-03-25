@@ -11,23 +11,22 @@
         ProjectItem(
           :project="project"
         )
-    Reveal(
-      :img="image"
-      :show="showImg"
-      :y="offsetY"
+    .preview(
+      v-if="showImg"
     )
+      img(
+        :src="image"
+      )
 </template>
 
 <script>
 import Component, {mixins} from 'vue-class-component';
 import ProjectItem from './partials/ProjectItem';
-import Reveal from './partials/Reveal';
 import deviceDetector from '@/mixins/deviceDetector';
 
 @Component({
   components: {
-    ProjectItem,
-    Reveal
+    ProjectItem
   },
   props: {
     projects: {
@@ -48,13 +47,11 @@ export default class Projects extends mixins(deviceDetector) {
     if (!this.isMobile) {
       this.image = e.target.dataset.img;
       this.showImg = true;
-      this.offsetY = e.target.offsetTop;
     }
   }
   Leave(e) {
     if (!this.isMobile) {
       this.showImg = false;
-      this.offsetY = 0;
     }
   }
 }
@@ -75,4 +72,9 @@ export default class Projects extends mixins(deviceDetector) {
 
     +rmin(1024)
       padding: 0 0 100px
+
+  .preview
+    position: fixed
+    top: 0
+    right: 6.25vw
 </style>
