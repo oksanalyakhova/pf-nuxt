@@ -149,6 +149,8 @@ export default class Preview extends Vue {
 @import '../../assets/styles/setup'
 
 .preview
+  position: relative
+  z-index: 1
   overflow: hidden
 
   .section-first
