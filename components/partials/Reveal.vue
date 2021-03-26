@@ -80,7 +80,7 @@ export default class Reveal extends mixins(utils) {
 </script>
 
 <style lang="sass">
-@import '../../../assets/styles/setup'
+@import '../../assets/styles/setup'
 
 .hover-reveal
   position: absolute

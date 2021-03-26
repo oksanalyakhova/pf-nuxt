@@ -1,7 +1,7 @@
 <template lang="pug">
-  .projects
+  .section.section_second.section-second
     ul.projects-list
-      li.project(
+      li.projects-list__item.project(
         v-for="project in projects"
         :key="project.label"
         :data-img="project.preview"
@@ -132,9 +132,9 @@ export default class Projects extends mixins(deviceDetector) {
 </script>
 
 <style lang="sass">
-@import '../../assets/styles/setup'
+@import '../assets/styles/setup'
 
-.projects
+.section-second
   position: relative
   padding: 25vh 6.25vw
   background-color: $c-grey

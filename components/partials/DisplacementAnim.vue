@@ -113,7 +113,7 @@ export default class DisplacementAnim extends Vue {
 </script>
 
 <style lang="sass">
-@import '../../../assets/styles/setup'
+@import '../../assets/styles/setup'
 
 .canvas-wrap
   position: absolute

@@ -55,7 +55,7 @@ export default class IntViewportHeight extends Vue {
 </script>
 
 <style lang="sass">
-@import '../../../assets/styles/setup'
+@import '../../assets/styles/setup'
 
 .intViewportHeight
   width: 100vw

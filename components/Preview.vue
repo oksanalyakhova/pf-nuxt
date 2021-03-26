@@ -1,50 +1,56 @@
 <template lang="pug">
-  .preview(ref="preview")
-    .section.section_first.section-first(ref="firstSection")
-      IntViewportHeight.section-first__item(
-          ref="firstBlock"
-        )
+  .section.section_first.section-first(ref="firstSection")
+    IntViewportHeight.section-first__item(
+      ref="firstBlock"
+    )
 
-      IntViewportHeight.section-first__item.from-right(
-        ref="firstItem"
-        theme="light"
-      )
-        .text.is-letter(
-          ref="o"
-          :style="{transform: 'translateX('+ translate + 'px)'}"
-          ) O
-          DisplacementAnim
-          //img.is-letter-img(
-          //  src="img/o.png"
-          //)
-        Splitting.from-right__letters(
-          :text="`ksana`"
-          )
-
-      IntViewportHeight.section-first__item.from-right(
-        ref="secondItem"
-        theme="transparent"
-      )
-        .text.text_light(ref="lastname") Lyakhova
-
-      IntViewportHeight.section-first__item.from-right.is-large(
-        ref="thirdItem"
-        theme="dark"
+    IntViewportHeight.section-first__item.from-right(
+      ref="firstItem"
+      theme="light"
+    )
+      .text.is-letter(
+        ref="o"
+        :style="{transform: 'translateX('+ translate + 'px)'}"
+      ) O
+        DisplacementAnim
+        //img.is-letter-img(
+        //  src="img/o.png"
+        //)
+      Splitting.from-right__letters(
+        :text="`ksana`"
       )
 
-        .text.text_light
-          .vertical(ref="top") Frontend
-        .text.text_light
-          .vertical(ref="bottom") Developer
-      IntViewportHeight.section-first__item(
-        theme="dark"
+    IntViewportHeight.section-first__item.from-right(
+      ref="secondItem"
+      theme="transparent"
+    )
+      .text(ref="lastname") Lyakhova
+
+    IntViewportHeight.section-first__item.from-right.is-large(
+      ref="thirdItem"
+      theme="dark"
+    )
+
+      Vertical(
+        theme="top"
       )
+        .vertical(ref="top") Frontend
+      Vertical(
+        theme="bottom"
+      )
+        .vertical(ref="bottom") Developer
+    IntViewportHeight.section-first__item(
+      theme="dark"
+    )
+
+      Vertical(ref="vertical")
 </template>
 
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import IntViewportHeight from './partials/IntViewportHeight';
+import IntViewportHeight from './helpers/IntViewportHeight';
+import Vertical from './helpers/Vertical';
 import DisplacementAnim from './partials/DisplacementAnim';
 import gsap from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
@@ -54,6 +60,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
+    Vertical,
     DisplacementAnim
   },
   data() {
@@ -84,8 +91,8 @@ export default class Preview extends Vue {
     return `${ -(this.vw  * 0.699) }`
   }
   scrollAnim() {
-    const slides = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right'));
-    const letters = gsap.utils.toArray(this.$refs.preview.querySelectorAll('.from-right__letters .letter'));
+    const slides = gsap.utils.toArray(this.$refs.firstSection.querySelectorAll('.from-right'));
+    const letters = gsap.utils.toArray(this.$refs.firstSection.querySelectorAll('.from-right__letters .letter'));
 
     const actionStart = gsap.timeline({
       scrollTrigger: {
@@ -146,40 +153,31 @@ export default class Preview extends Vue {
 </script>
 
 <style lang="sass">
-@import '../../assets/styles/setup'
+@import '../assets/styles/setup'
 
-.preview
+.section-first
   position: relative
   z-index: 1
+  width: 100%
+  height: 100vh
+  height: calc(var(--vh, 1vh) * 100)
+  font-size: clamp(4.25rem, 22vw, 200rem)
   overflow: hidden
 
-  .section-first
-    position: relative
-    width: 100%
-    height: 100vh
-    height: calc(var(--vh, 1vh) * 100)
-    font-size: clamp(4.25rem, 22vw, 200rem)
+  &__item
+    &.from-right
+      position: absolute
+      top: 0
+      left: 100%
+      width: 100%
+      height: 100%
 
-    &__item
-      &.from-right
-        position: absolute
-        top: 0
-        left: 100%
-        width: 100%
-        height: 100%
+    &.is-large
+      .text
+        font-size: clamp(4.25rem, 50vw, 400rem)
 
-      &.is-large
-        .text
-          font-size: clamp(4.25rem, 50vw, 400rem)
-
-          &:nth-child(1)
-            transform: translateX(44%) rotate(-90deg)
-
-          &:nth-child(2)
-            transform: translateX(-34%) rotate(-90deg)
-
-      .is-letter
-        position: relative
-        color: transparent
-        mix-blend-mode: difference
+    .is-letter
+      position: relative
+      color: transparent
+      mix-blend-mode: difference
 </style>

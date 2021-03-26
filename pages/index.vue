@@ -1,5 +1,5 @@
 <template lang="pug">
-  main.main
+  main.app__wrapper
     Preview
     Projects(
       :projects="projects"
@@ -11,10 +11,10 @@
 
 <script>
 import Vue from 'vue';
-import Preview from '../components/index/Preview';
-import Projects from '../components/index/Projects';
+import Component from 'vue-class-component';
+import Preview from '../components/Preview';
+import Projects from '../components/Projects';
 // import Motion from '../components/index/partials/Motion';
-import Component from 'vue-class-component'
 
 @Component({
   components: {

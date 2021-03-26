@@ -85,7 +85,7 @@ export default class ProjectItem extends mixins(deviceDetector) {
 </script>
 
 <style lang="sass">
-@import '../../../assets/styles/setup'
+@import '../../assets/styles/setup'
 
 .project
   &__link

@@ -12,5 +12,5 @@ export default class Motion extends Vue {}
 </script>
 
 <style lang="sass">
-@import '../../../assets/styles/setup'
+@import '../../assets/styles/setup'
 </style>
