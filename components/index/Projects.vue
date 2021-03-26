@@ -136,11 +136,11 @@ export default class Projects extends mixins(deviceDetector) {
 
 .projects
   position: relative
-  padding: 30vh 6.25vw
+  padding: 25vh 6.25vw
   background-color: $c-grey
 
   .project
-    padding: 0 0 10vw
+    padding: 5vh 0
     width: fit-content
     user-select: none
 
