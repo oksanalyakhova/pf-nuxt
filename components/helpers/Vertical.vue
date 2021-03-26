@@ -1,16 +1,21 @@
 <template lang="pug">
   .text.text-vertical(
     :class="classObject"
+    :style="{transform: 'translateX('+ translate + '%) rotate(-90deg)'}"
   )
     slot
 </template>
 
 <script>
 import Vue from 'vue';
-import Component from 'vue-class-component'
+import Component from 'vue-class-component';
 
 @Component({
   props: {
+    translate: {
+      type: String,
+      default: ''
+    },
     theme: {
       type: String,
       default: ''
@@ -29,9 +34,6 @@ export default class Vertical extends Vue {
 
 <style lang="sass">
 .text-vertical
-  &_top
-    transform: translateX(44%) rotate(-90deg)
-
-  &_bottom
-    transform: translateX(-34%) rotate(-90deg)
+  font-size: clamp(4.25rem, 50vw, 400rem)
+  white-space: nowrap
 </style>

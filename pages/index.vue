@@ -1,11 +1,11 @@
 <template lang="pug">
-  main.app__wrapper
+  div.app__wrapper
     Preview
     Projects(
       :projects="projects"
       v-if="projects"
     )
-
+    React
     //Motion
 </template>
 
@@ -14,12 +14,14 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import Preview from '../components/Preview';
 import Projects from '../components/Projects';
+import React from '../components/React';
 // import Motion from '../components/index/partials/Motion';
 
 @Component({
   components: {
     Preview,
     Projects,
+    React,
     // Motion
   }
 })

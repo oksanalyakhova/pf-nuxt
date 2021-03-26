@@ -1,5 +1,7 @@
 <template lang="pug">
-  .section.section_first.section-first(ref="firstSection")
+  .section.section_first.section-first(
+    ref="firstSection"
+  )
     IntViewportHeight.section-first__item(
       ref="firstBlock"
     )
@@ -26,19 +28,22 @@
     )
       .text(ref="lastname") Lyakhova
 
-    IntViewportHeight.section-first__item.from-right.is-large(
+    IntViewportHeight.section-first__item.from-right(
       ref="thirdItem"
       theme="dark"
     )
 
       Vertical(
         theme="top"
+        translate="44"
       )
         .vertical(ref="top") Frontend
       Vertical(
         theme="bottom"
+        translate="-34"
       )
         .vertical(ref="bottom") Developer
+
     IntViewportHeight.section-first__item(
       theme="dark"
     )
@@ -171,10 +176,6 @@ export default class Preview extends Vue {
       left: 100%
       width: 100%
       height: 100%
-
-    &.is-large
-      .text
-        font-size: clamp(4.25rem, 50vw, 400rem)
 
     .is-letter
       position: relative
