@@ -49,6 +49,8 @@
     )
 
       Vertical(ref="vertical")
+
+    ScrollMessage
 </template>
 
 <script>
@@ -56,6 +58,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import IntViewportHeight from '@/components/helpers/IntViewportHeight';
 import Vertical from '@/components/helpers/Vertical';
+import ScrollMessage from '@/components/helpers/ScrollMessage';
 import gsap from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 
@@ -64,7 +67,8 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
-    Vertical
+    Vertical,
+    ScrollMessage
   },
   data() {
     return {
@@ -178,6 +182,7 @@ export default class Preview extends Vue {
     &.from-right
       position: absolute
       top: 0
+      z-index: 1
       left: 100%
       width: 100%
       height: 100%
