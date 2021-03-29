@@ -1,8 +1,5 @@
 export default {
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: true,
-
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'OLyakhova',
     htmlAttrs: {
@@ -15,24 +12,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-      // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap'},
-      // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap'}
-    ]
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },]
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/axios.js',
     'plugins/i18n.js',
-    { src: '@/plugins/pixi', ssr: false },
   ],
-
-  // router
   router: {
     middleware: ['i18n'],
     routeNameSplitter: '/',
@@ -88,22 +75,14 @@ export default {
       })
     }
   },
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
   ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios'
   ],
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend (config, { isDev, isClient }) {
       config.module.rules.push({

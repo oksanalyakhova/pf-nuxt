@@ -23,7 +23,7 @@
           :xlink:href="image"
           filter="url(#turb)"
         )
-      SvgMask
+      SvgMask(v-if="Enter")
 </template>
 
 <script>
@@ -46,9 +46,7 @@ import gsap from 'gsap';
   },
   data() {
     return {
-      image: '',
-      play: false,
-      reverse: false
+      image: ''
     }
   }
 })
@@ -99,6 +97,8 @@ export default class Projects extends mixins(deviceDetector) {
   runWave() {
     const turbwave = this.$refs.preview.querySelector('#turbwave')
     gsap.killTweensOf(turbwave);
+
+    console.log(turbwave)
 
     gsap.to(turbwave, {
         duration: 4,

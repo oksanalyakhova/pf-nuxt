@@ -68,9 +68,7 @@ export default class React extends Vue {
         ease: 'none'
       }, 'spin +=10.5')
 
-    window.addEventListener('resize', () => {
-      ScrollTrigger.refresh()
-    });
+    window.addEventListener('resize', ScrollTrigger.refresh);
   }
 }
 </script>

@@ -13,11 +13,11 @@
       .text.is-letter(
         ref="o"
         :style="{transform: 'translateX('+ translate + 'px)'}"
-      ) O
-        DisplacementAnim
-        //img.is-letter-img(
-        //  src="img/o.png"
-        //)
+      )
+        span.stroke O
+        span.fill(
+          ref="fill"
+        ) O
       Splitting.from-right__letters(
         :text="$t('name.first')"
       )
@@ -56,7 +56,6 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import IntViewportHeight from './helpers/IntViewportHeight';
 import Vertical from './helpers/Vertical';
-import DisplacementAnim from './partials/DisplacementAnim';
 import gsap from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 
@@ -65,8 +64,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
-    Vertical,
-    DisplacementAnim
+    Vertical
   },
   data() {
     return {
@@ -82,6 +80,7 @@ export default class Preview extends Vue {
   mounted() {
     this.scrollAnim();
 
+    window.addEventListener('load', this.setStyles)
     this.$nextTick(() => {
       window.addEventListener('resize', this.setWindowSizes);
     })
@@ -91,6 +90,14 @@ export default class Preview extends Vue {
   }
   setWindowSizes() {
     this.vw = window.innerWidth;
+  }
+  setStyles() {
+    gsap.to(this.$refs.fill, {
+      webkitClipPath: 'inset(0% 0% 0% 0%)',
+      clipPath: 'inset(0% 0% 0% 0%)',
+      duration: 1.45,
+      ease: 'none'
+    })
   }
   get translate() {
     return `${ -(this.vw  * 0.699) }`
@@ -150,9 +157,7 @@ export default class Preview extends Vue {
           ease: 'none'
         }, 'spin -=3.15')
 
-    window.addEventListener('resize', () => {
-      ScrollTrigger.refresh()
-    });
+    window.addEventListener('resize', ScrollTrigger.refresh);
   }
 }
 </script>
@@ -179,6 +184,19 @@ export default class Preview extends Vue {
 
     .is-letter
       position: relative
-      color: transparent
+      display: inline-block
+      color: $c-grey
+      -webkit-text-stroke-width: 1px
+      -webkit-text-stroke-color: $c-grey
       mix-blend-mode: difference
+
+      .stroke
+        color: transparent
+        -webkit-text-fill-color: transparent
+
+      .fill
+        position: absolute
+        top: 0
+        right: 0
+        clip-path: inset(100% 0% 0% 0%)
 </style>
