@@ -23,35 +23,20 @@
           :xlink:href="image"
           filter="url(#turb)"
         )
-      svg.filter-svg(width="538" height="190" viewBox="0 0 600 200")
-        defs
-          filter(id="turb")
-            feTurbulence(
-              ref="turbwave"
-              type="fractalNoise"
-              baseFrequency="0.01"
-              numOctaves="2"
-              result="turbulence_3"
-              data-filterId="3"
-            )
-            feDisplacementMap(
-              xChannelSelector="R"
-              yChannelSelector="G"
-              in="SourceGraphic"
-              in2="turbulence_3"
-              scale="40"
-            )
+      SvgMask
 </template>
 
 <script>
 import Component, {mixins} from 'vue-class-component';
 import ProjectItem from './partials/ProjectItem';
+import SvgMask from './helpers/SvgMask';
 import deviceDetector from '@/mixins/deviceDetector';
 import gsap from 'gsap';
 
 @Component({
   components: {
-    ProjectItem
+    ProjectItem,
+    SvgMask
   },
   props: {
     projects: {
@@ -112,18 +97,20 @@ export default class Projects extends mixins(deviceDetector) {
     });
   }
   runWave() {
-    gsap.killTweensOf(this.$refs.turbwave);
+    const turbwave = this.$refs.preview.querySelector('#turbwave')
+    gsap.killTweensOf(turbwave);
 
-    gsap.to(this.$refs.turbwave, {
+    gsap.to(turbwave, {
         duration: 4,
         attr:{"baseFrequency": 0},
       }
     )
   }
   stopWave() {
-    gsap.killTweensOf(this.$refs.turbwave);
+    const turbwave = this.$refs.preview.querySelector('#turbwave')
+    gsap.killTweensOf(turbwave);
 
-    gsap.set(this.$refs.turbwave, {
+    gsap.set(turbwave, {
         attr:{"baseFrequency": 0.01},
       }
     )
