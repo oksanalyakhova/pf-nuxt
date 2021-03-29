@@ -17,7 +17,6 @@ export default {
   css: [
   ],
   plugins: [
-    '@/plugins/axios.js',
     'plugins/i18n.js',
   ],
   router: {
@@ -81,22 +80,9 @@ export default {
     '@nuxt/typescript-build',
   ],
   modules: [
-    '@nuxtjs/axios'
   ],
   build: {
-    extend (config, { isDev, isClient }) {
-      config.module.rules.push({
-        test: /\.(glsl|vs|fs|vert|frag)$/,
-        exclude: /node_modules/,
-        use: [
-          'raw-loader',
-          'glslify-loader'
-        ]
-      });
-    },
-    transpile: ['three']
   },
-
   env: {
     baseURL: (process.env.NODE_ENV === 'production' ? 'http//your-url' : 'http://localhost:3000')
   }

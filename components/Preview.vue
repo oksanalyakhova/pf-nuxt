@@ -37,12 +37,12 @@
         theme="top"
         translate="44"
       )
-        .vertical(ref="top") Frontend
+        .vertical(ref="top") {{$t('position.start')}}
       Vertical(
         theme="bottom"
         translate="-34"
       )
-        .vertical(ref="bottom") Developer
+        .vertical(ref="bottom") {{$t('position.end')}}
 
     IntViewportHeight.section-first__item(
       theme="dark"

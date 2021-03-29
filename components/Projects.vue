@@ -98,8 +98,6 @@ export default class Projects extends mixins(deviceDetector) {
     const turbwave = this.$refs.preview.querySelector('#turbwave')
     gsap.killTweensOf(turbwave);
 
-    console.log(turbwave)
-
     gsap.to(turbwave, {
         duration: 4,
         attr:{"baseFrequency": 0},

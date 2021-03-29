@@ -5,7 +5,7 @@
     "titleStart": "Nic",
     "titleEnd": "ole",
     "preview": "img/projects/1.svg",
-    "info": "Jewellery store"
+    "info": "Магазин ювелірних виробів"
   },
   {
     "href": "#",
@@ -13,7 +13,7 @@
     "titleStart": "Dez",
     "titleEnd": "zign",
     "preview": "img/projects/2.svg",
-    "info": "Architecture and design studio"
+    "info": "Студія архітектури і дизайну"
   },
   {
     "href": "https://kyiv.jeep-official.com.ua/",
@@ -21,7 +21,7 @@
     "titleStart": "Je",
     "titleEnd": "ep",
     "preview": "img/projects/3.svg",
-    "info": "Jeep Ukraine Official website"
+    "info": "Jeep Україна"
   },
   {
     "href": "https://oksanalyakhova.github.io/NJ/",
@@ -29,7 +29,7 @@
     "titleStart": "Nico Ju",
     "titleEnd": "liany",
     "preview": "img/projects/4.svg",
-    "info": "Jewellery store"
+    "info": "Магазин ювелірних виробів"
   },
   {
     "href": "https://oksanalyakhova.github.io/LF/",
@@ -37,6 +37,6 @@
     "titleStart": "Latex",
     "titleEnd": "fauna",
     "preview": "img/projects/5.svg",
-    "info": "Musical Band website"
+    "info": "Музичний гурт"
   }
 ]

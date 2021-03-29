@@ -29,7 +29,7 @@ export default class index extends Vue {
   projects = []
 
   created() {
-    fetch('https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/projects.json')
+    fetch(this.$t('projects.url'))
       .then(res => res.json())
       .then(projects => {
         this.projects.push(...projects)

@@ -3,6 +3,13 @@
     "first": "ксана",
     "last": "Ляхова"
   },
+  "position": {
+    "start": "Фронтенд",
+    "end": "Розробник"
+  },
+  "projects": {
+    "url": "https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/projects-ua.json"
+  },
   "errors": {
     "not-found": "Сторінка не знайдена"
   }
