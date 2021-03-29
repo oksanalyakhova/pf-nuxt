@@ -16,7 +16,7 @@
       .intro
         .text I love React, JSX, Styled Components, React Hooks and all the possibilities that React provides.
         .text When I have free time I learn React, read about React and the libraries for it.
-        .text Enjoy some of my React projects.
+        .text Enjoy some of my React projects:
 
 </template>
 
@@ -55,7 +55,7 @@ export default class React extends Vue {
       .fromTo(this.$refs.top, {
         xPercent: 95
       }, {
-        xPercent: -60,
+        xPercent: -110,
         skewX: -5,
         duration: 10,
         ease: 'none'
@@ -64,7 +64,7 @@ export default class React extends Vue {
         yPercent: 0,
       }, {
         yPercent: -100,
-        duration: 10,
+        duration: 20,
         ease: 'none'
       }, 'spin +=10.5')
 
@@ -111,8 +111,6 @@ export default class React extends Vue {
     left: 0
     z-index: 2
     width: 100%
-    height: 200vh
-    height: calc(var(--vh, 1vh) * 200)
     display: flex
     justify-content: center
     color: $c-grey

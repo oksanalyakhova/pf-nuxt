@@ -28,8 +28,66 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/axios.js',
-    { src: "@/plugins/pixi", ssr: false },
+    'plugins/i18n.js',
+    { src: '@/plugins/pixi', ssr: false },
   ],
+
+  // router
+  router: {
+    middleware: ['i18n'],
+    routeNameSplitter: '/',
+    linkActiveClass: 'is-active',
+    linkExactActiveClass: 'is-current',
+
+    extendRoutes (routes, resolve) {
+      let setLangAlias = function(route, parentPath = '') {
+        if(route.alias) {
+          if ((typeof route.alias).toLowerCase() === 'string')
+            route.alias = [route.alias];
+        } else {
+          route.alias = [];
+        }
+
+        let path = (parentPath && parentPath !== ''
+          ? (parentPath.indexOf('/') === 0
+            ? ''
+            : '/')
+          : '')
+          + parentPath.replace(/\/$/, '')
+          + (route.path === '/'
+            ? ''
+            : (route.path.indexOf('/') === 0
+              ? route.path
+              : ('/' + route.path)));
+
+        let aliases = [];
+        ['en', 'ua'].forEach(function(lang) {
+          if (lang !== 'en')
+            aliases.push(('/' + lang + path));
+        });
+        route.alias = route.alias.concat(aliases);
+      };
+
+      routes.forEach(route => {
+        setLangAlias(route);
+        // for homepage we need to specify children aliases
+        if (route.path === '/') {
+          let rc = route.children;
+          if (rc && rc.length) {
+            for (let r in rc) {
+              setLangAlias(rc[r], route.path);
+              let rcc = rc[r].children;
+              if (rcc && rcc.length) {
+                for (let c in rcc) {
+                  setLangAlias(rcc[c], rc[r].path);
+                }
+              }
+            }
+          }
+        }
+      })
+    }
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

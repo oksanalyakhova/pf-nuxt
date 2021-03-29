@@ -19,14 +19,14 @@
         //  src="img/o.png"
         //)
       Splitting.from-right__letters(
-        :text="`ksana`"
+        :text="$t('name.first')"
       )
 
     IntViewportHeight.section-first__item.from-right(
       ref="secondItem"
       theme="transparent"
     )
-      .text(ref="lastname") Lyakhova
+      .text(ref="lastname") {{$t('name.last')}}
 
     IntViewportHeight.section-first__item.from-right(
       ref="thirdItem"
