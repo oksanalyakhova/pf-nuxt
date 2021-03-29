@@ -10,6 +10,13 @@
   "projects": {
     "url": "https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/projects-ua.json"
   },
+  "react": {
+    "intro": {
+      "start": "Я люблю React, JSX, Styled Components, React Hooks та всі можливості, які надає React.",
+      "middle": "Коли маю вільний час, я вивчаю React, читаю про React та бібліотеки для нього.",
+      "end": "Ось деякі мої проекти на React:"
+    }
+  },
   "errors": {
     "not-found": "Сторінка не знайдена"
   }

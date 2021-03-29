@@ -10,6 +10,13 @@
   "projects": {
     "url": "https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/projects.json"
   },
+  "react": {
+    "intro": {
+      "start": "I love React, JSX, Styled Components, React Hooks and all the possibilities that React provides.",
+      "middle": "When I have free time I learn React, read about React and the libraries for it.",
+      "end": "There are some of my React projects here:"
+    }
+  },
   "errors": {
     "not-found": "Page not found"
   }

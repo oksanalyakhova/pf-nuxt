@@ -14,17 +14,17 @@
       ref="secondItem"
     )
       .intro
-        .text I love React, JSX, Styled Components, React Hooks and all the possibilities that React provides.
-        .text When I have free time I learn React, read about React and the libraries for it.
-        .text Enjoy some of my React projects:
+        .text {{$t('react.intro.start')}}
+        .text {{$t('react.intro.middle')}}
+        .text {{$t('react.intro.end')}}
 
 </template>
 
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import IntViewportHeight from './helpers/IntViewportHeight';
-import Vertical from './helpers/Vertical';
+import IntViewportHeight from '@/components/helpers/IntViewportHeight';
+import Vertical from '@/components/helpers/Vertical';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 

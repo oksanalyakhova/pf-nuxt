@@ -28,8 +28,8 @@
 
 <script>
 import Component, {mixins} from 'vue-class-component';
-import ProjectItem from './partials/ProjectItem';
-import SvgMask from './helpers/SvgMask';
+import ProjectItem from '@/components/partials/ProjectItem';
+import SvgMask from '@/components/helpers/SvgMask';
 import deviceDetector from '@/mixins/deviceDetector';
 import gsap from 'gsap';
 

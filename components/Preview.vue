@@ -12,7 +12,7 @@
     )
       .text.is-letter(
         ref="o"
-        :style="{transform: 'translateX('+ translate + 'px)'}"
+        :style="{transform: `translateX(${translate}px)`}"
       )
         span.stroke O
         span.fill(
@@ -54,8 +54,8 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import IntViewportHeight from './helpers/IntViewportHeight';
-import Vertical from './helpers/Vertical';
+import IntViewportHeight from '@/components/helpers/IntViewportHeight';
+import Vertical from '@/components/helpers/Vertical';
 import gsap from 'gsap/dist/gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
 
