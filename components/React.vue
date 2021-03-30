@@ -17,7 +17,9 @@
         .text {{$t('react.intro.start')}}
         .text {{$t('react.intro.middle')}}
         .text {{$t('react.intro.end')}}
-      ul.react-projects-list
+      ul.react-projects-list(
+        ref="reactProjList"
+      )
         li.react-projects-list__item.react-project(
           v-for="project in reactProjects"
           :key="project.label"
@@ -54,12 +56,11 @@ export default class React extends Vue {
     thirdSection: HTMLElement,
     firstItem: HTMLElement,
     secondItem: HTMLElement,
-    top: HTMLElement
+    top: HTMLElement,
+    reactProjList: HTMLElement
   }
 
   mounted() {
-
-
     this.scrollAnim();
   }
   private scrollAnim(): void {
