@@ -72,7 +72,7 @@ gsap.registerPlugin(ScrollTrigger);
   }
 })
 export default class Preview extends Vue {
-  vw = window.innerWidth;
+  vw: number = window.innerWidth;
   $refs!: {
     fill: HTMLElement,
     firstSection: HTMLElement,

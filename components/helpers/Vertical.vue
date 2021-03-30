@@ -9,23 +9,16 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
 
-@Component({
-  props: {
-    translate: {
-      type: String,
-      default: ''
-    },
-    theme: {
-      type: String,
-      default: ''
-    }
-  }
-})
+@Component
 export default class Vertical extends Vue {
-  private theme: string;
+  @Prop({default: '0'})
+  translate: string
+  @Prop({default: 'top'})
+  theme: string
 
-  get classObject() {
+  get classObject(): object {
     return {
       'text-vertical_top': this.theme === 'top',
       'text-vertical_bottom': this.theme === 'bottom'

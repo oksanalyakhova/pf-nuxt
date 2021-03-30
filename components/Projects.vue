@@ -28,6 +28,7 @@
 
 <script lang="ts">
 import Component, {mixins} from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
 import SvgMask from '~/components/helpers/SvgMask.vue';
 import ProjectItem from '~/components/helpers/ProjectItem.vue';
 import deviceDetector from '@/mixins/deviceDetector';
@@ -37,16 +38,13 @@ import {gsap} from 'gsap/dist/gsap';
   components: {
     ProjectItem,
     SvgMask
-  },
-  props: {
-    projects: {
-      type: Array,
-      default: () => []
-    },
   }
 })
 export default class Projects extends mixins(deviceDetector) {
-  image = '';
+  @Prop({default: () => []})
+  projects: []
+
+  image: string = '';
   $refs!: {
     preview: HTMLElement,
     img: HTMLElement

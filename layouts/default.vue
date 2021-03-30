@@ -24,7 +24,7 @@ import '@/assets/styles/common.sass';
   }
 })
 export default class Project extends mixins(sizeTricks, deviceDetector) {
-  progress = 0;
+  progress: number = 0;
   $refs!: {
     app: HTMLElement
   }

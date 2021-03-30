@@ -20,18 +20,15 @@
 
 <script lang="ts">
 import Component, {mixins} from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
 import {gsap} from 'gsap/dist/gsap';
 import deviceDetector from '@/mixins/deviceDetector';
 
-@Component({
-  props: {
-    project: {
-      type: Object,
-      default: () => {}
-    }
-  }
-})
+@Component
 export default class ProjectItem extends mixins(deviceDetector) {
+  @Prop({default: () => {}})
+  project: object
+
   $refs!: {
     fill: HTMLElement,
     projectInfo: HTMLElement
@@ -76,10 +73,8 @@ export default class ProjectItem extends mixins(deviceDetector) {
       )
     }
   }
-  private static Hover(targetFill: gsap.TweenTarget,
-                       targetInfo: gsap.TweenTarget,
-                       clipPath: string,
-                       autoAlpha: number
+  private static Hover(
+    targetFill: gsap.TweenTarget, targetInfo: gsap.TweenTarget, clipPath: string, autoAlpha: number
   ): void {
     const hoverAnim = gsap.timeline()
       .to(targetFill, {

@@ -8,24 +8,18 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
 
-@Component({
-  props: {
-    text: {
-      type: String,
-      default: ''
-    },
-    theme: {
-      type: String,
-      default: ''
-    }
-  }
-})
+@Component
 export default class Splitting extends Vue {
+  @Prop({default: ''})
+  text: string
+  @Prop({default: ''})
+  theme: string
+
   $refs!: {
     textLetters: HTMLElement
   }
-  private theme: string;
 
   get classObject() {
     return {

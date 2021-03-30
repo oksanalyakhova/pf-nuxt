@@ -1,7 +1,7 @@
 <template lang="pug">
   .intViewportHeight(
     :class="classObject"
-    :style="{ width: vw + 'px', height: vh + 'px'}"
+    :style="{width: vw + 'px', height: vh + 'px'}"
   )
     slot
 </template>
@@ -9,23 +9,15 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
 
-@Component({
-  props: {
-    className: {
-      type: String,
-      default: ''
-    },
-    theme: {
-      type: String,
-      default: 'dark'
-    },
-  }
-})
+@Component
 export default class IntViewportHeight extends Vue {
-  vw = 0;
-  vh = 0;
-  public theme: string;
+  @Prop({default: 'dark'})
+  theme: string
+
+  vw: number = 0;
+  vh: number = 0;
 
   get classObject() {
     return {

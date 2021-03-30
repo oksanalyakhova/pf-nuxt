@@ -9,16 +9,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
 
-@Component({
-  props: {
-    value: {
-      type: Number,
-      default: 0
-    }
-  }
-})
-export default class ProgressBar extends Vue {}
+@Component
+export default class ProgressBar extends Vue {
+  @Prop({default: 0})
+  value: number
+}
 </script>
 
 <style lang="sass">
