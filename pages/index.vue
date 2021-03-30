@@ -5,7 +5,10 @@
       :projects="projects"
       v-if="projects"
     )
-    React
+    React(
+      :reactProjects="reactProjects"
+      v-if="reactProjects"
+    )
 </template>
 
 <script>
@@ -24,12 +27,18 @@ import React from '~/components/React.vue';
 })
 export default class index extends Vue {
   projects = [];
+  reactProjects = [];
 
   created() {
     fetch(this.$t('projects.url'))
       .then(res => res.json())
       .then(projects => {
         this.projects.push(...projects)
+      })
+    fetch(this.$t('react-projects.url'))
+      .then(res => res.json())
+      .then(reactProjects => {
+        this.projects.push(...reactProjects)
       })
   }
 }
