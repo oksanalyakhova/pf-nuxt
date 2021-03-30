@@ -6,7 +6,7 @@
     slot
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
@@ -23,6 +23,8 @@ import Component from 'vue-class-component';
   }
 })
 export default class Vertical extends Vue {
+  private theme: string;
+
   get classObject() {
     return {
       'text-vertical_top': this.theme === 'top',

@@ -29,6 +29,9 @@
       "@nuxtjs/axios"
     ]
   },
+  "files": [
+    "node_modules/gsap/types/index.d.ts"
+  ],
   "exclude": [
     "node_modules",
     ".nuxt",

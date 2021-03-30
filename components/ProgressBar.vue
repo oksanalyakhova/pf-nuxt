@@ -6,7 +6,7 @@
 
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
@@ -16,7 +16,7 @@ import Component from 'vue-class-component';
       type: Number,
       default: 0
     }
-  },
+  }
 })
 export default class ProgressBar extends Vue {}
 </script>

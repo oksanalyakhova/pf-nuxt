@@ -18,9 +18,9 @@
     ) {{project.info}}
 </template>
 
-<script>
+<script lang="ts">
 import Component, {mixins} from 'vue-class-component';
-import gsap from 'gsap';
+import {gsap} from 'gsap/dist/gsap';
 import deviceDetector from '@/mixins/deviceDetector';
 
 @Component({
@@ -32,10 +32,15 @@ import deviceDetector from '@/mixins/deviceDetector';
   }
 })
 export default class ProjectItem extends mixins(deviceDetector) {
+  $refs!: {
+    fill: HTMLElement,
+    projectInfo: HTMLElement
+  }
+
   mounted() {
     this.setStyles();
   }
-  setStyles() {
+  private setStyles(): void {
     gsap.set(this.$refs.fill, {
       webkitClipPath: 'inset(0% 100% 0% 0%)',
       clipPath: 'inset(0% 100% 0% 0%)'
@@ -47,9 +52,11 @@ export default class ProjectItem extends mixins(deviceDetector) {
       })
     }
   }
-  Enter(e) {
+  private Enter(e: {
+    target: {querySelector: (arg0: string) => gsap.TweenTarget};
+  }): void {
     if (!this.isMobile) {
-      this.Hover(
+      ProjectItem.Hover(
         e.target.querySelector('.fill'),
         e.target.querySelector('.project-info'),
         'inset(0% 0% 0% 0%)',
@@ -57,9 +64,11 @@ export default class ProjectItem extends mixins(deviceDetector) {
       )
     }
   }
-  Leave(e) {
+  private Leave(e: {
+    target: {querySelector: (arg0: string) => gsap.TweenTarget};
+  }): void {
     if (!this.isMobile) {
-      this.Hover(
+      ProjectItem.Hover(
         e.target.querySelector('.fill'),
         e.target.querySelector('.project-info'),
         'inset(0% 100% 0% 0%)',
@@ -67,7 +76,11 @@ export default class ProjectItem extends mixins(deviceDetector) {
       )
     }
   }
-  Hover(targetFill, targetInfo, clipPath, autoAlpha) {
+  private static Hover(targetFill: gsap.TweenTarget,
+                       targetInfo: gsap.TweenTarget,
+                       clipPath: string,
+                       autoAlpha: number
+  ): void {
     const hoverAnim = gsap.timeline()
       .to(targetFill, {
         webkitClipPath: clipPath,

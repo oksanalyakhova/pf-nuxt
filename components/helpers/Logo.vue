@@ -19,7 +19,7 @@
     span {{logoEnd}}
 </template>
 
-<script>
+<script class="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
@@ -29,7 +29,3 @@ export default class Logo extends Vue {
   logoEnd = '/>'
 }
 </script>
-
-<style scoped lang="sass">
-
-</style>

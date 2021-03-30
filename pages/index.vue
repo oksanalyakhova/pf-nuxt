@@ -6,27 +6,24 @@
       v-if="projects"
     )
     React
-    //Motion
 </template>
 
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import Preview from '../components/Preview';
-import Projects from '../components/Projects';
-import React from '../components/React';
-// import Motion from '../components/index/partials/Motion';
+import Preview from '~/components/Preview.vue';
+import Projects from '~/components/Projects.vue';
+import React from '~/components/React.vue';
 
 @Component({
   components: {
     Preview,
     Projects,
-    React,
-    // Motion
+    React
   }
 })
 export default class index extends Vue {
-  projects = []
+  projects = [];
 
   created() {
     fetch(this.$t('projects.url'))

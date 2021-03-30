@@ -53,14 +53,14 @@
     ScrollMessage
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import IntViewportHeight from '@/components/helpers/IntViewportHeight';
-import Vertical from '@/components/helpers/Vertical';
-import ScrollMessage from '@/components/helpers/ScrollMessage';
-import gsap from 'gsap/dist/gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
+import Vertical from '~/components/helpers/Vertical.vue';
+import ScrollMessage from '~/components/helpers/ScrollMessage.vue';
+import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
+import {gsap} from 'gsap/dist/gsap';
+import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,15 +69,19 @@ gsap.registerPlugin(ScrollTrigger);
     IntViewportHeight,
     Vertical,
     ScrollMessage
-  },
-  data() {
-    return {
-      vw: window.innerWidth
-    }
   }
 })
-
 export default class Preview extends Vue {
+  vw = window.innerWidth;
+  $refs!: {
+    fill: HTMLElement,
+    firstSection: HTMLElement,
+    o: HTMLElement,
+    lastname: HTMLElement,
+    top: HTMLElement,
+    bottom: HTMLElement
+  }
+
   created() {
     this.setWindowSizes();
   }
@@ -92,10 +96,10 @@ export default class Preview extends Vue {
   destroyed() {
     window.removeEventListener('resize', this.setWindowSizes);
   }
-  setWindowSizes() {
+  private setWindowSizes(): void {
     this.vw = window.innerWidth;
   }
-  setStyles() {
+  private setStyles(): void {
     gsap.to(this.$refs.fill, {
       webkitClipPath: 'inset(0% 0% 0% 0%)',
       clipPath: 'inset(0% 0% 0% 0%)',
@@ -106,9 +110,9 @@ export default class Preview extends Vue {
   get translate() {
     return `${ -(this.vw  * 0.699) }`
   }
-  scrollAnim() {
-    const slides = gsap.utils.toArray(this.$refs.firstSection.querySelectorAll('.from-right'));
-    const letters = gsap.utils.toArray(this.$refs.firstSection.querySelectorAll('.from-right__letters .letter'));
+  private scrollAnim(): void {
+    const slides = [...this.$refs.firstSection.querySelectorAll('.from-right')];
+    const letters = [...this.$refs.firstSection.querySelectorAll('.from-right__letters .letter')];
 
     const actionStart = gsap.timeline({
       scrollTrigger: {
@@ -161,7 +165,7 @@ export default class Preview extends Vue {
           ease: 'none'
         }, 'spin -=3.15')
 
-    window.addEventListener('resize', ScrollTrigger.refresh);
+    window.addEventListener('resize', () => ScrollTrigger.refresh());
   }
 }
 </script>

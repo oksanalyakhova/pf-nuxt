@@ -5,9 +5,9 @@
     ) {{text}}
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component'
+import Component from 'vue-class-component';
 
 @Component({
   props: {
@@ -22,12 +22,20 @@ import Component from 'vue-class-component'
   }
 })
 export default class Splitting extends Vue {
+  $refs!: {
+    textLetters: HTMLElement
+  }
+  private theme: string;
+
   get classObject() {
     return {
       'text_uppercase': this.theme === 'uppercase'
     }
   }
   mounted() {
+    this.SetInnerText();
+  }
+  private SetInnerText(): void {
     const words = this.$refs.textLetters;
     words.innerHTML = words.innerText
       .replace(/./g, "<span class='letter' data-letter='$&'>$&</span>")

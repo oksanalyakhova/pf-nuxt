@@ -20,13 +20,13 @@
 
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import IntViewportHeight from '@/components/helpers/IntViewportHeight';
-import Vertical from '@/components/helpers/Vertical';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger.js';
+import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
+import Vertical from '~/components/helpers/Vertical.vue';
+import {gsap} from 'gsap/dist/gsap';
+import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,10 +37,17 @@ gsap.registerPlugin(ScrollTrigger);
   },
 })
 export default class React extends Vue {
+  $refs!: {
+    thirdSection: HTMLElement,
+    firstItem: HTMLElement,
+    secondItem: HTMLElement,
+    top: HTMLElement
+  }
+
   mounted() {
     this.scrollAnim();
   }
-  scrollAnim() {
+  private scrollAnim(): void {
     const actionStart = gsap.timeline({
       scrollTrigger: {
         trigger: this.$refs.thirdSection,
@@ -68,7 +75,7 @@ export default class React extends Vue {
         ease: 'none'
       }, 'spin +=10.5')
 
-    window.addEventListener('resize', ScrollTrigger.refresh);
+    window.addEventListener('resize', () => ScrollTrigger.refresh());
   }
 }
 </script>

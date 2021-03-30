@@ -6,9 +6,9 @@
     slot
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component'
+import Component from 'vue-class-component';
 
 @Component({
   props: {
@@ -20,15 +20,13 @@ import Component from 'vue-class-component'
       type: String,
       default: 'dark'
     },
-  },
-  data() {
-    return {
-      vw: window.innerWidth,
-      vh: window.innerHeight
-    }
   }
 })
 export default class IntViewportHeight extends Vue {
+  vw = 0;
+  vh = 0;
+  public theme: string;
+
   get classObject() {
     return {
       'is-dark': this.theme === 'dark',
@@ -47,7 +45,7 @@ export default class IntViewportHeight extends Vue {
   destroyed() {
     window.removeEventListener('resize', this.setSizes);
   }
-  setSizes() {
+  private setSizes(): void {
     this.vw = window.innerWidth;
     this.vh = window.innerHeight;
   }

@@ -26,12 +26,12 @@
       SvgMask(v-if="Enter")
 </template>
 
-<script>
+<script lang="ts">
 import Component, {mixins} from 'vue-class-component';
-import ProjectItem from '@/components/helpers/ProjectItem';
-import SvgMask from '@/components/helpers/SvgMask';
+import SvgMask from '~/components/helpers/SvgMask.vue';
+import ProjectItem from '~/components/helpers/ProjectItem.vue';
 import deviceDetector from '@/mixins/deviceDetector';
-import gsap from 'gsap';
+import {gsap} from 'gsap/dist/gsap';
 
 @Component({
   components: {
@@ -43,34 +43,37 @@ import gsap from 'gsap';
       type: Array,
       default: () => []
     },
-  },
-  data() {
-    return {
-      image: ''
-    }
   }
 })
 export default class Projects extends mixins(deviceDetector) {
-  Enter(e) {
+  image = '';
+  $refs!: {
+    preview: HTMLElement,
+    img: HTMLElement
+  }
+
+  private Enter(e: {
+    target: {dataset: {img: string;}};
+  }): void {
     if (!this.isMobile) {
       this.image = e.target.dataset.img;
       this.runWave();
       this.showImage();
     }
   }
-  Leave(e) {
+  private Leave(e: any): void {
     if (!this.isMobile) {
       this.stopWave();
       this.hideImage();
     }
   }
-  showImage() {
+  private showImage(): void {
     gsap.killTweensOf(this.$refs.preview);
     gsap.killTweensOf(this.$refs.img);
 
     const show = gsap.timeline({
       onStart: () => {
-        this.$refs.preview.style.opacity = 1;
+        this.$refs.preview.style.opacity = '1';
         gsap.set(this.$refs.preview, {zIndex: 0});
       }
     })
@@ -81,7 +84,7 @@ export default class Projects extends mixins(deviceDetector) {
         scale: '1'
       })
   }
-  hideImage() {
+  private hideImage(): void {
     gsap.killTweensOf(this.$refs.preview);
     gsap.killTweensOf(this.$refs.img);
 
@@ -94,7 +97,7 @@ export default class Projects extends mixins(deviceDetector) {
       autoAlpha: 0
     });
   }
-  runWave() {
+  private runWave(): void {
     const turbwave = this.$refs.preview.querySelector('#turbwave')
     gsap.killTweensOf(turbwave);
 
@@ -104,7 +107,7 @@ export default class Projects extends mixins(deviceDetector) {
       }
     )
   }
-  stopWave() {
+  private stopWave(): void {
     const turbwave = this.$refs.preview.querySelector('#turbwave')
     gsap.killTweensOf(turbwave);
 
