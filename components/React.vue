@@ -17,14 +17,24 @@
         .text {{$t('react.intro.start')}}
         .text {{$t('react.intro.middle')}}
         .text {{$t('react.intro.end')}}
-
+    ul.react-projects-list
+      li.react-projects-list__item.react-project(
+        v-for="project in reactProjects"
+        :key="project.label"
+        :data-img="project.preview"
+      )
+        ReactProjectItem(
+          :project="project"
+        )
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
 import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
 import Vertical from '~/components/helpers/Vertical.vue';
+import ReactProjectItem from '~/components/helpers/ReactProjectItem.vue';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
@@ -33,10 +43,14 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   components: {
     IntViewportHeight,
-    Vertical
+    Vertical,
+    ReactProjectItem
   },
 })
 export default class React extends Vue {
+  @Prop({default: () => []})
+  reactProjects: []
+
   $refs!: {
     thirdSection: HTMLElement,
     firstItem: HTMLElement,
