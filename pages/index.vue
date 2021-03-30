@@ -17,6 +17,8 @@ import Component from 'vue-class-component';
 import Preview from '~/components/Preview.vue';
 import Projects from '~/components/Projects.vue';
 import React from '~/components/React.vue';
+import axios from 'axios';
+// const axios = require('axios');
 
 @Component({
   components: {
@@ -29,7 +31,9 @@ export default class index extends Vue {
   projects = [];
   reactProjects = [];
 
-  created() {
+
+
+  async created() {
     fetch(this.$t('projects.url'))
       .then(res => res.json())
       .then(projects => {
@@ -38,12 +42,8 @@ export default class index extends Vue {
     fetch(this.$t('react-projects.url'))
       .then(res => res.json())
       .then(reactProjects => {
-        this.projects.push(...reactProjects)
+        this.reactProjects.push(...reactProjects)
       })
   }
 }
 </script>
-
-<style>
-
-</style>

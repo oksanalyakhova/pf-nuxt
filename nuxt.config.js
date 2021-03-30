@@ -18,6 +18,7 @@ export default {
   ],
   plugins: [
     'plugins/i18n.js',
+    'plugins/vue-fragment'
   ],
   router: {
     middleware: ['i18n'],

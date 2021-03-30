@@ -17,15 +17,14 @@
         .text {{$t('react.intro.start')}}
         .text {{$t('react.intro.middle')}}
         .text {{$t('react.intro.end')}}
-    ul.react-projects-list
-      li.react-projects-list__item.react-project(
-        v-for="project in reactProjects"
-        :key="project.label"
-        :data-img="project.preview"
-      )
-        ReactProjectItem(
-          :project="project"
+      ul.react-projects-list
+        li.react-projects-list__item.react-project(
+          v-for="project in reactProjects"
+          :key="project.label"
         )
+          ReactProjectItem(
+            :project="project"
+          )
 </template>
 
 <script lang="ts">
@@ -45,7 +44,7 @@ gsap.registerPlugin(ScrollTrigger);
     IntViewportHeight,
     Vertical,
     ReactProjectItem
-  },
+  }
 })
 export default class React extends Vue {
   @Prop({default: () => []})
@@ -59,6 +58,8 @@ export default class React extends Vue {
   }
 
   mounted() {
+
+
     this.scrollAnim();
   }
   private scrollAnim(): void {
@@ -131,10 +132,18 @@ export default class React extends Vue {
     z-index: 2
     width: 100%
     display: flex
+    flex-direction: column
     justify-content: center
+    align-items: center
     color: $c-grey
 
-    .intro
+    .intro,
+    .react-projects-list
       padding: 0 6.25vw 0 50vw
+      width: 100%
+
+    .react-projects-list
+      &__item
+        margin: 5em 0 0
 </style>
 

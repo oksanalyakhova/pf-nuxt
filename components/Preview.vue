@@ -108,7 +108,7 @@ export default class Preview extends Vue {
     })
   }
   get translate() {
-    return `${ -(this.vw  * 0.699) }`
+    return `${ -(this.vw  * 0.685) }`
   }
   private scrollAnim(): void {
     const slides = [...this.$refs.firstSection.querySelectorAll('.from-right')];

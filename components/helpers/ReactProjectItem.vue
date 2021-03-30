@@ -8,15 +8,13 @@
       @mouseleave="Leave"
     )
       h2.react-project__title {{project.titleStart}}
-      span.stroke {{project.titleEnd}}
-      span.fill(
-        ref="fill"
-      ) {{project.titleEnd}}
+        span.stroke {{project.titleEnd}}
+        span.fill(
+          ref="fill"
+        ) {{project.titleEnd}}
     .react-project__info {{project.info}}
-    a.react-project__info(
+    a.react-project__info.is-link(
       :href="project.code"
-      @mouseenter="EnterCode"
-      @mouseleave="LeaveCode"
     ) Git
 
 </template>
@@ -79,53 +77,69 @@ export default class ProjectItem extends mixins(deviceDetector) {
         ease: 'none'
       })
   }
-  private EnterCode(e: any): void {
-
-  }
-  private LeaveCode(e: any): void {
-
-  }
 }
 </script>
 
 <style lang="sass">
 @import '../../assets/styles/setup'
 
-.project
+.react-project
   &__link
     position: relative
     width: fit-content
-    color: $c-black
+    color: $c-grey
 
-    .project-title
-      margin: 0
-      position: relative
-      display: inline-block
-      font-weight: normal
-      font-size: clamp(2.25rem, 6vw, 60rem)
-      line-height: 1.25
-      letter-spacing: .05em
-      -webkit-text-stroke-width: 1px
-      -webkit-text-stroke-color: $c-black
+  &__title
+    margin: 0
+    position: relative
+    display: inline-block
+    font-weight: normal
+    font-size: clamp(2.25rem, 6vw, 60rem)
+    line-height: 1.25
+    letter-spacing: .05em
+    -webkit-text-stroke-width: 1px
+    -webkit-text-stroke-color: $c-grey
 
-      .stroke
-        color: transparent
-        -webkit-text-fill-color: transparent
+    .stroke
+      color: transparent
+      -webkit-text-fill-color: transparent
 
-      .fill
-        position: absolute
-        top: 0
-        right: 0
-
-    .project-info
+    .fill
       position: absolute
-      left: 0
-      top: 100%
-      opacity: 0
-      user-select: none
-      font-weight: bold
-      font-size: 12px
-      line-height: 1.6667
-      text-transform: uppercase
-      white-space: nowrap
+      top: 0
+      right: 0
+
+  &__info
+    margin: 1em 3em 0 0
+    display: inline-block
+    font-size: 12px
+    line-height: 1.6667
+    text-transform: uppercase
+    white-space: nowrap
+
+    &.is-link
+      @include pseudo
+
+      &:hover
+        &::after
+          opacity: 0
+          transform: translate3d(0, 5px, 0)
+
+      &::before
+        top: .7em
+        left: -1.5em
+        width: .3em
+        height: .3em
+        background-color: $c-grey
+        border-radius: 50%
+
+      &::after
+        left: 0
+        top: 100%
+        width: 100%
+        height: 1px
+        background-color: $c-grey
+        opacity: 1
+        transform: translateZ(0)
+        transition: transform .45s,opacity .45s
 </style>
