@@ -47,7 +47,6 @@
     IntViewportHeight.section-first__item(
       theme="dark"
     )
-
       Vertical(ref="vertical")
 
     ScrollMessage

@@ -22,7 +22,7 @@
       )
         li.react-projects-list__item.react-project(
           ref="reactProjListItem"
-          v-for="project in projects"
+          v-for="project in reactProjects"
           :key="project.label"
         )
           ReactProjectItem(
@@ -59,7 +59,14 @@ export default class React extends Vue {
   @Prop({default: () => []})
   reactProjects: []
 
-  // lastProject = []
+  lastProject: object = {
+    "demo": "#",
+    "titleStart": "Nuxt",
+    "titleEnd": "Nuxt",
+    "info": "Project 4 info",
+    "code": "#",
+    "label": "Project 4"
+  }
   $refs!: {
     thirdSection: HTMLElement,
     firstItem: HTMLElement,
@@ -68,23 +75,7 @@ export default class React extends Vue {
     reactProjList: HTMLElement,
     reactProjListItem: HTMLElement
   }
-
-  get projects() {
-    return this.reactProjects.splice(0, this.reactProjects.length - 1);
-  }
-  get lastProject() {
-    return this.reactProjects[this.reactProjects.length - 1]
-  }
   mounted() {
-    this.$nextTick(() => {
-    })
-
-    // this.lastProject = this.reactProjects.splice(this.reactProjects.length - 2, this.reactProjects.length);
-    //
-    // const result = this.reactProjects[this.reactProjects.length - 1]
-    console.log(this.lastProject)
-
-
     this.scrollAnim();
   }
   private scrollAnim(): void {
