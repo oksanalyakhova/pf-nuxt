@@ -17,10 +17,10 @@
         .text {{$t('react.intro.start')}}
         .text {{$t('react.intro.middle')}}
         .text {{$t('react.intro.end')}}
-      ul.react-projects-list(
+      ul.js-projects-list(
         ref="reactProjList"
       )
-        li.react-projects-list__item.react-project(
+        li.js-projects-list__item.js-project(
           ref="reactProjListItem"
           v-for="project in reactProjects"
           :key="project.label"
@@ -30,8 +30,9 @@
           )
       .intro
         .text {{$t('react.intro.not-only-react')}}
+        .js-project
           ReactProjectItem(
-            :project="lastProject"
+            :project="vueProject"
           )
 
 </template>
@@ -55,18 +56,10 @@ gsap.registerPlugin(ScrollTrigger);
     ReactProjectItem
   }
 })
-export default class React extends Vue {
+export default class Js extends Vue {
   @Prop({default: () => []})
   reactProjects: []
 
-  lastProject: object = {
-    "demo": "#",
-    "titleStart": "Nuxt",
-    "titleEnd": "Nuxt",
-    "info": "Project 4 info",
-    "code": "#",
-    "label": "Project 4"
-  }
   $refs!: {
     thirdSection: HTMLElement,
     firstItem: HTMLElement,
@@ -74,6 +67,10 @@ export default class React extends Vue {
     top: HTMLElement,
     reactProjList: HTMLElement,
     reactProjListItem: HTMLElement
+  }
+
+  get vueProject() {
+    return this.$t('vue')
   }
   mounted() {
     this.scrollAnim();
@@ -154,16 +151,16 @@ export default class React extends Vue {
     color: $c-grey
 
     .intro,
-    .react-projects-list
+    .js-projects-list
       width: 100%
 
     .intro
       padding: 0 6.25vw 0 50vw
 
-    .react-projects-list
+    .js-projects-list
       padding: 0 6.25vw 6vw 50vw
 
-      &__item
-        margin: 5em 0 0
+    .js-project
+      margin: 4rem 0 0
 </style>
 

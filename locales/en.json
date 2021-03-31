@@ -21,6 +21,14 @@
   "react-projects": {
     "url": "https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/react-projects.json"
   },
+  "vue": {
+    "demo": "#",
+    "titleStart": "Nuxt",
+    "titleEnd": "Nuxt",
+    "info": "Project 4 info",
+    "code": "#",
+    "label": "Project 4"
+  },
   "errors": {
     "not-found": "Page not found"
   }

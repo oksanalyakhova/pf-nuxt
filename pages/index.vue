@@ -16,7 +16,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import Preview from '~/components/Preview.vue';
 import Projects from '~/components/Projects.vue';
-import React from '~/components/React.vue';
+import React from '@/components/Js.vue';
 import axios from 'axios';
 // const axios = require('axios');
 
