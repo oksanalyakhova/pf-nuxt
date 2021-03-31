@@ -5,10 +5,12 @@
       :projects="projects"
       v-if="projects"
     )
-    React(
+    Js(
       :reactProjects="reactProjects"
       v-if="reactProjects"
     )
+    About
+
 </template>
 
 <script>
@@ -16,15 +18,15 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import Preview from '~/components/Preview.vue';
 import Projects from '~/components/Projects.vue';
-import React from '@/components/Js.vue';
-import axios from 'axios';
-// const axios = require('axios');
+import Js from '~/components/Js.vue';
+import About from '~/components/About.vue';
 
 @Component({
   components: {
     Preview,
     Projects,
-    React
+    Js,
+    About
   }
 })
 export default class index extends Vue {
