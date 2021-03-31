@@ -23,6 +23,7 @@
     "@nuxt/types": "^2.14.12",
     "@nuxt/typescript-build": "^2.0.4",
     "@nuxt/typescript-runtime": "^2.0.1",
+    "@nuxtjs/pwa": "^3.3.5",
     "@types/gsap": "^1.20.2",
     "core-js": "^3.8.3",
     "file-loader": "^6.2.0",

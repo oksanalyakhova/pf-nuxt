@@ -1,5 +1,5 @@
 export default {
-  ssr: true,
+  ssr: false,
   head: {
     title: 'OLyakhova',
     htmlAttrs: {
@@ -81,8 +81,20 @@ export default {
     '@nuxt/typescript-build',
   ],
   modules: [
+    '@nuxtjs/pwa',
   ],
   build: {
+  },
+  pwa: {
+    icon: {
+      source: '/favicon.ico'
+    },
+    manifest: {
+      name: 'OLyakhova Portfolio',
+      short_name: 'OLyakhova',
+      lang: 'en',
+      useWebmanifestExtension: false
+    }
   },
   env: {
     baseURL: (process.env.NODE_ENV === 'production' ? 'http//your-url' : 'http://localhost:3000')
