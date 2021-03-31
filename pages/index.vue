@@ -9,8 +9,7 @@
       :reactProjects="reactProjects"
       v-if="reactProjects"
     )
-    About
-
+    //About
 </template>
 
 <script>

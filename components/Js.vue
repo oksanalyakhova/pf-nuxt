@@ -14,9 +14,9 @@
       ref="secondItem"
     )
       .intro
-        .text {{$t('react.intro.start')}}
-        .text {{$t('react.intro.middle')}}
-        .text {{$t('react.intro.end')}}
+        .text {{$t('react.intro.first')}}
+        .text {{$t('react.intro.second')}}
+        .text {{$t('react.intro.third')}}
       ul.js-projects-list(
         ref="reactProjList"
       )
@@ -92,16 +92,16 @@ export default class Js extends Vue {
       }, {
         xPercent: -110,
         skewX: -5,
-        duration: 10,
+        duration: 2.5,
         ease: 'none'
       }, 'spin')
       .fromTo(this.$refs.secondItem, {
         yPercent: 0,
       }, {
-        yPercent: -100,
-        duration: 20,
+        yPercent: -150,
+        duration: 10,
         ease: 'none'
-      }, 'spin +=10.5')
+      }, 'spin')
 
     window.addEventListener('resize', () => ScrollTrigger.refresh());
   }

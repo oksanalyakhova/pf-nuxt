@@ -8,7 +8,11 @@
       ref="secondItem"
     )
       .intro
-        .text
+        .text {{$t('about.intro.first')}}
+        .text {{$t('about.intro.second')}}
+        .text {{$t('about.intro.third')}}
+        .text {{$t('about.intro.fourth')}}
+        .text {{$t('about.intro.fifth')}}
 
 </template>
 
@@ -25,3 +29,17 @@ export default class About extends Vue {
 
 }
 </script>
+
+<style lang="sass">
+@import '../assets/styles/setup'
+
+.section-fourth
+  position: relative
+  z-index: 2
+  color: $c-black
+  background-color: $c-grey
+
+  &__title
+    font-size: clamp(4.25rem, 50vw, 400rem)
+    white-space: nowrap
+</style>
