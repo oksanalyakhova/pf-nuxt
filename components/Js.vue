@@ -90,7 +90,7 @@ export default class Js extends Vue {
       .fromTo(this.$refs.top, {
         xPercent: 95
       }, {
-        xPercent: -110,
+        xPercent: -100,
         skewX: -5,
         duration: 2.5,
         ease: 'none'
@@ -98,8 +98,8 @@ export default class Js extends Vue {
       .fromTo(this.$refs.secondItem, {
         yPercent: 0,
       }, {
-        yPercent: -150,
-        duration: 10,
+        yPercent: -50,
+        duration: 9.5,
         ease: 'none'
       }, 'spin')
 
