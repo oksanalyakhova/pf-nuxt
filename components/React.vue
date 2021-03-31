@@ -21,12 +21,19 @@
         ref="reactProjList"
       )
         li.react-projects-list__item.react-project(
-          v-for="project in reactProjects"
+          ref="reactProjListItem"
+          v-for="project in projects"
           :key="project.label"
         )
           ReactProjectItem(
             :project="project"
           )
+      .intro
+        .text {{$t('react.intro.not-only-react')}}
+          ReactProjectItem(
+            :project="lastProject"
+          )
+
 </template>
 
 <script lang="ts">
@@ -52,15 +59,32 @@ export default class React extends Vue {
   @Prop({default: () => []})
   reactProjects: []
 
+  // lastProject = []
   $refs!: {
     thirdSection: HTMLElement,
     firstItem: HTMLElement,
     secondItem: HTMLElement,
     top: HTMLElement,
-    reactProjList: HTMLElement
+    reactProjList: HTMLElement,
+    reactProjListItem: HTMLElement
   }
 
+  get projects() {
+    return this.reactProjects.splice(0, this.reactProjects.length - 1);
+  }
+  get lastProject() {
+    return this.reactProjects[this.reactProjects.length - 1]
+  }
   mounted() {
+    this.$nextTick(() => {
+    })
+
+    // this.lastProject = this.reactProjects.splice(this.reactProjects.length - 2, this.reactProjects.length);
+    //
+    // const result = this.reactProjects[this.reactProjects.length - 1]
+    console.log(this.lastProject)
+
+
     this.scrollAnim();
   }
   private scrollAnim(): void {
@@ -140,10 +164,14 @@ export default class React extends Vue {
 
     .intro,
     .react-projects-list
-      padding: 0 6.25vw 0 50vw
       width: 100%
 
+    .intro
+      padding: 0 6.25vw 0 50vw
+
     .react-projects-list
+      padding: 0 6.25vw 6vw 50vw
+
       &__item
         margin: 5em 0 0
 </style>

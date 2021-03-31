@@ -1,26 +1,34 @@
 [
   {
+    "demo": "#",
     "titleStart": "Proj",
     "titleEnd": "ect 1",
-    "label": "Project 1",
     "info": "Project 1 info",
-    "demo": "#",
-    "code": "#"
+    "code": "#",
+    "label": "Project 1"
   },
   {
+    "demo": "#",
     "titleStart": "Proj",
     "titleEnd": "ect 2",
-    "label": "Project 2",
     "info": "Project 2 info",
-    "demo": "#",
-    "code": "#"
+    "code": "#",
+    "label": "Project 2"
   },
   {
-    "titleStart": "Proj",
-    "titleEnd": "ect 2",
-    "label": "Project 3",
-    "info": "Project 3 info",
     "demo": "#",
-    "code": "#"
+    "titleStart": "Proj",
+    "titleEnd": "ect 3",
+    "info": "Project 3 info",
+    "code": "#",
+    "label": "Project 3"
+  },
+  {
+    "demo": "#",
+    "titleStart": "Nuxt",
+    "titleEnd": "Nuxt",
+    "info": "Project 4 info",
+    "code": "#",
+    "label": "Project 4"
   }
 ]

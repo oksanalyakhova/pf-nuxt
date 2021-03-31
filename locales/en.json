@@ -14,7 +14,8 @@
     "intro": {
       "start": "I love React, JSX, Styled Components, React Hooks and all the possibilities that React provides.",
       "middle": "When I have free time I learn React, read about React and the libraries for it.",
-      "end": "There are some of my React projects here:"
+      "end": "There are some of my React projects here:",
+      "not-only-react": "Not only React - I have Portfolio with Vue / Nuxt. This app was written with Class-Based Components with TypeScript and I love this experience!"
     }
   },
   "react-projects": {

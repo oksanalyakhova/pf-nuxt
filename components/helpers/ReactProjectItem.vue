@@ -110,6 +110,7 @@ export default class ProjectItem extends mixins(deviceDetector) {
       right: 0
 
   &__info
+    @include pseudo
     margin: 1em 3em 0 0
     display: inline-block
     font-size: 12px
@@ -117,23 +118,23 @@ export default class ProjectItem extends mixins(deviceDetector) {
     text-transform: uppercase
     white-space: nowrap
 
-    &.is-link
-      @include pseudo
-
-      &:hover
-        &::after
-          opacity: 0
-          transform: translate3d(0, 5px, 0)
-
+    &:not(.is-link)
       &::before
         top: .7em
-        left: -1.5em
+        left: auto
+        right: -1.5em
         width: .3em
         height: .3em
         background-color: $c-grey
         border-radius: 50%
 
-      &::after
+    &.is-link
+      &:hover
+        &::before
+          opacity: 0
+          transform: translate3d(0, 5px, 0)
+
+      &::before
         left: 0
         top: 100%
         width: 100%

@@ -14,7 +14,8 @@
     "intro": {
       "start": "Я люблю React, JSX, Styled Components, React Hooks та всі можливості, які надає React.",
       "middle": "Коли маю вільний час, я вивчаю React, читаю про React та бібліотеки для нього.",
-      "end": "Ось деякі мої проекти на React:"
+      "end": "Ось деякі мої проекти на React:",
+      "not-only-react": "Не тільки React - маю портфоліо на Vue / Nuxt. Цю аппку написано на основі Class-Based Components з TypeScript, і я люблю цей досвід!"
     }
   },
   "react-projects": {
