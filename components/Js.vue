@@ -14,9 +14,10 @@
       ref="secondItem"
     )
       .intro
-        .text {{$t('react.intro.first')}}
-        .text {{$t('react.intro.second')}}
-        .text {{$t('react.intro.third')}}
+        .text(
+          v-for="item in introTexts"
+          v-html="item"
+        )
       ul.js-projects-list(
         ref="reactProjList"
       )
@@ -29,7 +30,7 @@
             :project="project"
           )
       .intro
-        .text {{$t('react.intro.not-only-react')}}
+        .text {{$t('react.not-only-react')}}
         .js-project
           ReactProjectItem(
             :project="vueProject"
@@ -70,6 +71,9 @@ export default class Js extends Vue {
 
   get vueProject() {
     return this.$t('vue')
+  }
+  get introTexts() {
+    return this.$t('react.intro')
   }
   mounted() {
     this.scrollAnim();

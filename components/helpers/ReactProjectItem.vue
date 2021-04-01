@@ -55,10 +55,9 @@ export default class ProjectItem extends mixins(deviceDetector) {
     target: {querySelector: (arg0: string) => gsap.TweenTarget};
   }): void {
     if (!this.isMobile) {
-      ProjectItem.Hover(
+      this.Hover(
         e.target.querySelector('.fill'),
-        'inset(0% 0% 0% 0%)',
-        1
+        'inset(0% 0% 0% 0%)'
       )
     }
   }
@@ -66,15 +65,14 @@ export default class ProjectItem extends mixins(deviceDetector) {
     target: {querySelector: (arg0: string) => gsap.TweenTarget};
   }): void {
     if (!this.isMobile) {
-      ProjectItem.Hover(
+      this.Hover(
         e.target.querySelector('.fill'),
-        'inset(0% 100% 0% 0%)',
-        0
+        'inset(0% 100% 0% 0%)'
       )
     }
   }
-  private static Hover(
-    targetFill: gsap.TweenTarget, clipPath: string, autoAlpha: number
+  public Hover(
+    targetFill: gsap.TweenTarget, clipPath: string
   ): void {
     const hoverAnim = gsap.timeline()
       .to(targetFill, {
