@@ -31,7 +31,7 @@ import Component, {mixins} from 'vue-class-component';
 import {Prop} from 'vue-property-decorator';
 import SvgMask from '~/components/helpers/SvgMask.vue';
 import ProjectItem from '~/components/helpers/ProjectItem.vue';
-import deviceDetector from '@/mixins/deviceDetector';
+import deviceDetector from '@/mixins/deviceDetector.ts';
 import {gsap} from 'gsap/dist/gsap';
 
 @Component({

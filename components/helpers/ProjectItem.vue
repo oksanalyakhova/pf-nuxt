@@ -22,7 +22,7 @@
 import Component, {mixins} from 'vue-class-component';
 import {Prop} from 'vue-property-decorator';
 import {gsap} from 'gsap/dist/gsap';
-import deviceDetector from '@/mixins/deviceDetector';
+import deviceDetector from '@/mixins/deviceDetector.ts';
 
 @Component
 export default class ProjectItem extends mixins(deviceDetector) {

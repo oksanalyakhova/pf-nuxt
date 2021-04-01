@@ -11,8 +11,8 @@
 
 <script lang="ts">
 import Component, {mixins} from 'vue-class-component';
-import sizeTricks from '@/mixins/sizeTricks';
-import deviceDetector from '@/mixins/deviceDetector';
+import sizeTricks from '@/mixins/sizeTricks.ts';
+import deviceDetector from '@/mixins/deviceDetector.ts';
 import ProgressBar from '~/components/ProgressBar.vue';
 
 import '@/assets/styles/common.sass';

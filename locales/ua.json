@@ -34,6 +34,16 @@
       "fifth": "Я амбітна і люблю нові виклики та постійно розширюю свої навички. Я шукаю позицію React розробника і мрію співпрацювати з командою сильних ІТ-професіоналів."
     }
   },
+  "say-hi": {
+    "git": {
+      "href": "https://github.com/oksanalyakhova",
+      "name": "Git."
+    },
+    "ig": {
+      "href": "https://www.instagram.com/ksenyalyakhova",
+      "name": "Ig."
+    }
+  },
   "errors": {
     "not-found": "Сторінку не знайдено"
   }

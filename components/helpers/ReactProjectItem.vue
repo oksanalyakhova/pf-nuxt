@@ -26,7 +26,7 @@ import Component, {mixins} from 'vue-class-component';
 import ThemeLink from '~/components/helpers/ThemeLink.vue';
 import {Prop} from 'vue-property-decorator';
 import {gsap} from 'gsap/dist/gsap';
-import deviceDetector from '@/mixins/deviceDetector';
+import deviceDetector from '@/mixins/deviceDetector.ts';
 
 @Component({
   components: {

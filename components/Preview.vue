@@ -39,19 +39,34 @@
         translate="-34"
       )
         .vertical(ref="bottom") Developer
-
     IntViewportHeight.section-first__item(
       theme="dark"
     )
       Vertical(ref="vertical")
-    ScrollMessage
+    .lang-switch
+      .lang-switch__item(
+        v-for="item in getLangs"
+        :key="item"
+        @click.prevent="toggleLang(item)"
+      )
+        PreviewMessage(
+          :className="{'is-active': item === selectedLang}"
+          :theme="`link`"
+          :message="item"
+        )
+    PreviewMessage(
+      :theme="`text`"
+      :message="`scroll`"
+    )
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import config from '@/config';
+import {mapGetters} from 'vuex';
 import Vertical from '~/components/helpers/Vertical.vue';
-import ScrollMessage from '~/components/helpers/ScrollMessage.vue';
+import PreviewMessage from './helpers/PreviewMessage.vue';
 import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
@@ -62,11 +77,21 @@ gsap.registerPlugin(ScrollTrigger);
   components: {
     IntViewportHeight,
     Vertical,
-    ScrollMessage
+    PreviewMessage
+  },
+  computed: {
+    ...mapGetters({
+      selectedLang: 'GET_LOCALE',
+    })
   }
 })
 export default class Preview extends Vue {
   vw: number = window.innerWidth;
+  langs: object = [
+    "en",
+    "ua"
+  ]
+
   $refs!: {
     fill: HTMLElement,
     firstSection: HTMLElement,
@@ -76,6 +101,9 @@ export default class Preview extends Vue {
     bottom: HTMLElement
   }
 
+  get getLangs() {
+    return this.langs
+  }
   created() {
     this.setWindowSizes();
   }
@@ -161,6 +189,23 @@ export default class Preview extends Vue {
 
     window.addEventListener('resize', () => ScrollTrigger.refresh());
   }
+  langUrl(code) {
+    let path = this.$route.fullPath;
+    let langs = config.ALLOWED_LOCALES.join('|');
+
+    path = path
+      .replace(new RegExp('(^\/(' + langs + ')\/)|(^\/(' + langs + ')$)'), '')
+      .replace(/^(\/)+/, '');
+
+    config.DEFAULT_LOCALE !== code
+      ? path = '/' + code + (path != '' ? ('/' + path) : '')
+      : path = '/' + path;
+
+    return path;
+  }
+  toggleLang(lang) {
+    window.location.href = this.langUrl(lang);
+  }
 }
 </script>
 
@@ -202,4 +247,19 @@ export default class Preview extends Vue {
         top: 0
         right: 0
         clip-path: inset(100% 0% 0% 0%)
+
+  .lang-switch
+    @include center(h)
+    top: -.065em
+    z-index: 0
+    display: flex
+
+    &__item
+      margin: 0 .03em
+      padding: 0 .03em
+      transform: translateY(0)
+      transition: transform .45s,opacity .45s
+
+      .desktop &:hover
+        transform: translateY(5px)
 </style>

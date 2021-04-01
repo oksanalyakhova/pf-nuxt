@@ -24,7 +24,7 @@
         ref="email"
       ) Say hi
         a(
-          href="mailto:bisov.point@gmail.com"
+          :href="`mailto:bisov.point@gmail.com`"
           @mouseenter="Enter"
           @mouseleave="Leave"
         )
@@ -49,7 +49,7 @@
 import Component, {mixins} from 'vue-class-component';
 import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
 import ThemeLink from '~/components/helpers/ThemeLink.vue';
-import deviceDetector from '@/mixins/deviceDetector';
+import deviceDetector from '@/mixins/deviceDetector.ts';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
@@ -85,8 +85,8 @@ export default class About extends mixins(deviceDetector) {
         trigger: this.$refs.fourthSection,
         pin: false,
         scrub: 0.6,
-        start: 'top top',
-        end: '+=' + height / 2,
+        start: 'top center',
+        end: '+=' + height / 3,
         invalidateOnRefresh: true,
       }
     })
