@@ -16,13 +16,10 @@ import {Prop} from 'vue-property-decorator';
 export default class ThemeLink extends Vue {
   @Prop({default: ''})
   href: string
-
   @Prop({default: ''})
   name: string
-
   @Prop({default: ''})
   className: string
-
   @Prop({default: 'dark'})
   theme: string
 
@@ -33,5 +30,4 @@ export default class ThemeLink extends Vue {
     }
   }
 }
-
 </script>

@@ -3,7 +3,6 @@
     .filled-bar(
       :style="{transform: `translate3d(0, -${(1 - value) * 100}%, 0)`}"
     )
-
 </template>
 
 <script lang="ts">

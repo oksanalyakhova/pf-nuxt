@@ -31,9 +31,7 @@ import About from '~/components/About.vue';
 export default class index extends Vue {
   projects = [];
   reactProjects = [];
-
-
-
+  
   async created() {
     fetch(this.$t('projects.url'))
       .then(res => res.json())
