@@ -5,7 +5,6 @@
     IntViewportHeight.section-first__item(
       ref="firstBlock"
     )
-
     IntViewportHeight.section-first__item.from-right(
       ref="firstItem"
       theme="light"
@@ -21,18 +20,15 @@
       Splitting.from-right__letters(
         :text="$t('name.first')"
       )
-
     IntViewportHeight.section-first__item.from-right(
       ref="secondItem"
       theme="transparent"
     )
       .text(ref="lastname") {{$t('name.last')}}
-
     IntViewportHeight.section-first__item.from-right(
       ref="thirdItem"
       theme="dark"
     )
-
       Vertical(
         theme="top"
         translate="44"
@@ -48,7 +44,6 @@
       theme="dark"
     )
       Vertical(ref="vertical")
-
     ScrollMessage
 </template>
 

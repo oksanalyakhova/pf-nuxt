@@ -1,0 +1,24 @@
+.theme-link
+  @include pseudo
+
+  &:hover
+    &::before
+      opacity: 0
+      transform: translate3d(0, 5px, 0)
+
+  &.is-dark
+    &::before
+      background-color: $c-black
+
+  &.is-light
+    &::before
+      background-color: $c-grey
+
+  &::before
+    left: 0
+    top: 100%
+    width: 100%
+    height: 1px
+    opacity: 1
+    transform: translateZ(0)
+    transition: transform .45s,opacity .45s

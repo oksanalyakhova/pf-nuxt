@@ -12,20 +12,27 @@
         span.fill(
           ref="fill"
         ) {{project.titleEnd}}
-    .react-project__info {{project.info}}
-    a.react-project__info.is-link(
+    .react-project__info.is-text {{project.info}}
+    ThemeLink(
+      :class="`react-project__info`"
+      :theme="`light`"
       :href="project.code"
-    ) Git
-
+      :name="`Git.`"
+    )
 </template>
 
 <script lang="ts">
 import Component, {mixins} from 'vue-class-component';
+import ThemeLink from '~/components/helpers/ThemeLink.vue';
 import {Prop} from 'vue-property-decorator';
 import {gsap} from 'gsap/dist/gsap';
 import deviceDetector from '@/mixins/deviceDetector';
 
-@Component
+@Component({
+  components: {
+    ThemeLink
+  }
+})
 export default class ProjectItem extends mixins(deviceDetector) {
   @Prop({default: () => {}})
   project: object
@@ -110,7 +117,6 @@ export default class ProjectItem extends mixins(deviceDetector) {
       right: 0
 
   &__info
-    @include pseudo
     margin: 1em 3em 0 0
     display: inline-block
     font-size: 12px
@@ -118,7 +124,8 @@ export default class ProjectItem extends mixins(deviceDetector) {
     text-transform: uppercase
     white-space: nowrap
 
-    &:not(.is-link)
+    &.is-text
+      @include pseudo
       &::before
         top: .7em
         left: auto
@@ -127,20 +134,4 @@ export default class ProjectItem extends mixins(deviceDetector) {
         height: .3em
         background-color: $c-grey
         border-radius: 50%
-
-    &.is-link
-      &:hover
-        &::before
-          opacity: 0
-          transform: translate3d(0, 5px, 0)
-
-      &::before
-        left: 0
-        top: 100%
-        width: 100%
-        height: 1px
-        background-color: $c-grey
-        opacity: 1
-        transform: translateZ(0)
-        transition: transform .45s,opacity .45s
 </style>

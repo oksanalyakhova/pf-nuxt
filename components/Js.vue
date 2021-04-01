@@ -34,7 +34,6 @@
           ReactProjectItem(
             :project="vueProject"
           )
-
 </template>
 
 <script lang="ts">

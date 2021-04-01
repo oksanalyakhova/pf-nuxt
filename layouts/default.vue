@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
 import Component, {mixins} from 'vue-class-component';
 import sizeTricks from '@/mixins/sizeTricks';
 import deviceDetector from '@/mixins/deviceDetector';
@@ -58,3 +57,8 @@ export default class Project extends mixins(sizeTricks, deviceDetector) {
   }
 }
 </script>
+
+<style lang="sass">
+.app
+  overflow: hidden
+</style>
