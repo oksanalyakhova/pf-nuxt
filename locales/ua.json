@@ -9,8 +9,8 @@
   "react": {
     "intro": {
       "first": "Я люблю React, JSX, Styled Components, React Hooks та всі можливості, які надає React.",
-      "second": "Коли маю вільний час, я вивчаю React, читаю про React та бібліотеки для нього.",
-      "third": "Ось деякі мої проекти на React:"
+      "second": "Коли маю вільний час, я продовжую вивчати React, читаю про React та бібліотеки для нього.",
+      "third": "і ось деякі мої проекти на React:"
     },
     "not-only-react": "Не тільки React - маю портфоліо на Vue/Nuxt. Цю аппку написано на основі Class-Based Components з TypeScript, і я в захваті від цього досвіду!"
   },
@@ -27,11 +27,11 @@
   },
   "about": {
     "intro": {
-      "first": "Привіт, мене звуть Оксана, я Frontend Developer з Києва і наразі працюю з Vue/Nuxt проектами.",
+      "first": "Отже, мене звуть Оксана, я Frontend Developer з Києва і наразі працюю з Vue/Nuxt проектами.",
       "second": "Маю понад 3 роки досвіду роботи в комерційних проектах як HTML/CSS Coder та Frontend Developer. Я розробник з любов'ю до анімацій та великих шрифтів :)",
-      "third": "Працювала також на позиціях HTML/CSS Coder та Team Lead команди HTML/CSS Coders у проектах на Angular.",
+      "third": "Працювала також на позиціях HTML/CSS Coder та Team Lead команди HTML/CSS Coder'ів у проектах на Angular.",
       "fourth": "Мій стек: HTML/CSS/JS, Vue/Nuxt/Vuex, React/Redux, Webpack/Gulp, SASS/Bem, npm/yarn, GIT, Nunjucks/Twig, Photoshop/Figma та ін.",
-      "fifth": "Я амбітна і люблю нові виклики та постійно розширюю свої навички. Я шукаю позицію React розробника і мрію співпрацювати з командою сильних ІТ-професіоналів."
+      "fifth": "Я амбітна і люблю нові виклики та постійно розширюю свої навички. Я шукаю позицію Frontend (Vue або React) розробника. Мрію співпрацювати з командою сильних ІТ-професіоналів."
     }
   },
   "say-hi": {
