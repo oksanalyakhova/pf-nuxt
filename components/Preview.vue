@@ -71,7 +71,9 @@ import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 @Component({
   components: {

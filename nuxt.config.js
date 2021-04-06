@@ -84,6 +84,9 @@ export default {
     '@nuxtjs/pwa',
   ],
   build: {
+    transpile: [
+      "gsap"
+    ],
   },
   pwa: {
     icon: {
