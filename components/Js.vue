@@ -47,7 +47,8 @@ import ReactProjectItem from '~/components/helpers/ReactProjectItem.vue';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
-if (process.client) {
+const {client} = process;
+if (client) {
   gsap.registerPlugin(ScrollTrigger);
 }
 

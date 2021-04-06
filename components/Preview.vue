@@ -15,6 +15,7 @@
       .text.is-letter(
         ref="pseudoOSecond"
       ) O
+        //:style="{transform: `translateX(${translate}px)`}"
         .text__inner(
           ref="o"
           :style="{transform: `translateX(${translate}px)`}"
@@ -77,7 +78,8 @@ import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
-if (process.client) {
+const {client} = process;
+if (client) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -115,8 +117,8 @@ export default class Preview extends Vue {
     return this.langs
   }
   mounted() {
-    this.scrollAnim();
     this.setTranslate();
+    this.scrollAnim();
 
     window.addEventListener('load', this.setStyles)
     this.$nextTick(() => {
@@ -134,7 +136,7 @@ export default class Preview extends Vue {
       ease: 'none'
     })
   }
-  private setTranslate(): void {
+  public setTranslate(): void {
     this.translate = `${-(this.$refs.pseudoOSecond.getBoundingClientRect().x -
       this.$refs.pseudoOFirst.getBoundingClientRect().x)}`
   }
@@ -193,7 +195,7 @@ export default class Preview extends Vue {
           ease: 'none'
         }, 'spin -=3.15')
 
-    window.addEventListener('resize', () => ScrollTrigger.refresh());
+    window.addEventListener('resize', () => ScrollTrigger.update());
   }
   langUrl(code) {
     let path = this.$route.fullPath;
