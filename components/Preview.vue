@@ -6,21 +6,23 @@
       ref="firstBlock"
     )
       .text.is-letter(
-        ref="pseudoO"
-        :style="`opacity:0;`"
+        ref="pseudoOFirst"
       ) O
     IntViewportHeight.section-first__item.from-right(
       ref="firstItem"
       theme="light"
     )
       .text.is-letter(
-        ref="o"
-        :style="{transform: `translateX(${translate}px)`}"
-      )
-        span.stroke O
-        span.fill(
-          ref="fill"
-        ) O
+        ref="pseudoOSecond"
+      ) O
+        .text__inner(
+          ref="o"
+          :style="{transform: `translateX(${translate}px)`}"
+        )
+          span.stroke O
+          span.fill(
+            ref="fill"
+          ) O
       Splitting.from-right__letters(
         :text="$t('name.first')"
       )
@@ -101,7 +103,8 @@ export default class Preview extends Vue {
   $refs!: {
     fill: HTMLElement,
     firstSection: HTMLElement,
-    pseudoO: HTMLElement,
+    pseudoOFirst: HTMLElement,
+    pseudoOSecond: HTMLElement,
     o: HTMLElement,
     lastname: HTMLElement,
     top: HTMLElement,
@@ -132,8 +135,8 @@ export default class Preview extends Vue {
     })
   }
   private setTranslate(): void {
-    this.translate = `${-(this.$refs.o.getBoundingClientRect().x -
-      this.$refs.pseudoO.getBoundingClientRect().x)}`
+    this.translate = `${-(this.$refs.pseudoOSecond.getBoundingClientRect().x -
+      this.$refs.pseudoOFirst.getBoundingClientRect().x)}`
   }
   private scrollAnim(): void {
     const slides = [...this.$refs.firstSection.querySelectorAll('.from-right')];
@@ -233,8 +236,13 @@ export default class Preview extends Vue {
       width: 100%
       height: 100%
 
-    .is-letter
+    .text.is-letter
       position: relative
+      color: transparent
+
+    .text__inner
+      position: absolute
+      left: 0
       display: inline-block
       color: $c-grey
       -webkit-text-stroke-width: 1px
