@@ -5,6 +5,10 @@
     IntViewportHeight.section-first__item(
       ref="firstBlock"
     )
+      .text.is-letter(
+        ref="pseudoO"
+        :style="`opacity:0;`"
+      ) O
     IntViewportHeight.section-first__item.from-right(
       ref="firstItem"
       theme="light"
@@ -88,7 +92,7 @@ if (process.client) {
   }
 })
 export default class Preview extends Vue {
-  vw: number = window.innerWidth;
+  translate: string = '0';
   langs: object = [
     "en",
     "ua"
@@ -97,6 +101,7 @@ export default class Preview extends Vue {
   $refs!: {
     fill: HTMLElement,
     firstSection: HTMLElement,
+    pseudoO: HTMLElement,
     o: HTMLElement,
     lastname: HTMLElement,
     top: HTMLElement,
@@ -106,22 +111,17 @@ export default class Preview extends Vue {
   get getLangs() {
     return this.langs
   }
-  created() {
-    this.setWindowSizes();
-  }
   mounted() {
     this.scrollAnim();
+    this.setTranslate();
 
     window.addEventListener('load', this.setStyles)
     this.$nextTick(() => {
-      window.addEventListener('resize', this.setWindowSizes);
+      window.addEventListener('resize', this.setTranslate);
     })
   }
   destroyed() {
-    window.removeEventListener('resize', this.setWindowSizes);
-  }
-  private setWindowSizes(): void {
-    this.vw = window.innerWidth;
+    window.removeEventListener('resize', this.setTranslate);
   }
   private setStyles(): void {
     gsap.to(this.$refs.fill, {
@@ -131,8 +131,9 @@ export default class Preview extends Vue {
       ease: 'none'
     })
   }
-  get translate() {
-    return `${ -(this.vw  * 0.685) }`
+  private setTranslate(): void {
+    this.translate = `${-(this.$refs.o.getBoundingClientRect().x -
+      this.$refs.pseudoO.getBoundingClientRect().x)}`
   }
   private scrollAnim(): void {
     const slides = [...this.$refs.firstSection.querySelectorAll('.from-right')];
