@@ -78,8 +78,7 @@ import IntViewportHeight from '~/components/helpers/IntViewportHeight.vue';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
-const {client} = process;
-if (client) {
+if (process['client']) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -144,6 +143,7 @@ export default class Preview extends Vue {
     const slides = [...this.$refs.firstSection.querySelectorAll('.from-right')];
     const letters = [...this.$refs.firstSection.querySelectorAll('.from-right__letters .letter')];
 
+
     const actionStart = gsap.timeline({
       scrollTrigger: {
         trigger: this.$refs.firstSection,
@@ -195,7 +195,7 @@ export default class Preview extends Vue {
           ease: 'none'
         }, 'spin -=3.15')
 
-    window.addEventListener('resize', () => ScrollTrigger.update());
+    // window.addEventListener('resize', () => ScrollTrigger.update());
   }
   langUrl(code) {
     let path = this.$route.fullPath;

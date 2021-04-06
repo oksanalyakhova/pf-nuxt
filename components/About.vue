@@ -53,8 +53,7 @@ import deviceDetector from '@/mixins/deviceDetector.ts';
 import {gsap} from 'gsap/dist/gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
-const {client} = process;
-if (client) {
+if (process['client']) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
