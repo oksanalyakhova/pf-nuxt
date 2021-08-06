@@ -6,7 +6,7 @@
     @mouseenter="Enter"
     @mouseleave="Leave"
   )
-    Arrow
+    Arrow(:theme="`dark`")
     h2.project__title(
       :data-project="project.label"
     ) {{project.titleStart}}

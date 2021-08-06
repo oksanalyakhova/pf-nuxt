@@ -7,6 +7,7 @@
       @mouseenter="Enter"
       @mouseleave="Leave"
     )
+      Arrow(:theme="`light`")
       h2.react-project__title {{project.titleStart}}
         span.stroke {{project.titleEnd}}
         span.fill(
@@ -24,13 +25,15 @@
 <script lang="ts">
 import Component, {mixins} from 'vue-class-component';
 import ThemeLink from '~/components/helpers/ThemeLink.vue';
+import Arrow from '~/components/helpers/Arrow.vue';
 import {Prop} from 'vue-property-decorator';
 import {gsap} from 'gsap/dist/gsap';
 import deviceDetector from '@/mixins/deviceDetector.ts';
 
 @Component({
   components: {
-    ThemeLink
+    ThemeLink,
+    Arrow
   }
 })
 export default class ProjectItem extends mixins(deviceDetector) {

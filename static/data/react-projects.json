@@ -1,26 +1,19 @@
 [
   {
-    "demo": "#",
-    "titleStart": "Proj",
-    "titleEnd": "ect 1",
-    "info": "Project 1 info",
-    "code": "#",
-    "label": "Project 1"
+    "demo": "https://610cf805185b20838591c284--confident-pasteur-7a5b9b.netlify.app/",
+    "titleStart": "Spot",
+    "titleEnd": "ify",
+    "info": "The artist page",
+    "code": "https://github.com/oksanalyakhova/spoty.t",
+    "label": "Spotify"
   },
   {
-    "demo": "#",
-    "titleStart": "Proj",
-    "titleEnd": "ect 2",
-    "info": "Project 2 info",
-    "code": "#",
-    "label": "Project 2"
-  },
-  {
-    "demo": "#",
-    "titleStart": "Proj",
-    "titleEnd": "ect 3",
-    "info": "Project 3 info",
-    "code": "#",
-    "label": "Project 3"
+    "demo": "https://610cfa96b5d12c84b95f607f--reverent-liskov-0182b7.netlify.app/",
+    "titleStart": "3DSl",
+    "titleEnd": "ider",
+    "info": "3d model slider",
+    "code": "https://github.com/oksanalyakhova/3dslider.t",
+    "label": "3DSlider"
   }
 ]
+
