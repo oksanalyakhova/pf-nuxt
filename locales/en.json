@@ -9,8 +9,8 @@
   "react": {
     "intro": {
       "first": "I love React, JSX, Styled Components, React Hooks and all the possibilities that React provides.",
-      "second": "When I have free time I learn React, read about React and the libraries for it.",
-      "third": "There are some of my React projects here:"
+      "second": "I'm currently involved in development at React, including Gatsby. And I continue to actively study this wonderful library.",
+      "third": "There are some of my React demos here:"
     },
     "not-only-react": "Not only React - I have Vue/Nuxt Portfolio. This app was written with Class-Based Components and TypeScript and I love this experience!"
   },
@@ -18,12 +18,12 @@
     "url": "https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/react-projects.json"
   },
   "vue": {
-    "demo": "#",
-    "titleStart": "Nuxt",
-    "titleEnd": "Nuxt",
-    "info": "Project 4 info",
-    "code": "#",
-    "label": "Project 4"
+    "demo": "https://github.com/oksanalyakhova/pf-nuxt",
+    "titleStart": "Portf",
+    "titleEnd": "olio",
+    "info": "This app code",
+    "code": "https://github.com/oksanalyakhova/pf-nuxt",
+    "label": "Portfolio"
   },
   "about": {
     "intro": {
