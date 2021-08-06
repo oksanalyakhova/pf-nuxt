@@ -27,11 +27,11 @@
   },
   "about": {
     "intro": {
-      "first": "Отже, мене звуть Оксана, я Frontend Developer з Києва і наразі працюю з Vue/Nuxt проектами.",
+      "first": "Отже, мене звуть Оксана, я Frontend Developer з Києва і наразі працюю з Vue/Nuxt, React/Gatsby та ін. проектами.",
       "second": "Маю понад 3 роки досвіду роботи в комерційних проектах як HTML/CSS Coder та Frontend Developer. Я розробник з любов'ю до анімацій та великих шрифтів :)",
       "third": "Працювала також на позиціях HTML/CSS Coder та Team Lead команди HTML/CSS Coder'ів у проектах на Angular.",
-      "fourth": "Мій стек: HTML/CSS/JS, Vue/Nuxt/Vuex, React/Redux, Webpack/Gulp, SASS/Bem, npm/yarn, GIT, Nunjucks/Twig, Photoshop/Figma та ін.",
-      "fifth": "Я амбітна і люблю нові виклики та постійно розширюю свої навички. Я шукаю позицію Frontend (Vue або React) розробника. Мрію співпрацювати з командою сильних ІТ-професіоналів."
+      "fourth": "Мій стек: HTML/CSS/JS, Vue/Nuxt/Vuex, React/Gatsby/Redux, Webpack/Gulp, SASS/Bem, npm/yarn, GIT, Nunjucks/Twig, Photoshop/Figma і багато ін.",
+      "fifth": "Я амбітна і люблю нові виклики та постійно розширюю свої навички. І, як справжній задрот, завжди щаслива співпрацювати з командою сильних ІТ-професіоналів."
     }
   },
   "say-hi": {
