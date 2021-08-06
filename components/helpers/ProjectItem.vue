@@ -6,6 +6,7 @@
     @mouseenter="Enter"
     @mouseleave="Leave"
   )
+    Arrow
     h2.project__title(
       :data-project="project.label"
     ) {{project.titleStart}}
@@ -23,8 +24,13 @@ import Component, {mixins} from 'vue-class-component';
 import {Prop} from 'vue-property-decorator';
 import {gsap} from 'gsap/dist/gsap';
 import deviceDetector from '@/mixins/deviceDetector.ts';
+import Arrow from '~/components/helpers/Arrow.vue';
 
-@Component
+@Component({
+  components: {
+    Arrow
+  }
+})
 export default class ProjectItem extends mixins(deviceDetector) {
   @Prop({default: () => {}})
   project: object
