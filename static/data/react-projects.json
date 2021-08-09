@@ -8,11 +8,11 @@
     "label": "Spotify"
   },
   {
-    "demo": "https://610cfa96b5d12c84b95f607f--reverent-liskov-0182b7.netlify.app/",
+    "demo": "https://61113869f1508f2ead941949--reverent-liskov-0182b7.netlify.app/",
     "titleStart": "3DSl",
     "titleEnd": "ider",
     "info": "3d model slider",
-    "code": "https://github.com/oksanalyakhova/3dslider.t",
+    "code": "https://github.com/oksanalyakhova/3dslider.t/tree/data",
     "label": "3DSlider"
   }
 ]
