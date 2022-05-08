@@ -9,10 +9,9 @@
   "react": {
     "intro": {
       "first": "I love React, JSX, Styled Components, React Hooks and all the possibilities that React provides.",
-      "second": "I'm currently involved in development at React, including Gatsby. And I continue to actively study this wonderful library.",
-      "third": "There are some of my React demos here:"
+      "second": "There are some of my React demos here:"
     },
-    "not-only-react": "Not only React - I have Vue/Nuxt Portfolio. This app was written with Class-Based Components and TypeScript and I love this experience!"
+    "not-only-react": "Not only React - I have 2+ years of experience in Vue. This app was written with Class-Based Components and TypeScript."
   },
   "react-projects": {
     "url": "https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/react-projects.json"
@@ -27,10 +26,9 @@
   },
   "about": {
     "intro": {
-      "first": "Hi, I'm Oksana, Front-end Developer based in Kyiv and currently working on Vue/Nuxt, React/Gatsby and other projects.",
-      "second": "I have more than 3 years of experience working with commercial projects as HTML/CSS Coder and Front-end Developer. I’m a developer with taste for animation and big typography :)",
-      "third": "I have also worked as HTML/CSS Coder and Team Lead of HTML/CSS Department on Angular projects.",
-      "fourth": "My Tech Stack: <span>HTML/CSS/JS, Vue/Nuxt/Vuex, React/Gatsby/Redux, Webpack/Gulp, SASS/Bem, npm/yarn, GIT, Nunjucks/Twig, Photoshop/Figma, etc.</span>",
+      "first": "Hi, I'm Oksana, Front-end Developer based in Ukraine. I'm 35 years old. I love clean code and learning. An opportunity to work on big products. Ideally based on Vue. Well organized working process: good team, good communication, release cycle, good management, interesting tasks, career opportunities and the enhancement of professional skills. Product company is preferred.",
+      "second": "I have more than 4 years of experience working with commercial projects as Front-end Developer. I’m a developer with taste for animation and big typography :)",
+      "third": "Main tech skills: <span>Figma/ Photoshop / Phpstorm; working with SASS / SCSS preprocessors; Bootstrap, html5, css 3, scss, BEM methodology; Git version control system, github, gitlab; npm, webpack; Vue 2, vue 3, Javascript (ES6, ES7), jquery, rest api, react.</span>",
       "fifth": "I'm ambitious and love new challenges. My variety of skills is continuously expanding. And as a real geek I always happy to work with a Team of strong IT professionals"
     }
   },

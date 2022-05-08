@@ -9,10 +9,9 @@
   "react": {
     "intro": {
       "first": "Я люблю React, JSX, Styled Components, React Hooks та всі можливості, які надає React.",
-      "second": "Наразі я беру участь в розробці проектів на React, зокрема на Gatsby. І продовжую активно вивчати цю чудову бібліотеку.",
-      "third": "Ось кілька моїх демок з React:"
+      "second": "Ось кілька моїх демок з React:"
     },
-    "not-only-react": "Не тільки React - маю портфоліо на Vue/Nuxt. Цю аппку написано на основі Class-Based Components з TypeScript, і я в захваті від цього досвіду!"
+    "not-only-react": "Не тільки React - маю більше 2 років досвіду роботи із Vue. Цю аппку написано на основі Class-Based Components з TypeScript."
   },
   "react-projects": {
     "url": "https://raw.githubusercontent.com/oksanalyakhova/pf-nuxt/main/static/data/react-projects-ua.json"
@@ -27,10 +26,9 @@
   },
   "about": {
     "intro": {
-      "first": "Отже, мене звуть Оксана, я Front-end Developer з Києва і наразі працюю з Vue/Nuxt, React/Gatsby та ін. проектами.",
-      "second": "Маю понад 3 роки досвіду роботи в комерційних проектах як HTML/CSS Coder та Front-end Developer. Я розробник з любов'ю до анімацій та великих шрифтів :)",
-      "third": "Працювала також на позиціях HTML/CSS Coder та Team Lead команди HTML/CSS Coder'ів у проектах на Angular.",
-      "fourth": "Мій стек: HTML/CSS/JS, Vue/Nuxt/Vuex, React/Gatsby/Redux, Webpack/Gulp, SASS/Bem, npm/yarn, GIT, Nunjucks/Twig, Photoshop/Figma і багато ін.",
+      "first": "Отже, мене звуть Оксана, я Front-end Developer з Києва. Мені 35 років. Я люблю чистий код і постійне навчання. Можливість працювати над великими продуктами. В ідеалі на основі Vue. Добре організований робочий процес: добра команда, хороша комунікація, цикл випуску, хороший менеджмент, цікаві завдання, кар’єрні можливості та підвищення кваліфікації. Перевага надається продуктовій компанії.",
+      "second": "Маю понад 4 роки досвіду роботи в комерційних проектах як Front-end Developer. Я розробник з любов'ю до анімацій та великих шрифтів :)",
+      "third": "Мій стек: Figma/ Photoshop / Phpstorm; working with SASS / SCSS preprocessors; Bootstrap, html5, css 3, scss, BEM methodology; Git version control system, github, gitlab; npm, webpack; Vue 2, vue 3, Javascript (ES6, ES7), jquery, rest api, react.",
       "fifth": "Я амбітна і люблю нові виклики та постійно розширюю свої навички. І, як справжній задрот, завжди щаслива співпрацювати з командою сильних ІТ-професіоналів."
     }
   },
